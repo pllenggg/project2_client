@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+
 
 class Navigation extends Component {
   render() {
     return (
       <div>
-          <Link to="/">Home</Link> |  
-          {/* we will change this word later */}
-          <Link to="#">Customer</Link> - <Link to="/customerbookingsearch">Book Service</Link> - <Link to="/customerbookinglist">Booking List</Link> |
-          
-          <Link to="#">Retail</Link> -
-          <Link to="/retailservicelist">Service List</Link> - 
-          <Link to="/retailbookinglist">Booking List</Link> |
+        <Navbar bg="light" expand="lg">
+            <Navbar.Brand><Link to="/">Home</Link></Navbar.Brand> 
+            {/* we will change this word later */}
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto"></Nav>
+              <NavDropdown title="Customer" id="basic-nav-dropdown">
+                <NavDropdown.Item><Link to="/customerbookingsearch">Book services</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link to="/customerbookinglist">Booking lists</Link></NavDropdown.Item> 
+              </NavDropdown>
+              
+              <NavDropdown title="Retails" id="basic-nav-dropdown">
+                <NavDropdown.Item><Link to="/retailservicelist">Service lists</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link to="/retailbookinglist">Booking lists</Link></NavDropdown.Item> 
+              </NavDropdown>
+              
+              <NavDropdown title="Admin" id="basic-nav-dropdown">
+                <NavDropdown.Item><Link to="/retails">Retails</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link to="/categories">Categories</Link></NavDropdown.Item> 
+              </NavDropdown>
 
-          <Link to="#">Admin</Link> -
-          <Link to="/retails">Retail List</Link> -
-          <Link to="/categories">Categories List</Link> 
-
+            </Navbar.Collapse>
+        </Navbar>
       </div>
     );
   }
