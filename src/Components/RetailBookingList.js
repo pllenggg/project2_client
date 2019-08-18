@@ -22,7 +22,8 @@ class RetailBookingList extends Component {
   render() {
     return (
         <div>
-          <Table striped bordered size="sm">
+          <h1>All Booking</h1>
+          <Table striped size="sm">
             <thead>
               <tr>
                 <th>Customer</th>
@@ -34,11 +35,12 @@ class RetailBookingList extends Component {
                 <th>Phone Number</th>
               </tr>
             </thead>
+            <tbody>
             {
               // TODO: use login id instead of 8
               this.state.booking_data.filter((r)=>{return r.retail_id === 8}).map((b)=>{
                 return(
-                  <tr>
+                  <tr key={b.id}>
                     <td>{b.customer.full_name}</td>
                     <td>{b.date}</td>
                     <td>{b.booking_time}</td>
@@ -50,6 +52,7 @@ class RetailBookingList extends Component {
                 );
               })
             }
+            </tbody>
           </Table>
         </div>
     );
