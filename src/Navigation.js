@@ -12,7 +12,9 @@ class Navigation extends Component {
             {/* we will change this word later */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
+
             <Nav className="mr-auto"></Nav>
+            <Nav.Link><Link to="/signup">Sign up</Link></Nav.Link>
               <NavDropdown title="Customer" id="basic-nav-dropdown">
                 <NavDropdown.Item><Link to="/customerbookingsearch">Book services</Link></NavDropdown.Item>
                 <NavDropdown.Item><Link to="/customerbookinglist">Booking lists</Link></NavDropdown.Item> 
