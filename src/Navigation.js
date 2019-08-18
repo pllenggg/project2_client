@@ -15,6 +15,7 @@ class Navigation extends Component {
 
             <Nav className="mr-auto"></Nav>
             <Nav.Link><Link to="/signup">Sign up</Link></Nav.Link>
+            <Nav.Link><Link to="/signin">Sign in</Link></Nav.Link>
               <NavDropdown title="Customer" id="basic-nav-dropdown">
                 <NavDropdown.Item><Link to="/customerbookingsearch">Book services</Link></NavDropdown.Item>
                 <NavDropdown.Item><Link to="/customerbookinglist">Booking lists</Link></NavDropdown.Item> 
