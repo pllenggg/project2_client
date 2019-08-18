@@ -6,8 +6,8 @@ const SERVER_URL = 'http://localhost:3000/bookings.json';
 
 
 class CustomerBookingList extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       bookings: []
     };
@@ -57,7 +57,7 @@ class BookingCancelForm extends Component {
               </tr>
             </thead>
             {
-              this.state.bookings.filter((u)=>{return u.user_id === 11}).map((b)=>{
+              this.props.data.filter((u)=>{return u.user_id === 8}).map((b)=>{
                 return(
                   <tr>
                     <td>{b.date}</td>
