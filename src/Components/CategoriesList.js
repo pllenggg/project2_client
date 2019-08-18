@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
+import { Figure } from 'react-bootstrap';
 
 
 
@@ -30,9 +31,13 @@ class CategoriesList extends Component {
             return (
               <div>
                 <Card style={{ width: '18rem' }}>
+                  {/* <Figure>
+                    <Figure.Image src={c.image} width={400} height={200} />
+                  </Figure> */}
                   <Card.Img variant="top" src={c.image} />
                   <Card.Body>
                     <Card.Title>{c.title}</Card.Title>
+
 
                     {/* <Button variant="primary">Search</Button> */}
                   </Card.Body>
