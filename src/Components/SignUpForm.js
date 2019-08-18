@@ -9,7 +9,7 @@ class SignUp extends Component {
     this.state = {
       email: "",
       password: "",
-      // user_type: 'customer'
+      user_type: 'CUSTOMER'
     };
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleInputName = this._handleInputName.bind(this);
