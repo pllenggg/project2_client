@@ -11,7 +11,7 @@ import SignUpForm from './Components/SignUpForm';
 import SignInForm from './Components/SignInForm';
 import Navbar from './Navigation';
 import SignOutForm from './Components/SignOutForm';
-
+import CategoryEdit from './Components/CategoriesEdit';
 const Routes = (
 
     <Router>
@@ -31,6 +31,7 @@ const Routes = (
             {/* Admin */}
             <Route exact path="/retails" component={ RetailsList } />
             <Route exact path="/categories" component={ CategoriesList } />
+            <Route exact path="/categoryEdit/:id" component={CategoryEdit} />
 
             {/* User */}
             <Route exact path="/signup" component={ SignUpForm } />
