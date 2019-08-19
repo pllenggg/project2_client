@@ -29,6 +29,7 @@ class CategoriesList extends Component {
         {
           this.state.data.map((c) => {
             return (
+
               <div className="categorieList" key={c.id}>
                 <Card style={{ width: '18rem' }}>
                   <Card.Img variant="top" width='400px' height='225px' src={c.image} />
@@ -40,6 +41,7 @@ class CategoriesList extends Component {
                   </Card.Body>
                 </Card>
               </div>
+
 
             );
           })
