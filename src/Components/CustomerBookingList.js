@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, Button } from "react-bootstrap";
 
 const SERVER_URL = 'http://localhost:3000/bookings.json';
+const SERVER_UPDATE_URL = 'http://localhost:3000/bookings/:id.json';
 
 class CustomerBookingList extends Component {
   constructor() {
@@ -14,7 +15,9 @@ class CustomerBookingList extends Component {
 
   componentDidMount(){
     axios.get(SERVER_URL).then((results) => {
-      this.setState({bookings: results.data})
+      let login_id = Number(localStorage.user_id);
+      let data = results.data.filter((b)=> {return b.user_id === login_id });
+      this.setState({bookings: data});
     });
   }
 
@@ -25,15 +28,11 @@ class CustomerBookingList extends Component {
       </div>
     );
   }
-  
 }
   
 class BookingCancelForm extends Component {
     constructor() {
       super();
-      this.state = {
-        bookingId: 0
-      }
     }
 
   render() {
@@ -55,7 +54,7 @@ class BookingCancelForm extends Component {
               </thead>
               <tbody>
               {
-                this.props.data.filter((u)=>{return u.user_id === 2}).map((b)=>{
+                this.props.data.map((b)=>{
                   return(
                       <tr key={b.id}>
                         <td>{b.date}</td>
@@ -84,13 +83,28 @@ class CancelButton extends Component{
     this.state = {
       iscancel: props.iscancel?true:false
     }
-    console.log(this.state.iscancel);
+    this._handleOnClick = this._handleOnClick.bind(this);
+  }
+
+  _handleOnClick(event){
+    let bookingId = Number(event.target.id);
+    axios.get(SERVER_URL).then((response)=>{
+      let data = response.data.find((b)=>{ return b.id === bookingId});
+      if (!data.iscancel){
+        data.iscancel = true;
+        let url = SERVER_UPDATE_URL.replace(":id", bookingId)
+        axios.put(url, data).then((result)=>{
+          this.setState({iscancel: result.data.iscancel});
+          console.log("cancel success", this.state.iscancel);
+        });
+      }
+    })
   }
 
   render() {
     return (
       <div>
-        <Button variant="danger" id={this.props.id} onClick={this._buttonClick} size="sm" disabled={this.state.iscancel}>Cancel</Button>
+        <Button variant="danger" id={this.props.id} onClick={this._handleOnClick} size="sm" disabled={this.state.iscancel}>Cancel</Button>
       </div>
     )
   };
