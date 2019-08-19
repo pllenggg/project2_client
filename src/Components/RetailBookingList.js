@@ -10,13 +10,14 @@ class RetailBookingList extends Component {
     this.state = {
       booking_data: []
     };
+  }
 
-    const getBookingData = () =>{
-      axios.get(BOOKING_SERVER_URL).then((result)=>{
-        this.setState({booking_data:result.data});
-      });
-    }
-    getBookingData();
+  componentDidMount(){
+    axios.get(BOOKING_SERVER_URL).then((result)=>{
+      const login_id = Number(localStorage.user_id);
+      let data = result.data.filter((b)=> {return b.retail_id === login_id});
+        this.setState({booking_data:data});
+    });
   }
 
   render() {
@@ -38,7 +39,7 @@ class RetailBookingList extends Component {
             <tbody>
             {
               // TODO: use login id instead of 8
-              this.state.booking_data.filter((r)=>{return r.retail_id === 8}).map((b)=>{
+              this.state.booking_data.map((b)=>{
                 return(
                   <tr key={b.id}>
                     <td>{b.customer.full_name}</td>
