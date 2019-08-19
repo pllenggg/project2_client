@@ -10,6 +10,7 @@ import CategoriesList from './Components/CategoriesList';
 import SignUpForm from './Components/SignUpForm';
 import SignInForm from './Components/SignInForm';
 import Navbar from './Navigation';
+import SignOutForm from './Components/SignOutForm';
 
 const Routes = (
 
@@ -34,6 +35,7 @@ const Routes = (
             {/* User */}
             <Route exact path="/signup" component={ SignUpForm } />
             <Route exact path="/signin" component={ SignInForm } />
+            <Route exact path="/signout" component={ SignOutForm } />
         </div>
     </Router>
 )
