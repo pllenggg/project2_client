@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
-import { Figure } from 'react-bootstrap';
+
 
 
 
@@ -31,9 +31,6 @@ class CategoriesList extends Component {
             return (
               <div className="categorieList" key={c.id}>
                 <Card style={{ width: '18rem' }}>
-                  {/* <Figure>
-                    <Figure.Image src={c.image} width={400} height={200} />
-                  </Figure> */}
                   <Card.Img variant="top" width='400px' height='225px' src={c.image} />
                   <Card.Body>
                     <Card.Title>{c.title}</Card.Title>

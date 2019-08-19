@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
+
 
 const RETAILS_LIST_API = 'http://localhost:3000/retails.json';
 
@@ -15,7 +15,7 @@ class RetailsList extends Component {
 
     const fetchRetailsList = () => {
       axios.get(RETAILS_LIST_API).then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         this.setState({ retails: result.data });
       });
     };
@@ -39,16 +39,18 @@ class RetailsList extends Component {
             <th>Suburb</th>
             <th>Postcode</th>
           </tr>
-          {this.state.retails.map((retails) => (
-            <tr>
-              <td>{retails.retail_name}</td>
-              <td>{retails.address1}</td>
-              <td>{retails.address2}</td>
-              <td>{retails.suburb}</td>
-              <td>{retails.postcode}</td>
+          <tbody>
+            {this.state.retails.map((retails) => (
+              <tr key={retails.user_id}>
+                <td>{retails.retail_name}</td>
+                <td>{retails.address1}</td>
+                <td>{retails.address2}</td>
+                <td>{retails.suburb}</td>
+                <td>{retails.postcode}</td>
 
-            </tr>
-          ))}
+              </tr>
+            ))}
+          </tbody>
         </Table>
       </div>
 
