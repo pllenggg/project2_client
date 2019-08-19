@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form } from "react-bootstrap";
 import User from './User'
 import axios from 'axios';
 
@@ -11,58 +12,46 @@ class Signin extends Component {
             password: "",
             user_type: ""
         };
-        this._handleInputEmail = this._handleInputEmail.bind(this);
-        this._handleInputPassword = this._handleInputPassword.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
+        this._handleChange = this._handleChange.bind(this);
     }
-    _handleInputEmail(event) {
-        this.setState({email: event.target.value})
-    }
-    _handleInputPassword(event) {
-        this.setState({password: event.target.value})
+    _handleChange (event) {
+        this.setState({
+          [event.target.name]: event.target.value
+        });
     }
     _handleSubmit(event) {
         event.preventDefault();
-        let user_id = 0;
-        let userDetail = null;
         axios.get(SERVER_URL).then((results) => {
             const userslist = results.data
             console.log(userslist);
-            for (let i=0; i<userslist.length; i++) {
-                if (userslist[i].name === this.state.name) {
-                  user_id = userslist[i].id;
-                  userDetail = userslist[i];
-                  break;
-                } 
-                else {
-                  console.log('please sign up');
-                  let urlstr = window.location.href;
+            let urlstr  = "";
+            const loginUser = userslist.find((user) => {
+                if (user.email === this.state.email && user.password === this.state.password)
+                return user.email === this.state.email;
+            });
+            console.log('user log in:', loginUser);
+            
+            if (loginUser) {
+                // found user in database
+                User.setEmail(loginUser.email);
+                User.setUserType(loginUser.user_type);
+                User.setUserId(loginUser.id);
+                urlstr = window.location.href;
+
+                //http://localhost:3000/#/home
+                if (urlstr.includes("#")) {
+                    urlstr = urlstr.split("#")[0] + "#/"
+                    //return (<Home />)
+                }
+            } else {
+                // not found user in database, render sign up page
+                urlstr = window.location.href;
                 if (urlstr.includes("#")) {
                     urlstr = urlstr.split("#")[0] + "#/Signup"
                 }
-                
-                window.location.replace(urlstr);
-                //return (<SignUp />)
-                }
             }
-            console.log(user_id);
-            if ( user_id > 0 ) {
-                console.log("Sign_in=" + userDetail.email);
-                //user id found
-                //direct to homepage
-                User.setEmail(userDetail.email);
-                User.setUserType(userDetail.user_type);
-                User.setUserId(user_id);
-                
-                //http://localhost:3000/#/home
-                let urlstr = window.location.href;
-                if (urlstr.includes("#")) {
-                    urlstr = urlstr.split("#")[0] + "#/"
-                }
-                
-                window.location.replace(urlstr);
-                //return (<Home />)
-            }
+            window.location.replace(urlstr);
         });
     }
     render() {
@@ -70,20 +59,29 @@ class Signin extends Component {
             <div>
                 <h1>Sign in</h1>
                 <form onSubmit={this._handleSubmit}>
-                <label>
-                    Email:
-                    <input name="email" type="text" placeholder="type your email" required onInput={ this._handleInputEmail } defaultValue=""/>
-                </label>
-                <label>
-                    Password:
-                    <input name="password" type="password" placeholder="type your password" required onInput={this._handleInputPassword} defaultValue=""/>
-                </label>
-                <label>
-                    Confirm your password:
-                    <input name="password" type="password" placeholder="type your password" required onInput={this._handleInputPassword} defaultValue=""/>
-                </label>
-                <input type="submit" value="Sign in" />
-                <br />
+                <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email:</Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        name="email" 
+                        placeholder="type your email" 
+                        onChange={this._handleChange} 
+                        value={this.state.email}
+                        required />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                <Form.Label>Password:</Form.Label>
+                    <Form.Control 
+                        type="password"
+                        name="password" 
+                        placeholder="type your password" 
+                        onChange={this._handleChange} 
+                        value={this.state.password}
+                        required />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Sign in
+                </Button>
                 </form>
             </div>
         );
