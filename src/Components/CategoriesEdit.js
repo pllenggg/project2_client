@@ -8,15 +8,13 @@ class CategoriesEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: null
+      category: []
     };
 
     const fetchCategoryById = () => {
       axios.get(CATEGORIES_EDIT_API).then((result) => {
         const category = result.data.find(c => {
-          // Using `==` because `this.props.match.params.id` is a string
-          // and `c.id` is a number
-          return c.id == this.props.match.params.id;
+          return c.id === Number(this.props.match.params.id);
         });
 
         this.setState({ category: category });

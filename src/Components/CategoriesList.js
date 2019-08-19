@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { ListGroup, Container, Button, Accordion, Card } from 'react-bootstrap';
 import axios from 'axios';
 
 const CATEGORIES_API = 'http://localhost:3000/categories.json';
+
 class CategoriesList extends Component {
   constructor() {
     super();
@@ -16,13 +17,20 @@ class CategoriesList extends Component {
       });
     };
     fetchCategories();
+    this.saveNewCategory = this.saveNewCategory.bind(this);
+  }
+  saveNewCategory(data) {
+    axios.post(CATEGORIES_API, data).then((result) => {
+      this.setState({ data: [...this.state.data, result.data] })
+      window.location.reload();
+    });
   }
 
   render() {
     return (
       <div>
         <div>
-          <Button className="buttonCategories" variant="outline-secondary">+ Add New Category</Button>
+          {/* <Button className="buttonCategories" variant="outline-secondary">+ Add New Category</Button> */}
         </div>
         {
           this.state.data.map((c) => {
@@ -48,39 +56,57 @@ class CategoriesList extends Component {
 
 
 }
-// class AddNewCategory extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       title: "",
-//       image: "",
-//       category: []
 
-//     }
+class AddNewCategory extends Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      image: "",
+      category: []
 
-//     const fetchCategories = ()=>{
-//       axios.get().then((results) => {
-//         this.setState({category: results.data});
-//       })
 
-//     }
-//     fetchCategories();
-//     this._handleChange = this._handleChange.bind(this);
-//     this._handleSubmit = this._handleSubmit.bind(this);
-//   }
+    };
 
-//   _handleChange (event) {
-//     this.setState({
-//       [event.target.name]: event.target.value
-//     });
-//   }
+  }
+  render() {
+    return (
+      <div>
+        <Container>
+          <Accordion>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                  + Add new category
+              </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </Container>
+        {this.state.data.map((c) => {
+          return (
+            <div key={c.id}>
+              <Container>
+                <ListGroup>
+                  <ListGroup.Item>
+                    <h5>{c.title}</h5>
+                    <p><strong>title</strong> {c.title}</p>
+                  </ListGroup.Item>
+                </ListGroup>
+              </Container>
+            </div>
+          );
 
-//   _handleSubmit(event) {
-//     event.preventDefault();
-//     //localStorage.user_id
-//     const submitData = {title: this.state.title, description: this.state.description, price: this.state.price, category_id: this.state.category_id, duration: this.state.duration, retail_id: Login_id}   
-//     this.props.onSubmit(submitData);
-//   }
+        })}
+      </div>
+    )
+  }
+}
+
+
 
 
 export default CategoriesList;
