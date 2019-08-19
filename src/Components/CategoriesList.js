@@ -12,7 +12,6 @@ class CategoriesList extends Component {
 
     const fetchCategories = () => {
       axios.get(CATEGORIES_API).then((result) => {
-        console.log(result.data);
         this.setState({ data: result.data });
       });
     };
@@ -21,8 +20,10 @@ class CategoriesList extends Component {
 
   render() {
     return (
-
       <div>
+        <div>
+          <Button className="buttonCategories" variant="outline-secondary">+ Add New Category</Button>
+        </div>
         {
           this.state.data.map((c) => {
             return (
@@ -32,18 +33,13 @@ class CategoriesList extends Component {
                   <Card.Img variant="top" width='400px' height='225px' src={c.image} />
                   <Card.Body>
                     <Card.Title className="titleCategory">{c.title}</Card.Title>
-                    {/* <Button className="buttonCategories" variant="outline-secondary">Search</Button> */}
+                    <Button className="buttonCategories" variant="outline-secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
                   </Card.Body>
                 </Card>
-
               </div>
-
-
             );
           })
         }
-
-
       </div >
 
     );
@@ -52,5 +48,39 @@ class CategoriesList extends Component {
 
 
 }
+// class AddNewCategory extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       title: "",
+//       image: "",
+//       category: []
+
+//     }
+
+//     const fetchCategories = ()=>{
+//       axios.get().then((results) => {
+//         this.setState({category: results.data});
+//       })
+
+//     }
+//     fetchCategories();
+//     this._handleChange = this._handleChange.bind(this);
+//     this._handleSubmit = this._handleSubmit.bind(this);
+//   }
+
+//   _handleChange (event) {
+//     this.setState({
+//       [event.target.name]: event.target.value
+//     });
+//   }
+
+//   _handleSubmit(event) {
+//     event.preventDefault();
+//     //localStorage.user_id
+//     const submitData = {title: this.state.title, description: this.state.description, price: this.state.price, category_id: this.state.category_id, duration: this.state.duration, retail_id: Login_id}   
+//     this.props.onSubmit(submitData);
+//   }
+
 
 export default CategoriesList;
