@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import axios from 'axios';
 
 const SERVER_URL = 'http://localhost:3000/users.json';
@@ -14,20 +14,24 @@ class SignUp extends Component {
       user_type: 'CUSTOMER'
     };
     this._handleSubmit = this._handleSubmit.bind(this);
-    this._handleInput = this._handleInput.bind(this);
+    this._handleChange = this._handleChange.bind(this);
   }
   _handleSubmit(event) {
     event.preventDefault();
-    axios.post(SERVER_URL, { 
-      email: this.state.email, 
-      password: this.state.password, 
-      password_confirmation: this.state.password_confirmation,
-      user_type: this.state.user_type }).then((result) => {
+    if (this.state.password === this.state.password_confirmation) {
+      axios.post(SERVER_URL, { 
+        email: this.state.email, 
+        password: this.state.password, 
+        user_type: this.state.user_type }).then((result) => {
         console.log(result);
-    });
+      });
+    } else {
+      console.log('password doese not match');
+    }
+
   }
 
-  _handleInput (event) {
+  _handleChange (event) {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -45,7 +49,7 @@ class SignUp extends Component {
             name="email"  
             placeholder="type your email"
             value={this.state.email}
-            onChange= {this._handleInput}
+            onChange= {this._handleChange}
             required />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
@@ -55,7 +59,7 @@ class SignUp extends Component {
             name="password"  
             placeholder="type your password"
             value={this.state.password}
-            onChange= {this._handleInput}
+            onChange= {this._handleChange}
             required />
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
@@ -65,10 +69,12 @@ class SignUp extends Component {
             name="password_confirmation"  
             placeholder="confirm your password"
             value={this.state.password_confirmation}
-            onChange= {this._handleInput}
+            onChange= {this._handleChange}
             required />
           </Form.Group>
-          <input type="submit" value="Sign up" />
+          <Button variant="primary" type="submit">
+            Sign up
+          </Button>
         </form>
       </div>
     );
