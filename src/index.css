@@ -11,5 +11,18 @@ code {
 
 .categorieList {
   display: inline-block;
-  margin: 10px;
+  margin: 45px;
+  padding: 45px;
+  box-shadow: 0px 0px 10px 5px #858485;
+}
+
+.titleCategory {
+  text-align: center;
+}
+
+.serviceList {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 5px 2px #858485;
 }
