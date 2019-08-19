@@ -24,7 +24,6 @@ class Signin extends Component {
         event.preventDefault();
         axios.get(SERVER_URL).then((results) => {
             const userslist = results.data
-            console.log(userslist);
             let urlstr  = "";
             const loginUser = userslist.find((user) => {
                 if (user.email === this.state.email && user.password === this.state.password)
