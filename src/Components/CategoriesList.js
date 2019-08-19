@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 
+
 const CATEGORIES_API = 'http://localhost:3000/categories.json';
 class CategoriesList extends Component {
   constructor() {
@@ -28,11 +29,12 @@ class CategoriesList extends Component {
         {
           this.state.data.map((c) => {
             return (
-              <div>
+              <div className="categorieList" key={c.id}>
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={c.image} />
+                  <Card.Img variant="top" width='400px' height='225px' src={c.image} />
                   <Card.Body>
                     <Card.Title>{c.title}</Card.Title>
+
 
                     {/* <Button variant="primary">Search</Button> */}
                   </Card.Body>
