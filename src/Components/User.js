@@ -1,7 +1,7 @@
 const User = (function () {
     let email = "";
     let user_type = "";
-    let user_id = 0
+    let user_id = 0;
 
     const getEmail = function() {
         if (typeof (Storage) !== "undefined") {
@@ -62,6 +62,14 @@ const User = (function () {
         }
     };
 
+    const clearUser = ()=>{
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('user_id', 0);
+        localStorage.setItem('user_type', "");
+        localStorage.setItem('email', "");
+      }
+      
+    }
     return {
         getEmail: getEmail,
         setEmail: setEmail,
@@ -69,7 +77,7 @@ const User = (function () {
         setUserType: setUserType,
         getUserId: getUserId,
         setUserId: setUserId,
-
+        clearUser: clearUser
       }
 }) ();
 

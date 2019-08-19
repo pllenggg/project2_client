@@ -36,21 +36,12 @@ class Signin extends Component {
                 User.setEmail(loginUser.email);
                 User.setUserType(loginUser.user_type);
                 User.setUserId(loginUser.id);
-                urlstr = window.location.href;
-
-                //http://localhost:3000/#/home
-                if (urlstr.includes("#")) {
-                    urlstr = urlstr.split("#")[0] + "#/"
-                    //return (<Home />)
-                }
+                this.props.history.push("/");
+                window.location.reload();
             } else {
                 // not found user in database, render sign up page
-                urlstr = window.location.href;
-                if (urlstr.includes("#")) {
-                    urlstr = urlstr.split("#")[0] + "#/Signup"
-                }
+                this.props.history.push("/signup");
             }
-            window.location.replace(urlstr);
         });
     }
     render() {
