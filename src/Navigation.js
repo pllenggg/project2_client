@@ -13,8 +13,8 @@ class Navigation extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
 
             <Nav className="mr-auto"></Nav>
-            <Nav.Link href="/signup"></Nav.Link>
-            <Nav.Link href="/signin"></Nav.Link>
+            <Nav.Link href="#signup">Sign up</Nav.Link>
+            <Nav.Link href="#signin">Sign in</Nav.Link>
               <NavDropdown title="Customer" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#customerbookingsearch">Book services</NavDropdown.Item>
                 <NavDropdown.Item href="#customerbookinglist">Booking lists</NavDropdown.Item> 
