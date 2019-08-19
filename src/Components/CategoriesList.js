@@ -1,17 +1,58 @@
 import React, { Component } from 'react';
+import { Card } from 'react-bootstrap';
+import axios from 'axios';
 
+
+
+
+
+const CATEGORIES_API = 'http://localhost:3000/categories.json';
 class CategoriesList extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
+      data: []
     };
+
+    const fetchCategories = () => {
+      axios.get(CATEGORIES_API).then((result) => {
+        console.log(result.data);
+        this.setState({ data: result.data });
+      });
+    };
+    fetchCategories();
   }
 
   render() {
     return (
-        <h1>This categories list form, if you don't like the name. No worry just change it.</h1>
+      <div>
+        {
+          this.state.data.map((c) => {
+            return (
+              <div className="categorieList" key={c.id}>
+                <Card style={{ width: '18rem' }}>
+                  <Card.Img variant="top" width='400px' height='225px' src={c.image} />
+                  <Card.Body>
+                    <Card.Title>{c.title}</Card.Title>
+
+
+                    {/* <Button variant="primary">Search</Button> */}
+                  </Card.Body>
+                </Card>
+              </div>
+
+            );
+          })
+        }
+
+
+      </div>
+
     );
+
   }
+
+
 }
 
 export default CategoriesList;

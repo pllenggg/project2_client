@@ -8,6 +8,7 @@ import RetailBookingList from './Components/RetailBookingList';
 import RetailsList from './Components/RetailsList';
 import CategoriesList from './Components/CategoriesList';
 import SignUpForm from './Components/SignUpForm';
+import SignInForm from './Components/SignInForm';
 import Navbar from './Navigation';
 
 const Routes = (
@@ -32,6 +33,7 @@ const Routes = (
 
             {/* User */}
             <Route exact path="/signup" component={ SignUpForm } />
+            <Route exact path="/signin" component={ SignInForm } />
         </div>
     </Router>
 )
