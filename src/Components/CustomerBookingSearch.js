@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Container } from "react-bootstrap";
+import { Button, Form, Container, Card, Col } from "react-bootstrap";
 import axios from 'axios';
 
 const SERVICES_URL = 'http://localhost:3000/services.json';
@@ -9,17 +9,17 @@ class CustomerBookingSearch extends Component {
   constructor() {
     super();
     this.state = {
-      retails: []
+      services: []
     };
-    this.fetchRetails = this.fetchRetails.bind(this);
+    this.fetchServices = this.fetchServices.bind(this);
   }
-  fetchRetails = (categoryParam, suburbParam) => {
+  fetchServices = (categoryParam, suburbParam) => {
     // console.log(categoryParam, suburbParam );
     axios.get(SERVICES_URL).then((results) => {
         let data = results.data.filter((s) => {
           return (s.category_id === categoryParam && s.retail.suburb === suburbParam)
         });
-        this.setState({retails: data});
+        this.setState({services: data});
         console.log(data);
       })
   };
@@ -27,9 +27,11 @@ class CustomerBookingSearch extends Component {
   render() {
     return (
         <div>
-        <h1>Finding your retails</h1>
-        <SearchForm onSubmit={this.fetchRetails}/>
-        <SearchResult />
+        <Container>
+        <h1>Finding your services</h1>
+        <SearchForm onSubmit={this.fetchServices}/>
+        <SearchResult services={this.state.services} />
+        </Container>
         </div>
     );
   }
@@ -66,7 +68,8 @@ class SearchForm extends Component {
       <div>
         <Container>
         <form onSubmit={this._handleSubmit} >
-          <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridCategories">
             <Form.Label>Categories</Form.Label>
             <Form.Control as="select" 
               name="category_id" 
@@ -76,7 +79,7 @@ class SearchForm extends Component {
               <option key={c.id} value={c.id}>{c.title}</option>)}
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group as={Col} controlId="formGridSuburb">
               <Form.Label>Suburb</Form.Label>
                 <Form.Control 
                   type="text" 
@@ -86,6 +89,7 @@ class SearchForm extends Component {
                   value={this.state.suburb}
                   required />
           </Form.Group>
+        </Form.Row>
             <Button variant="primary" type="submit">
               Search
             </Button>
@@ -99,9 +103,31 @@ class SearchForm extends Component {
 class SearchResult extends Component {
   render() {
     return(
+      
       <div>
-        
+        <Container>
+        {
+          this.props.services.map((s) => {
+            return (
+              <div className="serviceList" key={s.id}>
+                <Card style={{ width: '16rem' }}>
+                  <Card.Img variant="top" width='300px' height='200px' src={s.service_image} />
+                  <Card.Body>
+                    <Card.Title className="titleCategory">{s.title}</Card.Title>
+                    <Card.Text>Description: {s.description} </Card.Text>
+                    <Card.Text>Service price: ${s.price}</Card.Text>
+                    <Card.Text>Retail: {s.retail.retail_name}</Card.Text>
+                    <Card.Text>📍 {s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
+                    <Card.Text>☎️ {s.retail.phone}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })
+        }
+        </Container>
       </div>
+      
     );
   }
 }

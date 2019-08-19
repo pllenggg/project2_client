@@ -19,3 +19,10 @@ code {
 .titleCategory {
   text-align: center;
 }
+
+.serviceList {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 5px 2px #858485;
+}
