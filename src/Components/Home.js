@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, DropdownButton, FormControl, Dropdown, Button, Card } from 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel'
 
 class Home extends Component {
   constructor(props) {
@@ -10,56 +10,78 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h2>Search Beauty Services</h2>
-        <>
-          <h1 className="titleSearchHome">Filter By Category</h1>
-          <InputGroup className="mb-3">
-            <DropdownButton
-              as={InputGroup.Prepend}
-              variant="outline-secondary"
-              title="Category"
-              id="input-group-dropdown-1">
-              <Dropdown.Item href="#">Nails</Dropdown.Item>
-              <Dropdown.Item href="#">Hairdressing</Dropdown.Item>
-              <Dropdown.Item href="#">Eyes, Brows and Lashes</Dropdown.Item>
-              <Dropdown.Divider />
-            </DropdownButton>
-            <FormControl aria-describedby="basic-addon1" />
-          </InputGroup>
-          <Button className="buttonHomeSearch" variant="secondary" size="lg" block>Search</Button>
 
-        </>
-        <hr />
-        <h3>Explore popular treament</h3>
-        <Card className="cardHomePage" style={{ width: '18rem', marginTop: '20px' }}>
-          <Card.Img variant="top" width='400px' height='225px' />
-        </Card>
-        <Card.Body>
-          <Card.Title>Nails</Card.Title>
-          <Button variant="primary">Go</Button>
-        </Card.Body>
-        <Card className="cardHomePage" style={{ width: '18rem', marginTop: '20px' }}>
-          <Card.Img variant="top" width='400px' height='225px' />
-        </Card>
-        <Card.Body>
-          <Card.Title>Hairdressing</Card.Title>
-          <Button variant="primary">Go</Button>
-        </Card.Body>
-        <Card className="cardHomePage" style={{ width: '18rem', marginTop: '20px' }}>
-          <Card.Img variant="top" width='400px' height='225px' />
-        </Card>
-        <Card.Body>
-          <Card.Title>Eyes, Brows and Lashes</Card.Title>
-          <Button variant="primary">Go</Button>
-        </Card.Body>
-
-      </div >
-
-
+      <>
+        <HomeCarousel />
+        < div className="container">
+          <section className="home-content">
+            <h2>Bookbeauty is your beauty website</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          </section>
+        </div>
+      </>
     );
   }
 }
 
+class HomeCarousel extends Component {
+  render() {
+    return (
+      <div className="container">
 
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://geebeauty.com.au/wp-content/themes/gee/img/services-hands.jpg"
+              alt="First slide"
+              width='800px' height='450px'
+            />
+            <Carousel.Caption>
+              <h3>Explore Treatments</h3>
+              <p>Nails</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://toplevelsalon.com/wp-content/uploads/b2b/stock/v2/bigstock/bigstock-Beautiful-lady-with-long-brown-12127595.jpg?&a=t"
+              alt="Third slide"
+              width='800px' height='450px'
+            />
+            <Carousel.Caption>
+              {/* <h3>Second slide label</h3> */}
+              <p>Hairdressing</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://stylemagazines.com.au/wp-content/uploads/2015/01/shutterstock_232611751.jpg"
+              alt="Third slide"
+              width='800px' height='450px'
+            />
+
+            <Carousel.Caption>
+              {/* <h3>Third slide label</h3> */}
+              <p>Eyes, Brows & Lashes</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+      </div>
+    );
+  }
+}
 export default Home;
