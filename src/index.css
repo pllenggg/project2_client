@@ -16,8 +16,20 @@ code {
   box-shadow: 0px 0px 10px 5px #858485;
 }
 
+.buttonCategories {
+  margin-left: 82px;
+  margin-right: 82px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
 .titleCategory {
   text-align: center;
+}
+
+.addNewCategories {
+  display: block;
+  margin: 45px;
 }
 
 .serviceList {
