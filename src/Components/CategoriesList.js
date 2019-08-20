@@ -93,6 +93,14 @@ class AddNewCategory extends Component {
     this.props.onSubmit(data)
   }
 
+  uploadWidget = () => {
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
+        (error, result) => {
+          const data = result[0];
+          this.setState({image: data.secure_url});
+    });
+  }
+
   render() {
 
     return (
@@ -105,10 +113,11 @@ class AddNewCategory extends Component {
 
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
-            <Form.Control placeholder="Add Image URL ..." type="text" name="image" onChange={this._handleChange}></Form.Control>
-            <Card style={{ width: '18rem', marginTop: '20px' }}>
-              <Card.Img variant="top" width='400px' height='225px' />
-            </Card>
+            <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={this.state.image} onChange={this._handleChange}></Form.Control>
+            <Button onClick={this.uploadWidget.bind(this)}>Select Image</Button>
+            {/* <Card style={{ width: '18rem', marginTop: '20px' }}>
+              <Card.Img variant="top" width='400px' height='225px' src={this.state.image} />
+            </Card> */}
           </Form.Group>
           <Button variant="outline-secondary" type="submit">Save</Button>
         </Form>
@@ -118,8 +127,3 @@ class AddNewCategory extends Component {
 }
 
 export default CategoriesList;
-
-
-//<div>
-// <Button className="buttonCategories" variant="outline-secondary">+ Add New Category</Button>
-//</div>
