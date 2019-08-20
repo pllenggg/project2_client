@@ -136,7 +136,7 @@ class RetailsForm extends Component {
           <Form.Control placeholder="Postcode" name="postcode" value={this.state.postcode} onChange={this._handleChange} />
         </Form.Group>
 
-        <Button variant="primary" type="submit">Submit</Button>
+        <Button variant="primary" type="submit">Save</Button>
       </Form >
 
     );

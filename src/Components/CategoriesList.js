@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListGroup, Container, Button, Accordion, Card } from 'react-bootstrap';
+import { Form, Container, Button, Accordion, Card } from 'react-bootstrap';
 import axios from 'axios';
 
 const CATEGORIES_API = 'http://localhost:3000/categories.json';
@@ -28,10 +28,22 @@ class CategoriesList extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          {/* <Button className="buttonCategories" variant="outline-secondary">+ Add New Category</Button> */}
-        </div>
+      <div className="container">
+        <Container>
+          <Accordion>
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                  + Add new category
+              </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </Container>
+
         {
           this.state.data.map((c) => {
             return (
@@ -41,7 +53,12 @@ class CategoriesList extends Component {
                   <Card.Img variant="top" width='400px' height='225px' src={c.image} />
                   <Card.Body>
                     <Card.Title className="titleCategory">{c.title}</Card.Title>
-                    <Button className="buttonCategories" variant="outline-secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
+                    <div className="wrapper">
+                      <Button className="buttonEdit" variant="outline-secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
+
+                    </div>
+
+
                   </Card.Body>
                 </Card>
               </div>
@@ -60,53 +77,49 @@ class CategoriesList extends Component {
 class AddNewCategory extends Component {
   constructor() {
     super();
-    this.state = {
-      title: "",
-      image: "",
-      category: []
+    this.state = { title: '', image: '' };
+    this._handleSubmit = this._handleSubmit.bind(this);
+    this._handleChange = this._handleChange.bind(this);
+  };
 
-
-    };
-
+  _handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
+  _handleSubmit(event) {
+    event.preventDefault();
+    const data = { title: this.state.title, image: this.state.image }
+    this.props.onSubmit(data)
+  }
+
   render() {
+
     return (
       <div>
-        <Container>
-          <Accordion>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  + Add new category
-              </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
-        </Container>
-        {this.state.data.map((c) => {
-          return (
-            <div key={c.id}>
-              <Container>
-                <ListGroup>
-                  <ListGroup.Item>
-                    <h5>{c.title}</h5>
-                    <p><strong>title</strong> {c.title}</p>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Container>
-            </div>
-          );
+        <Form onSubmit={this._handleSubmit} >
+          <Form.Group controlId="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} />
+          </Form.Group>
 
-        })}
-      </div>
+          <Form.Group controlId="image">
+            <Form.Label>Image</Form.Label>
+            <Form.Control placeholder="Add Image URL ..." type="text" name="image" onChange={this._handleChange}></Form.Control>
+            <Card style={{ width: '18rem', marginTop: '20px' }}>
+              <Card.Img variant="top" width='400px' height='225px' />
+            </Card>
+          </Form.Group>
+          <Button variant="outline-secondary" type="submit">Save</Button>
+        </Form>
+      </div >
     )
   }
 }
 
-
-
-
 export default CategoriesList;
+
+
+//<div>
+// <Button className="buttonCategories" variant="outline-secondary">+ Add New Category</Button>
+//</div>
