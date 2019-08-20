@@ -14,6 +14,7 @@ class Navigation extends Component {
               <CustomerMenuList/>
               <RetailMenuList />
               <AdminMenuList/>
+              <Profile/>
             </Navbar.Collapse>
         </Navbar>
       </div>
@@ -21,6 +22,18 @@ class Navigation extends Component {
   }
 }
 
+const Profile = () => {
+  if (localStorage.user_id === "0"){
+    return (
+      <div></div>
+    );
+  } else {
+    return(
+      <Nav.Link href="#profile">Profile</Nav.Link>
+    )
+    
+  }
+}
 
 const SignInUpMenu = () =>{
   

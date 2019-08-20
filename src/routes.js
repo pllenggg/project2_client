@@ -3,6 +3,7 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import Home from './Components/Home';
 import CustomerBookingSearch from './Components/CustomerBookingSearch';
 import CustomerBookingList from './Components/CustomerBookingList';
+import RetailProfile from './Components/RetailProfile';
 import RetailServiceList from './Components/RetailServiceList';
 import RetailBookingList from './Components/RetailBookingList';
 import RetailsList from './Components/RetailsList';
@@ -12,6 +13,7 @@ import SignInForm from './Components/SignInForm';
 import Navbar from './Navigation';
 import SignOutForm from './Components/SignOutForm';
 import CategoryEdit from './Components/CategoriesEdit';
+import Profile from './Components/Profile';
 const Routes = (
 
     <Router>
@@ -19,6 +21,7 @@ const Routes = (
             <Navbar />
             {/* Home */}
             <Route exact path="/" component={ Home } /> 
+            <Route exact path="/profile" component={ Profile } /> 
 
             {/* Customer */}
             <Route exact path="/customerbookingsearch" component={ CustomerBookingSearch } />
@@ -27,6 +30,7 @@ const Routes = (
             {/* Retail */}
             <Route exact path="/retailservicelist" component={ RetailServiceList } />
             <Route exact path="/retailbookinglist" component={ RetailBookingList } />
+            <Route exact path="retailprofile/:id" component={ RetailProfile } />
 
             {/* Admin */}
             <Route exact path="/retails" component={ RetailsList } />
