@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Container, Button, Accordion, Card } from 'react-bootstrap';
 import axios from 'axios';
 
-const CATEGORIES_API = 'http://localhost:3000/categories.json';
+const CATEGORIES_API = 'https://bookbeauty.herokuapp.com/categories.json';
 
 class CategoriesList extends Component {
   constructor() {

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Button, Form, Container, Card, Col } from "react-bootstrap";
 import axios from 'axios';
 
-const SERVICES_URL = 'http://localhost:3000/services.json';
-const CATEGORIES_URL = 'http://localhost:3000/categories.json';
+const SERVICES_URL = 'https://bookbeauty.herokuapp.com/services.json';
+const CATEGORIES_URL = 'https://bookbeauty.herokuapp.com/categories.json';
 
 class CustomerBookingSearch extends Component {
   constructor() {
@@ -14,13 +14,11 @@ class CustomerBookingSearch extends Component {
     this.fetchServices = this.fetchServices.bind(this);
   }
   fetchServices = (categoryParam, suburbParam) => {
-    // console.log(categoryParam, suburbParam );
     axios.get(SERVICES_URL).then((results) => {
         let data = results.data.filter((s) => {
           return (s.category_id === categoryParam && s.retail.suburb === suburbParam)
         });
         this.setState({services: data});
-        // console.log(data);
       })
   };
 
@@ -103,7 +101,6 @@ class SearchForm extends Component {
 class SearchResult extends Component {
   render() {
     return(
-      
       <div>
         <Container>
         {
@@ -117,9 +114,8 @@ class SearchResult extends Component {
                     <Card.Text>Description: {s.description} </Card.Text>
                     <Card.Text>Service price: ${s.price}</Card.Text>
                     <Card.Text>Retail: {s.retail.retail_name}</Card.Text>
-                    <Card.Text>📍 {s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
-                    <Card.Text>☎️ {s.retail.phone}</Card.Text>
-                    <Button variant="outline-info" href={`#/retailshowservices/${s.retail_id}`} >More info..</Button>
+                    <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
+                    <Card.Text><span role="img" aria-label="sheep">☎️</span> {s.retail.phone}</Card.Text>
                   </Card.Body>
                 </Card>
               </div>
