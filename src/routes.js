@@ -13,6 +13,7 @@ import Navbar from './Navigation';
 import SignOutForm from './Components/SignOutForm';
 import CategoryEdit from './Components/CategoriesEdit';
 import RetailShowServices from './Components/RetailShowServices';
+import Booking from './Components/Booking';
 const Routes = (
 
     <Router>
@@ -25,6 +26,7 @@ const Routes = (
             <Route exact path="/customerbookingsearch" component={ CustomerBookingSearch } />
             <Route exact path="/customerbookinglist" component={ CustomerBookingList } />
             <Route exact path="/retailshowservices/:id" component={ RetailShowServices } />
+            <Route exact path="/booking/:retailId/:serviceId" component={ Booking } />
             
             {/* Retail */}
             <Route exact path="/retailservicelist" component={ RetailServiceList } />

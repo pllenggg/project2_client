@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Image, Card, Button} from 'react-bootstrap';
 import axios from 'axios';
 
-const RETAILS_ID_URL = 'http://localhost:3000/retails/:id.json';
+const RETAILS_ID_URL = 'https://bookbeauty.herokuapp.com/retails/:id.json';
 
 class RetailShowServices extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class RetailShowServices extends Component {
                     <div>
                         {
                             this.state.retail.services ?
-                        <ServiceList info={this.state.retail.services}/>
+                        <ServiceList info={this.state.retail.services} retail={this.state.retail.user_id}/>
                             : ''
                         }
                     </div>
@@ -56,17 +56,10 @@ class RetailShowServices extends Component {
 }
 
 class ServiceList extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            services: []
-        };
-        console.log('servies', props.info);   
-    }
     render() {
         return(
             <div>
-                <h3>Services</h3>
+                <h3>Popular Services</h3>
                     {
                         
                         this.props.info.map((s) => {
@@ -77,10 +70,10 @@ class ServiceList extends Component{
                                     <Card.Img variant="top" width='300px' height='200px' src={s.service_image} />
                                     <Card.Body>
                                         <Card.Title className="titleCategory">{s.title}</Card.Title>
-                                        <Card.Text>Description: {s.description} </Card.Text>
-                                        <Card.Text>Service price: ${s.price}</Card.Text>
-                                        <Card.Text>Duration: {s.duration}</Card.Text>
-                                        <Button variant="warning">Book Now!</Button>
+                                        <Card.Text>{s.description}</Card.Text>
+                                        <Card.Text>💲{s.price}</Card.Text>
+                                        <Card.Text>🕗 {s.duration} min.</Card.Text>
+                                        <Button variant="warning" href={`#/booking/${this.props.retail}/${s.id}`}>Book Now!</Button>
                                     </Card.Body>
                                     </Card>
                                 </div>
