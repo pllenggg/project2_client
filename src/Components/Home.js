@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, DropdownButton, FormControl, Dropdown, Button } from 'react-bootstrap';
+import { InputGroup, DropdownButton, FormControl, Dropdown, Button, Card } from 'react-bootstrap';
 
 class Home extends Component {
   constructor(props) {
@@ -11,14 +11,15 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
+        <h2>Search Beauty Services</h2>
         <>
+          <h1 className="titleSearchHome">Filter By Category</h1>
           <InputGroup className="mb-3">
             <DropdownButton
               as={InputGroup.Prepend}
               variant="outline-secondary"
               title="Category"
-              id="input-group-dropdown-1"
-            >
+              id="input-group-dropdown-1">
               <Dropdown.Item href="#">Nails</Dropdown.Item>
               <Dropdown.Item href="#">Hairdressing</Dropdown.Item>
               <Dropdown.Item href="#">Eyes, Brows and Lashes</Dropdown.Item>
@@ -26,33 +27,39 @@ class Home extends Component {
             </DropdownButton>
             <FormControl aria-describedby="basic-addon1" />
           </InputGroup>
+          <Button className="buttonHomeSearch" variant="secondary" size="lg" block>Search</Button>
 
-          <InputGroup>
-            <FormControl
-              placeholder="Recipient's username"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-            />
-
-            <DropdownButton
-              as={InputGroup.Append}
-              variant="outline-secondary"
-              title="Address"
-              id="input-group-dropdown-2"
-            >
-              <Dropdown.Item href="#">Action</Dropdown.Item>
-              <Dropdown.Item href="#">Another action</Dropdown.Item>
-              <Dropdown.Item href="#">Something else here</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item href="#">Separated link</Dropdown.Item>
-            </DropdownButton>
-            <Button className="buttonHomeSearch" variant="secondary" size="lg" block>Search</Button>
-          </InputGroup>
         </>
+        <hr />
+        <h3>Explore popular treament</h3>
+        <Card className="cardHomePage" style={{ width: '18rem', marginTop: '20px' }}>
+          <Card.Img variant="top" width='400px' height='225px' />
+        </Card>
+        <Card.Body>
+          <Card.Title>Nails</Card.Title>
+          <Button variant="primary">Go</Button>
+        </Card.Body>
+        <Card className="cardHomePage" style={{ width: '18rem', marginTop: '20px' }}>
+          <Card.Img variant="top" width='400px' height='225px' />
+        </Card>
+        <Card.Body>
+          <Card.Title>Hairdressing</Card.Title>
+          <Button variant="primary">Go</Button>
+        </Card.Body>
+        <Card className="cardHomePage" style={{ width: '18rem', marginTop: '20px' }}>
+          <Card.Img variant="top" width='400px' height='225px' />
+        </Card>
+        <Card.Body>
+          <Card.Title>Eyes, Brows and Lashes</Card.Title>
+          <Button variant="primary">Go</Button>
+        </Card.Body>
 
-      </div>
+      </div >
+
+
     );
   }
 }
+
 
 export default Home;

@@ -114,8 +114,14 @@ class SearchResult extends Component {
                     <Card.Text>Description: {s.description} </Card.Text>
                     <Card.Text>Service price: ${s.price}</Card.Text>
                     <Card.Text>Retail: {s.retail.retail_name}</Card.Text>
+<<<<<<< HEAD
                     <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
                     <Card.Text><span role="img" aria-label="sheep">☎️</span> {s.retail.phone}</Card.Text>
+=======
+                    <Card.Text>📍 {s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
+                    <Card.Text>☎️ {s.retail.phone}</Card.Text>
+                    <Button variant="outline-info" href={`#/retailshowservices/${s.retail_id}`} >More info..</Button>
+>>>>>>> fd494b9fd7c59e696255b3a2f85609cfd4eb2532
                   </Card.Body>
                 </Card>
               </div>
