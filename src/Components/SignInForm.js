@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import User from './User'
 import axios from 'axios';
 
-const SERVER_URL = 'http://localhost:3000/users.json';
+const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
 class Signin extends Component {
     constructor() {
         super();
@@ -24,10 +24,8 @@ class Signin extends Component {
         event.preventDefault();
         axios.get(SERVER_URL).then((results) => {
             const userslist = results.data
-            let urlstr  = "";
             const loginUser = userslist.find((user) => {
-                if (user.email === this.state.email && user.password === this.state.password)
-                return user.email === this.state.email;
+                return user.email === this.state.email && user.password === this.state.password;
             });
             console.log('user log in:', loginUser);
             
