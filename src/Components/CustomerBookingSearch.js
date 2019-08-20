@@ -20,7 +20,7 @@ class CustomerBookingSearch extends Component {
           return (s.category_id === categoryParam && s.retail.suburb === suburbParam)
         });
         this.setState({services: data});
-        console.log(data);
+        // console.log(data);
       })
   };
 
@@ -119,6 +119,7 @@ class SearchResult extends Component {
                     <Card.Text>Retail: {s.retail.retail_name}</Card.Text>
                     <Card.Text>📍 {s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
                     <Card.Text>☎️ {s.retail.phone}</Card.Text>
+                    <Button variant="outline-info" href={`#/retailshowservices/${s.retail_id}`} >More info..</Button>
                   </Card.Body>
                 </Card>
               </div>
