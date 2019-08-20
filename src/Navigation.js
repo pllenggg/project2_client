@@ -42,7 +42,7 @@ const SignInUpMenu = () =>{
 
 
 const CustomerMenuList = ()=>{
-  if (localStorage.user_id && localStorage.user_id !== "0" && localStorage.user_type === "CUSTOMER"){
+  if (localStorage.user_id && localStorage.user_id !== "0" && (localStorage.user_type === "CUSTOMER" || localStorage.user_type === "ADMIN")){
     return(
       <div>
         <NavDropdown title="Customer" id="basic-nav-dropdown">
@@ -59,7 +59,7 @@ const CustomerMenuList = ()=>{
 }
 
 const RetailMenuList = () =>{
-  if (localStorage.user_id && localStorage.user_id !== "0" && localStorage.user_type === "RETAIL"){
+  if (localStorage.user_id && localStorage.user_id !== "0" && (localStorage.user_type === "RETAIL" || localStorage.user_type === "ADMIN")){
     return(
       <NavDropdown title="Retails" id="basic-nav-dropdown">
         <NavDropdown.Item href="#retailservicelist">Service lists</NavDropdown.Item>
