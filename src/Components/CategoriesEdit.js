@@ -2,22 +2,18 @@ import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 
-
-const CATEGORIES_EDIT_API = 'http://localhost:3000/categories.json';
+const CATEGORIES_EDIT_API = 'http://localhost:3000/categories/:id.json';
 class CategoriesEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: []
+      category: {}
     };
 
     const fetchCategoryById = () => {
-      axios.get(CATEGORIES_EDIT_API).then((result) => {
-        const category = result.data.find(c => {
-          return c.id === Number(this.props.match.params.id);
-        });
-
-        this.setState({ category: category });
+      const url = CATEGORIES_EDIT_API.replace(":id", this.props.match.params.id);
+      axios.get(url).then((result) => {
+        this.setState({ category: result.data });
       });
     };
     fetchCategoryById();
@@ -30,7 +26,6 @@ class CategoriesEdit extends Component {
     const newData = {
       [event.currentTarget.name]: event.currentTarget.value
     };
-
     this.setState(({ category }) => {
       return {
         category: {
@@ -38,18 +33,37 @@ class CategoriesEdit extends Component {
           ...newData,
         }
       };
-    })
+    });
   }
 
   _handleSubmit(event) {
     event.preventDefault();
     const data = this.state.category;
     //put because I'm editing 
-    axios.put(`http://localhost:3000/categories/${data.id}.json`, data).then((result) => {
+    console.log('data before save:', data);
+    const url = CATEGORIES_EDIT_API.replace(":id", data.id);
+    axios.put(url, data).then(() => {
       this.props.history.go(-1);
     });
   }
 
+  uploadWidget = () => {
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
+        (error, result) => {
+          const data = result[0];
+          const newData = {
+            image: data.secure_url
+          };
+          this.setState(({ category }) => {
+            return {
+              category: {
+                ...category,
+                ...newData,
+              }
+            };
+          });
+    });
+  }
 
   render() {
     const { category } = this.state;
@@ -69,6 +83,7 @@ class CategoriesEdit extends Component {
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
             <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={category.image} onChange={this._handleChange} />
+            <Button onClick={this.uploadWidget.bind(this)}>Select Image</Button>
             <Card style={{ width: '18rem', marginTop: '20px' }}>
               <Card.Img variant="top" width='400px' height='225px' src={category.image} />
             </Card>

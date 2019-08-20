@@ -12,6 +12,7 @@ import SignInForm from './Components/SignInForm';
 import Navbar from './Navigation';
 import SignOutForm from './Components/SignOutForm';
 import CategoryEdit from './Components/CategoriesEdit';
+import RetailShowServices from './Components/RetailShowServices';
 const Routes = (
 
     <Router>
@@ -23,6 +24,7 @@ const Routes = (
             {/* Customer */}
             <Route exact path="/customerbookingsearch" component={ CustomerBookingSearch } />
             <Route exact path="/customerbookinglist" component={ CustomerBookingList } />
+            <Route exact path="/retailshowservices/:id" component={ RetailShowServices } />
             
             {/* Retail */}
             <Route exact path="/retailservicelist" component={ RetailServiceList } />

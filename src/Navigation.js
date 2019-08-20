@@ -26,7 +26,7 @@ const SignInUpMenu = () =>{
   
   if (localStorage.user_id === "0"){
     return(
-      <div class="navbar-collapse collapse">
+      <div className="navbar-collapse collapse">
         <Nav.Link href="#signup">Sign up</Nav.Link>
         <Nav.Link href="#signin">Sign in</Nav.Link>
       </div>
