@@ -31,10 +31,6 @@ class CustomerBookingList extends Component {
 }
   
 class BookingCancelForm extends Component {
-    constructor() {
-      super();
-    }
-
   render() {
     return (
       <div>
