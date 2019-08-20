@@ -28,11 +28,11 @@ class RetailsList extends Component {
   saveRetail(data) {
     if (data.id) {
       const url = PUT_RETAILS_LIST_API.replace(':id', data.id);
-      axios.put(url, data).then((result) => {
+      axios.put(url, data).then(() => {
         window.location.reload();
       });
     } else {
-      axios.post(POST_RETAILS_LIST_API, data).then((result) => {
+      axios.post(POST_RETAILS_LIST_API, data).then(() => {
         window.location.reload();
       });
     }
@@ -41,6 +41,8 @@ class RetailsList extends Component {
   editRetail(retails) {
     this.setState({ currentItem: retails })
   }
+
+
 
   render() {
     return (
@@ -57,9 +59,7 @@ class RetailsList extends Component {
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
                     <RetailsForm
-                      currentItem={this.state.currentItem}
-                      onSubmit={this.saveRetail}
-                    />
+                      currentItem={this.state.currentItem} onSubmit={this.saveRetail} />
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -88,12 +88,7 @@ class RetailsList extends Component {
                   <td>{retails.postcode}</td>
                   <td>
                     <Button
-                      variant="outline-secondary"
-                      type="button"
-                      onClick={() => this.editRetail(retails)}
-                    >
-                      Edit
-                    </Button>
+                      variant="outline-secondary" type="button" onClick={() => this.editRetail(retails)}>Edit</Button>
                   </td>
                 </tr>
               ))}
@@ -167,9 +162,7 @@ class RetailsForm extends Component {
     const formStateHasBeenChanged = nextState.form !== this.state.form;
 
     if (currentItemPropsHasBeenChanged) {
-      this.setState({
-        form: nextProps.currentItem
-      });
+      this.setState({ form: nextProps.currentItem });
     }
     return currentItemPropsHasBeenChanged || formStateHasBeenChanged;
   }
