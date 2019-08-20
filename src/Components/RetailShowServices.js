@@ -71,8 +71,8 @@ class ServiceList extends Component{
                                     <Card.Body>
                                         <Card.Title className="titleCategory">{s.title}</Card.Title>
                                         <Card.Text>{s.description}</Card.Text>
-                                        <Card.Text>💲{s.price}</Card.Text>
-                                        <Card.Text>🕗 {s.duration} min.</Card.Text>
+                                        <Card.Text><span role='img' aria-label='sheep'>💲</span> {s.price}</Card.Text>
+                                        <Card.Text><span role='img' aria-label='sheep'>🕗</span> {s.duration} min.</Card.Text>
                                         <Button variant="warning" href={`#/booking/${this.props.retail}/${s.id}`}>Book Now!</Button>
                                     </Card.Body>
                                     </Card>

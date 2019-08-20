@@ -30,14 +30,14 @@ class Booking extends Component {
                         <Row>
                             <Col><strong>{this.state.service.title}</strong></Col>
                             <Col>{this.state.service.description}</Col>
-                            <Col>🕗 {this.state.service.duration} min</Col>
+                            <Col><span role='img' aria-label='sheep'>🕗</span>{this.state.service.duration} min</Col>
                         </Row>
                     </ListGroup.Item>
                     <ListGroup.Item variant="secondary">
                         <Row>
                             <Col>Total</Col>
                             <Col></Col>
-                            <Col>💲{this.state.service.price}</Col>
+                            <Col><span role='img' aria-label='sheep'>💲</span>{this.state.service.price}</Col>
                         </Row>
                     </ListGroup.Item>
                     <ListGroup.Item>
