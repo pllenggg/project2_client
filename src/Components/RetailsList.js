@@ -143,5 +143,39 @@ class RetailsForm extends Component {
   }
 }
 
+// class UpdateButton extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//     }
+//     this._handleClick = this._handleClick.bind(this);
+//   }
+
+//   _handleClick(event) {
+//     let retails_id = Number(event.target.id);
+//     axios.get(RETAILS_LIST_API).then(response => {
+//       let data = response.data.find((r) => { return r.id === retails_id })
+//       console.log(data)
+
+//     })
+//   }
+
+// class EditForm extends Component {
+//   constructor(props) {
+//     super();
+//     this.state = {
+//       retails: {
+//         retail_name: props.info.retail_name,
+//         address1: props.info.address1,
+//         address2: props.info.address2,
+//         suburb: props.info.suburb,
+//         postcode: props.info.postcode,
+
+//       }
+//     }
+//     this._handleChange = this._handleChange.bind(this);
+//     this._handleSubmit = this._handleSubmit.bind(this);
+//   }
+
 export default RetailsList;
 
