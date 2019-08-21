@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import {Button} from 'react-bootstrap';
 
 
-const RETAIL_API = 'http://localhost:3000/retails/:id.json'
+
+const RETAIL_API = 'https://bookbeauty.herokuapp.com/retails/:id.json'
 
 class RetailProfile extends Component {
     constructor() {
@@ -10,18 +12,14 @@ class RetailProfile extends Component {
         this.state = {
             retail: {}
         };
+    }
 
-
-        const id = localStorage.user_id;
-        const fetchData = () => {
-            const url = RETAIL_API.replace(":id", id);
-            axios.get(url).then((results) => {
-                this.setState({retail: results.data});
-                console.log('retail:', results.data);
-            });
-        }
-        fetchData();
-
+    componentDidMount(){
+        const url = RETAIL_API.replace(":id", localStorage.user_id);
+        axios.get(url).then((results) => {
+            this.setState({retail: results.data});
+            console.log('retail:', results.data);
+        });
     }
     
     render() {
@@ -36,7 +34,7 @@ class RetailProfile extends Component {
                 <p>FACEBOOK: {this.state.retail.suburb}</p>
                 <p>INSTAGRAM: {this.state.retail.indtagram}</p>
                 <p>WEBSITE: {this.state.retail.website}</p> 
-                <button id="">edit</button>
+                <Button href={`#/editretail/${localStorage.user_id}`}>Edit</Button>
             </div>
         )
     }

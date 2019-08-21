@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form } from "react-bootstrap";
 import axios from 'axios';
+import User from './User'
 
-const SERVER_URL = 'http://localhost:3000/users.json';
+const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
 
 class SignUp extends Component {
   constructor(props) {
@@ -23,7 +24,13 @@ class SignUp extends Component {
         email: this.state.email, 
         password: this.state.password, 
         user_type: this.state.user_type }).then((result) => {
-        console.log(result);
+          if (result.data){
+            const data = result.data;
+            User.setEmail(data.email);
+            User.setUserType(data.user_type);
+            User.setUserId(data.id);
+            this.props.history.push("/");
+          }
       });
     } else {
       console.log('password doese not match');

@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import {Button} from 'react-bootstrap';
+import CustomerForm from './CustomerForm'
 
+const CUSTOMER_API = `https://bookbeauty.herokuapp.com/customers/:id.json`
 
 class CustomerProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+    constructor() {
+        super();
+        this.state = {
+            full_name: '',
+            phone: ''
+        }
+    }
+    
 
-  render() {
-    return (
-        <h1>customer coming soon</h1>
-    );
-  }
+    componentDidMount(){
+        const url = CUSTOMER_API.replace(":id", localStorage.user_id)
+        axios.get(url).then(result=>{
+            console.log(result.data);
+            this.setState(result.data);
+        })
+    }
+
+    
+    render() {
+        return (
+            <div>
+                <p>Fullname: {this.state.full_name}</p> 
+                <p>Phone: {this.state.phone}</p> 
+                <Button href={`#/editcustomerprofile/${localStorage.user_id}`}>Edit</Button>
+            </div>
+        );
+    }
 }
 
 export default CustomerProfile;

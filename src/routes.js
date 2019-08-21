@@ -17,6 +17,10 @@ import CategoryEdit from './Components/CategoriesEdit';
 import Profile from './Components/Profile';
 import RetailShowServices from './Components/RetailShowServices';
 import Booking from './Components/Booking';
+import MyBooking from './Components/MyBooking';
+import RetailEdit from './Components/RetailEdit';
+import CreateCustomer from './Components/CreateCustomer';
+import CustomerProfileEdit from './Components/CustomerProfileEdit';
 const Routes = (
 
     <Router>
@@ -31,11 +35,15 @@ const Routes = (
             <Route exact path="/customerbookinglist" component={CustomerBookingList} />
             <Route exact path="/retailshowservices/:id" component={RetailShowServices} />
             <Route exact path="/booking/:retailId/:serviceId" component={Booking} />
+            <Route exact path="/mybooking/:id" component={MyBooking} />
+            <Route exact path="newcustomer/:id" component={ CreateCustomer } />
+            <Route exact path="/editcustomerprofile/:id" component={ CustomerProfileEdit } />
 
             {/* Retail */}
             <Route exact path="/retailservicelist" component={ RetailServiceList } />
             <Route exact path="/retailbookinglist" component={ RetailBookingList } />
             <Route exact path="retailprofile/:id" component={ RetailProfile } />
+            <Route exact path="/editretail/:id" component={ RetailEdit } />
 
             {/* Admin */}
             <Route exact path="/retails" component={RetailsList} />
