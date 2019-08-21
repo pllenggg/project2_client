@@ -4,7 +4,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 class Navigation extends Component {
   render() {
     return (
-      <div>
+      <div className="navColor">
         <Navbar className="navigation" bg="light" expand="lg">
           <Navbar.Brand href="/"><img src="https://png.pngtree.com/svg/20161008/24671b749c.png" alt="" width='40px' height='45px' />Bookbeauty</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -20,10 +20,11 @@ code {
 
 /* CATEGORIES LIST*/
 
-.categorieList {
+.cardCategories {
   display: inline-block;
   margin: 20px;
-  padding: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
   box-shadow: 0px 0px 10px 5px #858485;
 }
 
@@ -31,11 +32,12 @@ code {
   text-align: center;
 }
 
-/* .wrapper {
-  margin: 20px;
-  margin-bottom: 20px;
+.wrapper {
+  margin: 10px;
+  margin-bottom: 10px;
+}
 
-  /* background-color: rgb(245, 233, 235); */
+/* background-color: rgb(245, 233, 235); */
 /* box-shadow: 0px 0px 5px 2px #858485; */
 /* padding: 40px; */
 /* } */
@@ -47,8 +49,8 @@ code {
 .buttonEdit {
   width: 75px;
   height: 35px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 120px;
+  margin-right: 120px;
   padding: 10px;
   text-align: center;
 }
@@ -58,15 +60,17 @@ code {
   color: #030303;
 }
 
-/* .buttonEdit {
-  background-color: rgb(138, 153, 175);
-  border: 1px solid rgb(138, 153, 175);
-} */
+.buttonSelectImage {
+  margin: 20px;
+}
+
+.btn {
+  margin: 10px;
+}
 
 /* NAVIGATION */
 
 .navigation {
-  background-color: rgb(138, 153, 175);
   color: #030303;
 }
 
@@ -76,20 +80,31 @@ code {
   font-size: 18px;
 }
 
-.navbar {
-  background-color: rgb(138, 153, 175);
+/* 
+.navigation .navbar .navbar-expand-lg .navbar-light .bg-light .navColor .navbar-brand .navbar-collapse .collapse {
+  background-color: #F5D7D7;
 }
 
+.navbar-expand-lg {
+  background-color: #F5D7D7;
+}
+
+.bg-light {
+  background-color: #F5D7D7;
+} */
+
 /* HOME */
-.d-block {
-  box-shadow: 0px 0px 10px 5px #858485;
+
+.pHome {
+  text-shadow: 10px #858485;
 }
 
 .home-content {
-  background-color: #F8F9FA;
+  background-color: rgb(197, 196, 196);
   padding: 30px;
   color: #030303;
   text-align: center;
+  overflow: hidden;
 }
 
 .carousel-caption {
@@ -106,10 +121,12 @@ code {
 /* FOOTER */
 
 footer {
-  background-color: rgb(138, 153, 175);
-  height: 250px;
+  background-color: #F5D7D7;
+  height: 300px;
   color: #030303;
   font-size: 25px;
+  position: absolute;
+  width: 100%;
 }
 
 .logoFooter {
@@ -128,4 +145,64 @@ footer {
 .copyRight {
   color: #030303;
   margin: 40px;
+}
+
+.contactUs {
+  display: inline-block;
+  font-size: 18px;
+  text-align: center;
+}
+
+.emailFooter {
+  font-size: 17px;
+  text-align: center;
+}
+
+.col-6 {
+  display: inline-block;
+  text-align: center;
+}
+
+.list-unstyled {
+  margin-bottom: 40px;
+}
+
+.iconFooter {
+  margin-top: 30px;
+}
+
+/* RETAILS LITS */
+
+.cardRetails {
+  margin: 30px;
+  box-shadow: 0px 0px 10px 5px #858485;
+}
+
+.infoRetails {
+  margin: 10px;
+}
+
+.buttonEditRetail {
+  width: 75px;
+  height: 35px;
+  margin-left: 140px;
+  margin-right: 140px;
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(164, 173, 147);
+}
+
+.btn {
+  text-decoration: none;
+  color: #030303;
+  font-size: 20px;
+}
+
+.accordion > .card .card-header {
+  text-decoration: none;
+  background-color: #F5D7D7;
+}
+
+.btn-outline-secondary {
+  background-color: #F5D7D7;
 }

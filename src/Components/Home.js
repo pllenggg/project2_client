@@ -55,8 +55,8 @@ class HomeCarousel extends Component {
               width='800px' height='450px'
             />
             <Carousel.Caption>
-              <h3>Explore Treatments</h3>
-              <p>Nails</p>
+              <h3 className="pHome">Explore Treatments</h3>
+              <p className="pHome">Nails</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -68,7 +68,7 @@ class HomeCarousel extends Component {
             />
             <Carousel.Caption>
               {/* <h3>Second slide label</h3> */}
-              <p>Hairdressing</p>
+              <p className="pHome">Hairdressing</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -81,7 +81,7 @@ class HomeCarousel extends Component {
 
             <Carousel.Caption>
               {/* <h3>Third slide label</h3> */}
-              <p>Eyes, Brows & Lashes</p>
+              <p className="pHome">Eyes, Brows & Lashes</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
