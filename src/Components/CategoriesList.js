@@ -96,8 +96,10 @@ class AddNewCategory extends Component {
   uploadWidget = () => {
     window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
       (error, result) => {
-        const data = result[0];
-        this.setState({ image: data.secure_url });
+        if (result){
+          const data = result[0];
+          this.setState({ image: data.secure_url });
+        }
       });
   }
 
