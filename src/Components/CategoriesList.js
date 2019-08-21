@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Container, Button, Accordion, Card } from 'react-bootstrap';
+import { Form, Container, Button, Accordion, Card, Table } from 'react-bootstrap';
 import axios from 'axios';
 
 const CATEGORIES_API = 'https://bookbeauty.herokuapp.com/categories.json';
@@ -29,16 +29,16 @@ class CategoriesList extends Component {
   render() {
     return (
       <div className="container">
-        <Container>
+        <Container >
           <Accordion>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+            <Card >
+              <Card.Header >
+                <Accordion.Toggle className="addNewCategoryButton" as={Button} variant="link" eventKey="0">
                   + Add new category
               </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
+                <Card.Body ><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
@@ -50,7 +50,7 @@ class CategoriesList extends Component {
               <div className="categorieList" key={c.id}>
 
                 <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" width='400px' height='225px' src={c.image} />
+                  <Card.Img variant="top" width='330px' height='125px' src={c.image} />
                   <Card.Body>
                     <Card.Title className="titleCategory">{c.title}</Card.Title>
                     <div className="wrapper">
@@ -94,11 +94,13 @@ class AddNewCategory extends Component {
   }
 
   uploadWidget = () => {
-    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
-        (error, result) => {
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
+      (error, result) => {
+        if (result){
           const data = result[0];
-          this.setState({image: data.secure_url});
-    });
+          this.setState({ image: data.secure_url });
+        }
+      });
   }
 
   render() {
@@ -108,7 +110,7 @@ class AddNewCategory extends Component {
         <Form onSubmit={this._handleSubmit} >
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} required maxLength="100"/>
+            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} required maxLength="100" />
           </Form.Group>
 
           <Form.Group controlId="image">
@@ -127,3 +129,5 @@ class AddNewCategory extends Component {
 }
 
 export default CategoriesList;
+
+

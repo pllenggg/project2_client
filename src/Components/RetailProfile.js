@@ -10,6 +10,7 @@ class RetailProfile extends Component {
     constructor() {
         super();
         this.state = {
+            user_id: localStorage.user_id,
             retail: {}
         };
     }
@@ -34,7 +35,7 @@ class RetailProfile extends Component {
                 <p>FACEBOOK: {this.state.retail.suburb}</p>
                 <p>INSTAGRAM: {this.state.retail.indtagram}</p>
                 <p>WEBSITE: {this.state.retail.website}</p> 
-                <Button href={`#/editretail/${localStorage.user_id}`}>Edit</Button>
+                <Button href={`#/editretail`}>Edit</Button>
             </div>
         )
     }

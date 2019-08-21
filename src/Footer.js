@@ -5,13 +5,10 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24" />
-            <small class="mb-3 text-muted">© 2019</small>
-          </div>
-        </div>
-      </footer>
+        <img className="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24" />
+        <p><img src="https://png.pngtree.com/svg/20161008/24671b749c.png" alt="" width='35px' height='40px' />Bookbeauty</p>
+        <small className="copyRight">© 2019</small>
+      </footer >
     );
   }
 }

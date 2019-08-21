@@ -13,23 +13,29 @@ class Home extends Component {
 
       <>
         <HomeCarousel />
-        < div className="container">
-          <section className="home-content">
-            <h2>Bookbeauty is your beauty website</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+        <main className="mainHome">
+          < div className="container">
+            <section className="home-content">
+              <h2>Bookbeauty is your beauty website</h2>
+              <p className="icon"><img src="https://image.flaticon.com/icons/svg/34/34148.svg" alt="" width='40px' height='45px' ></img> Search</p>
+              <p className="icon"><img src="https://cdn4.iconfinder.com/data/icons/hotel-and-reservation-services-outline/64/booking_online-512.png" alt="" width='60px' height='50px' ></img>Booking</p>
+              <p className="icon"><img src="https://png.pngtree.com/svg/20160704/7d1563919c.png" alt="" width='60px' height='50px' ></img>Feel Pretty</p>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
             desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
             desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </section>
-        </div>
+            </section>
+          </div>
+        </main>
       </>
     );
   }
@@ -85,3 +91,5 @@ class HomeCarousel extends Component {
   }
 }
 export default Home;
+
+
