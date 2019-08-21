@@ -5,17 +5,17 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/"><img src="https://png.pngtree.com/svg/20161008/24671b749c.png" width='40px' height='45px' />Bookbeuty</Navbar.Brand>
+        <Navbar className="navigation" bg="light" expand="lg">
+          <Navbar.Brand href="/"><img src="https://png.pngtree.com/svg/20161008/24671b749c.png" alt="" width='40px' height='45px' />Bookbeauty</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <SignInUpMenu />
             <Nav className="mr-auto"></Nav>
-              <CustomerMenuList/>
-              <RetailMenuList />
-              <AdminMenuList/>
-              <Profile/>
-            </Navbar.Collapse>
+            <CustomerMenuList />
+            <RetailMenuList />
+            <AdminMenuList />
+            <Profile />
+          </Navbar.Collapse>
         </Navbar>
       </div>
     );
@@ -23,15 +23,15 @@ class Navigation extends Component {
 }
 
 const Profile = () => {
-  if (localStorage.user_id === "0"){
+  if (localStorage.user_id === "0") {
     return (
       <div></div>
     );
   } else {
-    return(
+    return (
       <Nav.Link href="#profile">Profile</Nav.Link>
     )
-    
+
   }
 }
 
