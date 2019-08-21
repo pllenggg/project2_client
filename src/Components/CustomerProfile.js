@@ -29,7 +29,7 @@ class CustomerProfile extends Component {
             <div>
                 <p>Fullname: {this.state.full_name}</p> 
                 <p>Phone: {this.state.phone}</p> 
-                <Button href={`#/editcustomerprofile/${localStorage.user_id}`}>Edit</Button>
+                <Button href={`#/editcustomerprofile`}>Edit</Button>
             </div>
         );
     }
