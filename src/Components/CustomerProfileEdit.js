@@ -9,6 +9,7 @@ class CustomerProfileEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        user_id: localStorage.user_id,
         data: {}
     };
     this._handleChange = this._handleChange.bind(this);

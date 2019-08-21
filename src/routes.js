@@ -36,14 +36,14 @@ const Routes = (
             <Route exact path="/retailshowservices/:id" component={RetailShowServices} />
             <Route exact path="/booking/:retailId/:serviceId" component={Booking} />
             <Route exact path="/mybooking/:id" component={MyBooking} />
-            <Route exact path="newcustomer/:id" component={ CreateCustomer } />
-            <Route exact path="/editcustomerprofile/:id" component={ CustomerProfileEdit } />
+            <Route exact path="/newcustomer" component={ CreateCustomer } />
+            <Route exact path="/editcustomerprofile" component={ CustomerProfileEdit } />
 
             {/* Retail */}
             <Route exact path="/retailservicelist" component={ RetailServiceList } />
             <Route exact path="/retailbookinglist" component={ RetailBookingList } />
-            <Route exact path="retailprofile/:id" component={ RetailProfile } />
-            <Route exact path="/editretail/:id" component={ RetailEdit } />
+            <Route exact path="/retailprofile" component={ RetailProfile } />
+            <Route exact path="/editretail" component={ RetailEdit } />
 
             {/* Admin */}
             <Route exact path="/retails" component={RetailsList} />
