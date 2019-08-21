@@ -61,10 +61,10 @@ class ServiceList extends Component{
             <div>
                 <h3>Popular Services</h3>
                     {
-                        
                         this.props.info.map((s) => {
                             return(
                                 <div className="serviceList" key={s.id}>
+                                <label>{s.id}</label>
                                 <label>{s.title}</label>
                                     <Card style={{ width: '16rem' }}>
                                     <Card.Img variant="top" width='300px' height='200px' src={s.service_image} />

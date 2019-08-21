@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image, Card, Button, ListGroup, Form} from 'react-bootstrap';
 import axios from 'axios';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
+
 
 const SERVICES_ID_URL = 'https://bookbeauty.herokuapp.com/services/:id.json';
 
@@ -41,10 +46,12 @@ class Booking extends Component {
                         </Row>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <BookingForm/>
+                       
                     </ListGroup.Item>
                     </ListGroup>
+                    <BookingForm/>
                 </Container>
+                
             </div>
         );
     }
@@ -53,16 +60,37 @@ class BookingForm extends Component {
     constructor() {
         super();
         this.state = {
-
+            startDate: Date.now()
         };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(date) {
+        this.setState({startDate: date});
     }
     render() {
         return(
             <div>
-                <h4>Booking form coming</h4>
-                <Form>
-
-                </Form>
+                <h4>Please select a date</h4>
+                <div>
+                <DatePicker
+                    dateFormat="dd/MM/yyyy"
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
+                    isClearable={true}
+                    placeholderText="Click to select a date"
+                    renderCustomHeader={({
+                        date,
+                        changeYear,
+                        changeMonth,
+                        decreaseMonth,
+                        increaseMonth,
+                        prevMonthButtonDisabled,
+                        nextMonthButtonDisabled
+                      }) => {}}
+                />
+            </div>
+  
+            
             </div>
         );
     }
