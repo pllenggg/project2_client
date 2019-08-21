@@ -17,6 +17,7 @@ import CategoryEdit from './Components/CategoriesEdit';
 import Profile from './Components/Profile';
 import RetailShowServices from './Components/RetailShowServices';
 import Booking from './Components/Booking';
+import MyBooking from './Components/MyBooking';
 import RetailEdit from './Components/RetailEdit';
 import CreateCustomer from './Components/CreateCustomer';
 const Routes = (
@@ -33,6 +34,7 @@ const Routes = (
             <Route exact path="/customerbookinglist" component={CustomerBookingList} />
             <Route exact path="/retailshowservices/:id" component={RetailShowServices} />
             <Route exact path="/booking/:retailId/:serviceId" component={Booking} />
+            <Route exact path="/mybooking/:id" component={MyBooking} />
             <Route exact path="newcustomer/:id" component={ CreateCustomer } />
 
             {/* Retail */}
