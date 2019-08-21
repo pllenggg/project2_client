@@ -29,47 +29,44 @@ class CategoriesList extends Component {
   render() {
     return (
       <div className="container">
-        <Container>
+        <Container >
           <Accordion>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+            <Card >
+              <Card.Header >
+                <Accordion.Toggle className="addNewCategoryButton" as={Button} variant="link" eventKey="0">
                   + Add new category
               </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
+                <Card.Body ><AddNewCategory onSubmit={this.saveNewCategory} /></Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
         </Container>
 
-        <div className="categorieList">
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Actions</th>
+        {
+          this.state.data.map((c) => {
+            return (
+              <div className="categorieList" key={c.id}>
 
-              </tr>
-            </thead>
-            <tbody>
+                <Card style={{ width: '18rem' }}>
+                  <Card.Img variant="top" width='330px' height='125px' src={c.image} />
+                  <Card.Body>
+                    <Card.Title className="titleCategory">{c.title}</Card.Title>
+                    <div className="wrapper">
+                      <Button className="buttonEdit" variant="outline-secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
 
-              {this.state.data.map((c) => (
-                <tr key={c.id}>
-                  <td>{c.title}</td>
-                  <td><Card.Img variant="top" width="120" height="150" src={c.image} />
-                  </td>
-                  <td><Button className="buttonEdit" variant="outline-secondary" type="button" href={`#/categoryEdit/${c.id}`}>Edit</Button></td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        );
-      }
-           </div>
+                    </div>
+
+
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })
+        }
+      </div >
+
     );
 
   }
@@ -111,7 +108,7 @@ class AddNewCategory extends Component {
         <Form onSubmit={this._handleSubmit} >
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} required maxLength="100"/>
+            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} required maxLength="100" />
           </Form.Group>
 
           <Form.Group controlId="image">
@@ -132,7 +129,3 @@ class AddNewCategory extends Component {
 export default CategoriesList;
 
 
-
-
-
-{/*  */ }

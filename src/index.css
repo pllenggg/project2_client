@@ -9,41 +9,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* .categorieList {
-  display: inline-block;
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 0px 0px 10px 5px #858485;
-} */
+/* SERVICE LIST */
 
-.buttonEdit {
-  width: 80px;
-  height: 40px;
-  margin-left: 82px;
-  margin-right: 82px;
-  margin-top: 20px;
-  padding: 10px;
-  text-align: center;
-}
-
-.titleCategory {
-  text-align: center;
-}
-
-.addNewCategories {
-  display: block;
-  margin: 45px;
-}
-
-.serviceList {
+/* .serviceList {
   display: inline-block;
   margin: 20px;
   padding: 20px;
   box-shadow: 0px 0px 5px 2px #858485;
+} */
+
+/* CATEGORIES LIST*/
+
+.categorieList {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 5px #858485;
 }
 
-.mb-3 {
-  margin-top: 50px;
+.titleCategory {
+  text-align: center;
 }
 
 /* .wrapper {
@@ -55,16 +40,48 @@ code {
 /* padding: 40px; */
 /* } */
 
-.titleSearchHome {
-  font-size: 20px;
-  color: #5A6268;
-  margin-top: 10px;
+/* .addNewCategories {
+  display: block;
+  margin: 45px;
+} */
+.buttonEdit {
+  width: 75px;
+  height: 35px;
+  margin-left: 80px;
+  margin-right: 80px;
+  padding: 10px;
+  text-align: center;
 }
 
-.cardHomePage {
-  display: block;
-  margin: 20px;
-  padding: 20px;
+.addNewCategoryButton {
+  text-decoration: none;
+  color: #030303;
+}
+
+/* .buttonEdit {
+  background-color: rgb(138, 153, 175);
+  border: 1px solid rgb(138, 153, 175);
+} */
+
+/* NAVIGATION */
+
+.navigation {
+  background-color: rgb(138, 153, 175);
+  color: #030303;
+}
+
+.nav-link {
+  color: #030303;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar {
+  background-color: rgb(138, 153, 175);
+}
+
+/* HOME */
+.d-block {
   box-shadow: 0px 0px 10px 5px #858485;
 }
 
@@ -75,19 +92,40 @@ code {
   text-align: center;
 }
 
+.carousel-caption {
+  font-size: 35px;
+  text-shadow: 20px;
+}
+
+.icon {
+  display: inline-block;
+  margin: 10px;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+
 footer {
   background-color: rgb(138, 153, 175);
-  height: 100px;
+  height: 250px;
   color: #030303;
   font-size: 25px;
 }
 
-.d-block {
-  box-shadow: 0px 0px 10px 5px #858485;
+.logoFooter {
+  margin: 30px;
 }
 
-.row {
-  margin-top: 20px;
-  padding: 10px;
+.ContactFooter {
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.mb-3 {
   color: #030303;
+}
+
+.copyRight {
+  color: #030303;
+  margin: 40px;
 }
