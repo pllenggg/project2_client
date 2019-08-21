@@ -116,6 +116,9 @@ class SearchResult extends Component {
                     <Card.Text>Retail: {s.retail.retail_name}</Card.Text>
                     <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
                     <Card.Text><span role="img" aria-label="sheep">☎️</span> {s.retail.phone}</Card.Text>
+                    <Button variant="outline-info" href={`#/retailshowservices/${s.retail.user_id}`}>
+                      More Info
+                    </Button>
                   </Card.Body>
                 </Card>
               </div>

@@ -111,12 +111,12 @@ class AddNewCategory extends Component {
         <Form onSubmit={this._handleSubmit} >
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} />
+            <Form.Control placeholder="New category" name="title" value={this.state.title} onChange={this._handleChange} required maxLength="100"/>
           </Form.Group>
 
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
-            <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={this.state.image} onChange={this._handleChange}></Form.Control>
+            <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={this.state.image} onChange={this._handleChange} readOnly="true"></Form.Control>
             <Button onClick={this.uploadWidget.bind(this)}>Select Image</Button>
             {/* <Card style={{ width: '18rem', marginTop: '20px' }}>
               <Card.Img variant="top" width='400px' height='225px' src={this.state.image} />
