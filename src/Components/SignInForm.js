@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Container, Row } from "react-bootstrap";
 import User from './User'
 import axios from 'axios';
 
@@ -44,8 +44,11 @@ class Signin extends Component {
     }
     render() {
         return(
-            <div>
-                <h1>Sign in</h1>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <h1>Sign in</h1>
+                </Row>
+                <Row className="justify-content-md-center">
                 <form onSubmit={this._handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email:</Form.Label>
@@ -71,7 +74,8 @@ class Signin extends Component {
                     Sign in
                 </Button>
                 </form>
-            </div>
+                </Row>
+            </Container>
         );
     }
 }

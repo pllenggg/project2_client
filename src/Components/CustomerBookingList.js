@@ -34,7 +34,7 @@ class BookingCancelForm extends Component {
   render() {
     return (
       <div>
-        <h1>All bookings</h1>
+        <h1>Your booking</h1>
           <Table striped size='sm' >
               <thead>
                 <tr>
