@@ -137,8 +137,10 @@ class AddServiceForm extends Component {
   uploadWidgetAdd() {
     window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
         (error, result) => {
-          const data = result[0];
-          this.setState({service_image: data.secure_url});
+          if (result){
+            const data = result[0];
+            this.setState({service_image: data.secure_url});
+          }
     });
   }
 
@@ -148,12 +150,12 @@ class AddServiceForm extends Component {
         <Form onSubmit={this._handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Title</strong></Form.Label>
-              <Form.Control type="text" name="title" value={this.state.title} onChange={this._handleChange} required/>
+              <Form.Control type="text" name="title" value={this.state.title} onChange={this._handleChange} maxLength="100" required/>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label><strong>Description</strong></Form.Label>
-              <Form.Control as="textarea" name="description" value={this.state.description} rows="4" onChange={this._handleChange} />
+              <Form.Control as="textarea" name="description" value={this.state.description} rows="4" maxLength="2000" onChange={this._handleChange} />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
@@ -175,7 +177,7 @@ class AddServiceForm extends Component {
 
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Image</strong></Form.Label>
-              <Form.Control type="text" name="service_image" value={this.state.service_image} onChange={this._handleChange}/>
+              <Form.Control type="text" name="service_image" value={this.state.service_image} readOnly="true"/>
               <Button onClick={this.uploadWidgetAdd}>Select Image</Button>
           </Form.Group>
 
@@ -226,18 +228,20 @@ class EditForm extends Component {
   uploadWidgetEdit = () => {
     window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
         (error, result) => {
-          const data = result[0];
-          const newData = {
-            service_image: data.secure_url
-          };
-          this.setState(({ service }) => {
-            return {
-              service: {
-                ...service,
-                ...newData,
-              }
+          if (result){
+            const data = result[0];
+            const newData = {
+              service_image: data.secure_url
             };
-          });
+            this.setState(({ service }) => {
+              return {
+                service: {
+                  ...service,
+                  ...newData,
+                }
+              };
+            });
+          }
     });
   }
 
@@ -301,7 +305,7 @@ class EditForm extends Component {
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Image</strong></Form.Label>
-              <Form.Control type="text" name="service_image" value={this.state.service.service_image} onChange={this._handleChange}/>
+              <Form.Control type="text" name="service_image" value={this.state.service.service_image} readOnly="true"/>
               <Button onClick={this.uploadWidgetEdit}>Select Image</Button>
           </Form.Group>
 

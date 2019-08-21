@@ -3,6 +3,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import CustomerBookingSearch from './Components/CustomerBookingSearch';
 import CustomerBookingList from './Components/CustomerBookingList';
+import RetailProfile from './Components/RetailProfile';
 import RetailServiceList from './Components/RetailServiceList';
 import RetailBookingList from './Components/RetailBookingList';
 import RetailsList from './Components/RetailsList';
@@ -13,16 +14,20 @@ import Navbar from './Navigation';
 import Footer from './Footer';
 import SignOutForm from './Components/SignOutForm';
 import CategoryEdit from './Components/CategoriesEdit';
+import Profile from './Components/Profile';
 import RetailShowServices from './Components/RetailShowServices';
 import Booking from './Components/Booking';
 import MyBooking from './Components/MyBooking';
+import RetailEdit from './Components/RetailEdit';
+import CreateCustomer from './Components/CreateCustomer';
 const Routes = (
 
     <Router>
         <div>
             <Navbar />
             {/* Home */}
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={ Home } /> 
+            <Route exact path="/profile" component={ Profile } /> 
 
             {/* Customer */}
             <Route exact path="/customerbookingsearch" component={CustomerBookingSearch} />
@@ -30,10 +35,13 @@ const Routes = (
             <Route exact path="/retailshowservices/:id" component={RetailShowServices} />
             <Route exact path="/booking/:retailId/:serviceId" component={Booking} />
             <Route exact path="/mybooking/:id" component={MyBooking} />
+            <Route exact path="newcustomer/:id" component={ CreateCustomer } />
 
             {/* Retail */}
-            <Route exact path="/retailservicelist" component={RetailServiceList} />
-            <Route exact path="/retailbookinglist" component={RetailBookingList} />
+            <Route exact path="/retailservicelist" component={ RetailServiceList } />
+            <Route exact path="/retailbookinglist" component={ RetailBookingList } />
+            <Route exact path="retailprofile/:id" component={ RetailProfile } />
+            <Route exact path="/editretail/:id" component={ RetailEdit } />
 
             {/* Admin */}
             <Route exact path="/retails" component={RetailsList} />

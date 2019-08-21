@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 
-const CATEGORIES_EDIT_API = 'http://localhost:3000/categories/:id.json';
+const CATEGORIES_EDIT_API = 'https://bookbeauty.herokuapp.com/categories/:id.json';
 class CategoriesEdit extends Component {
   constructor(props) {
     super(props);
@@ -50,18 +50,20 @@ class CategoriesEdit extends Component {
   uploadWidget = () => {
     window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
         (error, result) => {
-          const data = result[0];
-          const newData = {
-            image: data.secure_url
-          };
-          this.setState(({ category }) => {
-            return {
-              category: {
-                ...category,
-                ...newData,
-              }
+          if (result){
+            const data = result[0];
+            const newData = {
+              image: data.secure_url
             };
-          });
+            this.setState(({ category }) => {
+              return {
+                category: {
+                  ...category,
+                  ...newData,
+                }
+              };
+            });
+          }
     });
   }
 
@@ -77,12 +79,12 @@ class CategoriesEdit extends Component {
         <Form onSubmit={this._handleSubmit}>
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
-            <Form.Control placeholder="Title" type="text" name="title" value={category.title} onChange={this._handleChange} />
+            <Form.Control placeholder="Title" type="text" name="title" value={category.title} onChange={this._handleChange} required maxLength="100" />
           </Form.Group>
 
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
-            <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={category.image} onChange={this._handleChange} />
+            <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={category.image} onChange={this._handleChange} readOnly="true" />
             <Button onClick={this.uploadWidget.bind(this)}>Select Image</Button>
             <Card style={{ width: '18rem', marginTop: '20px' }}>
               <Card.Img variant="top" width='400px' height='225px' src={category.image} />
