@@ -11,16 +11,29 @@ class Navigation extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <SignInUpMenu />
             <Nav className="mr-auto"></Nav>
-            <CustomerMenuList />
-            <RetailMenuList />
-            <AdminMenuList />
-          </Navbar.Collapse>
+              <CustomerMenuList/>
+              <RetailMenuList />
+              <AdminMenuList/>
+              <Profile/>
+            </Navbar.Collapse>
         </Navbar>
       </div>
     );
   }
 }
 
+const Profile = () => {
+  if (localStorage.user_id === "0"){
+    return (
+      <div></div>
+    );
+  } else {
+    return(
+      <Nav.Link href="#profile">Profile</Nav.Link>
+    )
+    
+  }
+}
 
 const SignInUpMenu = () => {
 
