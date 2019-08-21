@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Container, Button, Accordion, Card } from 'react-bootstrap';
+import { Form, Container, Button, Accordion, Card, Table } from 'react-bootstrap';
 import axios from 'axios';
 
 const CATEGORIES_API = 'https://bookbeauty.herokuapp.com/categories.json';
@@ -44,29 +44,32 @@ class CategoriesList extends Component {
           </Accordion>
         </Container>
 
-        {
-          this.state.data.map((c) => {
-            return (
-              <div className="categorieList" key={c.id}>
+        <div className="categorieList">
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Actions</th>
 
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" width='400px' height='225px' src={c.image} />
-                  <Card.Body>
-                    <Card.Title className="titleCategory">{c.title}</Card.Title>
-                    <div className="wrapper">
-                      <Button className="buttonEdit" variant="outline-secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
+              </tr>
+            </thead>
+            <tbody>
 
-                    </div>
-
-
-                  </Card.Body>
-                </Card>
-              </div>
-            );
-          })
-        }
-      </div >
-
+              {this.state.data.map((c) => (
+                <tr key={c.id}>
+                  <td>{c.title}</td>
+                  <td><Card.Img variant="top" width="120" height="150" src={c.image} />
+                  </td>
+                  <td><Button className="buttonEdit" variant="outline-secondary" type="button" href={`#/categoryEdit/${c.id}`}>Edit</Button></td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+        );
+      }
+           </div>
     );
 
   }
@@ -94,11 +97,11 @@ class AddNewCategory extends Component {
   }
 
   uploadWidget = () => {
-    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
-        (error, result) => {
-          const data = result[0];
-          this.setState({image: data.secure_url});
-    });
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
+      (error, result) => {
+        const data = result[0];
+        this.setState({ image: data.secure_url });
+      });
   }
 
   render() {
@@ -127,3 +130,9 @@ class AddNewCategory extends Component {
 }
 
 export default CategoriesList;
+
+
+
+
+
+{/*  */ }

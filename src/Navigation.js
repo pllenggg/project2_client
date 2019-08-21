@@ -6,7 +6,7 @@ class Navigation extends Component {
     return (
       <div>
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/"><img src="https://png.pngtree.com/svg/20161008/24671b749c.png" width='40px' height='45px' />Bookbeuty</Navbar.Brand>
+          <Navbar.Brand href="/"><img src="https://png.pngtree.com/svg/20161008/24671b749c.png" alt="" width='40px' height='45px' />Bookbeuty</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <SignInUpMenu />

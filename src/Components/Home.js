@@ -85,3 +85,5 @@ class HomeCarousel extends Component {
   }
 }
 export default Home;
+
+
