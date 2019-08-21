@@ -55,7 +55,7 @@ class CustomerProfileEdit extends Component {
       <div>
         <CustomerForm
         customer = {this.state.data}
-        onEditing = {this._handleChange}
+        onTyping = {this._handleChange}
         onSubmit = {this._handleSubmit}
         />
       </div>
