@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Form, Button} from 'react-bootstrap';
 
 
 class CustomerProfile extends Component {
@@ -10,7 +11,7 @@ class CustomerProfile extends Component {
 
   render() {
     return (
-        <h1>customer coming soon</h1>
+        <div>profile custoemr</div>
     );
   }
 }

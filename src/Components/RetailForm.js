@@ -4,7 +4,7 @@ import {Form, Button} from 'react-bootstrap';
 class RetailForm extends Component {
     render(){
         return(
-            <Form onSubmit={this.props.onSubmit}>
+        <Form onSubmit={this.props.onSubmit}>
         <Form.Group controlId="formGridAddress1">
           <Form.Label>Name</Form.Label>
           <Form.Control placeholder="Retail Name" name="retail_name" value={this.props.service.retail_name} onChange={this.props.onEditing} required maxLength="100" required/>
