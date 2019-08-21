@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {ListGroup, Container, Form, Button, Accordion, Card} from 'react-bootstrap';
 
-const SERVICES_API = "http://localhost:3000/services.json"
-const CATEGORIES_API = "http://localhost:3000/categories.json"
-const SERVICES_UPDATE_API = "http://localhost:3000/services/:id.json"
-const Login_id = 8; // localstorage.user_id
+// const SERVICES_API = "http://localhost:3000/services.json"
+// const CATEGORIES_API = "http://localhost:3000/categories.json"
+// const SERVICES_UPDATE_API = "http://localhost:3000/services/:id.json"
+const SERVICES_API = "https://bookbeauty.herokuapp.com/services.json"
+const CATEGORIES_API = "https://bookbeauty.herokuapp.com/categories.json"
+const SERVICES_UPDATE_API = "https://bookbeauty.herokuapp.com/services/:id.json"
+const Login_id = Number(localStorage.user_id);
 class RetailServiceList extends Component {
   constructor() {
     super();
     this.state = {
-      services: []
+      services: [],
+      categories: []
     }
 
     //fetching data from API 
@@ -21,10 +25,15 @@ class RetailServiceList extends Component {
         
       })
     }
+    const fetchCategories = ()=>{
+      axios.get(CATEGORIES_API).then((results) => {
+        this.setState({categories: results.data});
+      })
+    }
+    fetchCategories();
     fetchServices();
 
     this.saveServices = this.saveServices.bind(this);
-    
   }
 
   saveServices(data) {
@@ -55,7 +64,7 @@ class RetailServiceList extends Component {
               </Accordion.Toggle>
             </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><AddServiceForm onSubmit={this.saveServices}/></Card.Body>
+                <Card.Body><AddServiceForm onSubmit={this.saveServices} categories={this.state.categories}/></Card.Body>
               </Accordion.Collapse>
           </Card>
           </Accordion>
@@ -79,7 +88,7 @@ class RetailServiceList extends Component {
                           </Accordion.Toggle>
                         </Card.Header>
                           <Accordion.Collapse eventKey="0">
-                            <Card.Body><EditForm info={s}/></Card.Body>
+                            <Card.Body><EditForm info={s} categories={this.state.categories}/></Card.Body>
                           </Accordion.Collapse>
                       </Card>
                     </Accordion>
@@ -95,32 +104,21 @@ class RetailServiceList extends Component {
   }
 }
 
-
-
 class AddServiceForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: "",
       description: "",
       service_image: "",
-      price: "",
+      price: 0,
       duration: "",
-      category_id: "",
-      category: []
+      category_id: 0
+    }
     
-    }
-
-    const fetchCategories = ()=>{
-      axios.get(CATEGORIES_API).then((results) => {
-        this.setState({category: results.data});
-      })
-      
-    }
-    fetchCategories();
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
-    
+    this.uploadWidgetAdd = this.uploadWidgetAdd.bind(this);
   }
 
   _handleChange (event) {
@@ -131,12 +129,18 @@ class AddServiceForm extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    //localStorage.user_id
-    const submitData = {title: this.state.title, description: this.state.description, price: this.state.price, category_id: this.state.category_id, duration: this.state.duration, retail_id: Login_id}   
+    const selectedCategoryId = this.state.category_id === 0? this.props.categories[0].id: this.state.category_id;
+    const submitData = {title: this.state.title, description: this.state.description, price: this.state.price, category_id: selectedCategoryId, duration: this.state.duration, retail_id: Login_id, service_image: this.state.service_image}   
     this.props.onSubmit(submitData);
   }
 
-  
+  uploadWidgetAdd() {
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
+        (error, result) => {
+          const data = result[0];
+          this.setState({service_image: data.secure_url});
+    });
+  }
 
   render() {
     return (
@@ -144,7 +148,7 @@ class AddServiceForm extends Component {
         <Form onSubmit={this._handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Title</strong></Form.Label>
-              <Form.Control type="text" name="title" value={this.state.title} onChange={this._handleChange}/>
+              <Form.Control type="text" name="title" value={this.state.title} onChange={this._handleChange} required/>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -159,16 +163,20 @@ class AddServiceForm extends Component {
 
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Duration</strong></Form.Label>
-              <Form.Control type="number" name="duration" value={this.state.duration} onChange={this._handleChange}/>
+              <Form.Control type="number" name="duration" value={this.state.duration} onChange={this._handleChange} required/>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Category</Form.Label>
               <Form.Control as="select" name="category_id" value={this.state.category_id} onChange={this._handleChange}>
-  
-              {this.state.category.map( (c) => <option key={c.id} value={c.id}>{c.title}</option>)}
-                
+                {CategoryDropdown(this.props, "", this)}
               </Form.Control> 
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label><strong>Image</strong></Form.Label>
+              <Form.Control type="text" name="service_image" value={this.state.service_image} onChange={this._handleChange}/>
+              <Button onClick={this.uploadWidgetAdd}>Select Image</Button>
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -181,33 +189,19 @@ class AddServiceForm extends Component {
 }
 
 class UpdateButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-    this._handleClick = this._handleClick.bind(this);
-  }
-
-  _handleClick(event){
-    let service_id = Number(event.target.id);
-    axios.get(SERVICES_API).then(response =>{
-      let data = response.data.find((s)=>{return s.id === service_id})
-      // let url = SERVICES_UPDATE_API.replace(":id", service_id)
-      console.log(data)
-  
-    })
-  }
-
-  //TODO when the edit button is on clicked! Two things will happen
-  //1 detect the id of service
-  //direct to another page to edit the form 
-
-
   render(){
     return (
-      <Button variant="primary" id={this.props.id} onClick={this._handleClick}>Edit</Button>
-      
+      <Button variant="primary" id={this.props.id}>Edit</Button>
     )
+  }
+}
+
+const CategoryDropdown = (props, selectedCategoryId, thisObject) => {
+  if (props.categories && props.categories.length > 0){
+    const defaultValue = selectedCategoryId?selectedCategoryId:props.categories[0].id;
+    return props.categories.map((c)=>{
+      return <option id={c.id} key={c.id} value={c.id} selected={c.id===defaultValue} >{c.title}</option>
+    })
   }
 }
 
@@ -222,35 +216,41 @@ class EditForm extends Component {
         duration: props.info.duration,
         category_id: props.info.category_id,
         service_id: props.info.id,
-        category: []
+        service_image: props.info.service_image
      }
     }
-    const fetchCategories = ()=>{
-      axios.get(CATEGORIES_API).then((results) => {
-        this.setState({category: results.data});
-      })
-      
-    }
-    fetchCategories();
-    
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
-    
+  }
+
+  uploadWidgetEdit = () => {
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
+        (error, result) => {
+          const data = result[0];
+          const newData = {
+            service_image: data.secure_url
+          };
+          this.setState(({ service }) => {
+            return {
+              service: {
+                ...service,
+                ...newData,
+              }
+            };
+          });
+    });
   }
 
   _handleSubmit (event) {
     event.preventDefault();
     const data = this.state.service;
-    console.log(data);
     const url = SERVICES_UPDATE_API.replace(":id", this.props.info.id);
     axios.put(url , data).then(() => {
       window.location.reload();
     })
- 
   }
 
   _handleChange (event){
-    console.log(event);
     const newData = {
       [event.currentTarget.name]:event.currentTarget.value
     }
@@ -275,7 +275,7 @@ class EditForm extends Component {
         <Form onSubmit={this._handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label><strong>Title</strong></Form.Label>
-                <Form.Control type="text" name="title" value={this.state.service.title} onChange = {this._handleChange}/>
+                <Form.Control type="text" name="title" value={this.state.service.title} onChange = {this._handleChange} required/>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
@@ -290,15 +290,19 @@ class EditForm extends Component {
 
           <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label><strong>Duration</strong></Form.Label>
-                <Form.Control type="text" name="duration" value={this.state.service.duration} onChange = {this._handleChange}/>
+                <Form.Control type="text" name="duration" value={this.state.service.duration} onChange = {this._handleChange} required/>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Category</Form.Label>
-              <Form.Control as="select" name="category" value={this.state.service.category_id} >
-              {this.state.service.category.map( (c) => <option key={c.id} value={c.id}>{c.title}</option>)}
-                
+              <Form.Control as="select" name="category_id" value={this.state.service.category_id} onChange={this._handleChange} >
+                {CategoryDropdown(this.props, this.state.service.category_id)}
               </Form.Control> 
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label><strong>Image</strong></Form.Label>
+              <Form.Control type="text" name="service_image" value={this.state.service.service_image} onChange={this._handleChange}/>
+              <Button onClick={this.uploadWidgetEdit}>Select Image</Button>
           </Form.Group>
 
           <Button variant="primary" type="submit" id={this.state.service.service_id} onSubmit={this._handleSubmit}>

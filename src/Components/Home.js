@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup, DropdownButton, FormControl, Dropdown, Button } from 'react-bootstrap';
+import Carousel from 'react-bootstrap/Carousel'
 
 class Home extends Component {
   constructor(props) {
@@ -10,49 +10,78 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <>
-          <InputGroup className="mb-3">
-            <DropdownButton
-              as={InputGroup.Prepend}
-              variant="outline-secondary"
-              title="Category"
-              id="input-group-dropdown-1"
-            >
-              <Dropdown.Item href="#">Nails</Dropdown.Item>
-              <Dropdown.Item href="#">Hairdressing</Dropdown.Item>
-              <Dropdown.Item href="#">Eyes, Brows and Lashes</Dropdown.Item>
-              <Dropdown.Divider />
-            </DropdownButton>
-            <FormControl aria-describedby="basic-addon1" />
-          </InputGroup>
 
-          <InputGroup>
-            <FormControl
-              placeholder="Recipient's username"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
+      <>
+        <HomeCarousel />
+        < div className="container">
+          <section className="home-content">
+            <h2>Bookbeauty is your beauty website</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+              been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          </section>
+        </div>
+      </>
+    );
+  }
+}
+
+class HomeCarousel extends Component {
+  render() {
+    return (
+      <div className="container">
+
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://geebeauty.com.au/wp-content/themes/gee/img/services-hands.jpg"
+              alt="First slide"
+              width='800px' height='450px'
+            />
+            <Carousel.Caption>
+              <h3>Explore Treatments</h3>
+              <p>Nails</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://toplevelsalon.com/wp-content/uploads/b2b/stock/v2/bigstock/bigstock-Beautiful-lady-with-long-brown-12127595.jpg?&a=t"
+              alt="Third slide"
+              width='800px' height='450px'
+            />
+            <Carousel.Caption>
+              {/* <h3>Second slide label</h3> */}
+              <p>Hairdressing</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://stylemagazines.com.au/wp-content/uploads/2015/01/shutterstock_232611751.jpg"
+              alt="Third slide"
+              width='800px' height='450px'
             />
 
-            <DropdownButton
-              as={InputGroup.Append}
-              variant="outline-secondary"
-              title="Address"
-              id="input-group-dropdown-2"
-            >
-              <Dropdown.Item href="#">Action</Dropdown.Item>
-              <Dropdown.Item href="#">Another action</Dropdown.Item>
-              <Dropdown.Item href="#">Something else here</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item href="#">Separated link</Dropdown.Item>
-            </DropdownButton>
-            <Button className="buttonHomeSearch" variant="secondary" size="lg" block>Search</Button>
-          </InputGroup>
-        </>
+            <Carousel.Caption>
+              {/* <h3>Third slide label</h3> */}
+              <p>Eyes, Brows & Lashes</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
 
       </div>
     );
   }
 }
-
 export default Home;
