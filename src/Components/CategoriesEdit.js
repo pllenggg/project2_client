@@ -48,23 +48,23 @@ class CategoriesEdit extends Component {
   }
 
   uploadWidget = () => {
-    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
-        (error, result) => {
-          if (result){
-            const data = result[0];
-            const newData = {
-              image: data.secure_url
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
+      (error, result) => {
+        if (result) {
+          const data = result[0];
+          const newData = {
+            image: data.secure_url
+          };
+          this.setState(({ category }) => {
+            return {
+              category: {
+                ...category,
+                ...newData,
+              }
             };
-            this.setState(({ category }) => {
-              return {
-                category: {
-                  ...category,
-                  ...newData,
-                }
-              };
-            });
-          }
-    });
+          });
+        }
+      });
   }
 
   render() {
@@ -90,7 +90,7 @@ class CategoriesEdit extends Component {
               <Card.Img variant="top" width='400px' height='225px' src={category.image} />
             </Card>
           </Form.Group>
-          <Button variant="outline-secondary" type="submit">Submit</Button>
+          <Button variant="outline-secondary" type="submit">Save</Button>
         </Form >
       </div>
     );
