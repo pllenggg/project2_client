@@ -15,6 +15,7 @@ import SignOutForm from './Components/SignOutForm';
 import CategoryEdit from './Components/CategoriesEdit';
 import RetailShowServices from './Components/RetailShowServices';
 import Booking from './Components/Booking';
+import MyBooking from './Components/MyBooking';
 const Routes = (
 
     <Router>
@@ -28,6 +29,7 @@ const Routes = (
             <Route exact path="/customerbookinglist" component={CustomerBookingList} />
             <Route exact path="/retailshowservices/:id" component={RetailShowServices} />
             <Route exact path="/booking/:retailId/:serviceId" component={Booking} />
+            <Route exact path="/mybooking/:id" component={MyBooking} />
 
             {/* Retail */}
             <Route exact path="/retailservicelist" component={RetailServiceList} />

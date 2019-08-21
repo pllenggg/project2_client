@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button } from "react-bootstrap";
 
-const SERVER_URL = 'http://localhost:3000/bookings.json';
-const SERVER_UPDATE_URL = 'http://localhost:3000/bookings/:id.json';
+const SERVER_URL = 'https://bookbeauty.herokuapp.com/bookings.json';
+const SERVER_UPDATE_URL = 'https://bookbeauty.herokuapp.com/bookings/:id.json';
 
 class CustomerBookingList extends Component {
   constructor() {
