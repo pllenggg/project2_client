@@ -98,9 +98,7 @@ class BookingForm extends Component {
 
     render() {
         return (
-    
-                <Container>
-                <section className="booking-form">
+            <section className="booking-form">
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                         <Col>
@@ -117,7 +115,7 @@ class BookingForm extends Component {
                             <Card style={{ width: '34rem' }}>
                                 <Card.Body>
                                     <Card.Title>Please select time</Card.Title>
-                                    <Row className="time-slot">
+                                    <Row>
                                         <Col><Button variant="outline-info" value="9"
                                             onClick={this.handleClick}>09:00</Button></Col>
                                         <Col><Button variant="outline-info" value="10"
@@ -127,7 +125,7 @@ class BookingForm extends Component {
                                         <Col><Button variant="outline-info" value="12"
                                             onClick={this.handleClick}>12:00</Button></Col>
                                     </Row>
-                                    <Row className="time-slot">
+                                    <Row>
                                         <Col><Button variant="outline-info" value="13"
                                             onClick={this.handleClick}>13:00</Button></Col>
                                         <Col><Button variant="outline-info" value="14"
@@ -137,7 +135,7 @@ class BookingForm extends Component {
                                         <Col><Button variant="outline-info" value="16"
                                             onClick={this.handleClick}>16:00</Button></Col>
                                     </Row>
-                                    <Row className="time-slot">
+                                    <Row>
                                         <Col><Button variant="outline-info" value="17"
                                             onClick={this.handleClick}>17:00</Button></Col>
                                         <Col><Button variant="outline-info" value="18"
@@ -154,8 +152,8 @@ class BookingForm extends Component {
                     <section className="confirm-booking">
                     <Form.Row>
                         <Col>
-                            <p>Your booked date: {new Date(this.state.date).toLocaleDateString("en-GB", { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })}</p>
-                            <p>Your booked time is: {this.state.booking_time}:00</p>
+                            <p>Your booked date <span role="img" aria-label="sheep">📅</span> {new Date(this.state.date).toLocaleDateString("en-GB", { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })}</p>
+                            <p>Your booked time <span role="img" aria-label="sheep">⏰</span> {this.state.booking_time}:00</p>
                         </Col>
                         <Col>
                             <Button variant="info" type="submit">Confirm booking</Button>
@@ -163,9 +161,7 @@ class BookingForm extends Component {
                     </Form.Row>
                     </section>
                 </Form>
-                </section>
-            </Container>
-        
+            </section>
         );
     }
 }
