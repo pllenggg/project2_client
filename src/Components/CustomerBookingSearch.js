@@ -27,9 +27,9 @@ class CustomerBookingSearch extends Component {
     return (
       <div>
         <Container>
-          <h1>Finding your services</h1>
-          <SearchForm onSubmit={this.fetchServices} />
-          <SearchResult services={this.state.services} />
+        <h2>Explore Services</h2>
+        <SearchForm onSubmit={this.fetchServices}/>
+        <SearchResult services={this.state.services} />
         </Container>
       </div>
     );
@@ -88,10 +88,11 @@ class SearchForm extends Component {
                   value={this.state.suburb}
                   required />
               </Form.Group>
+              <Col>
+              <Button id="search" type="submit">Search</Button>
+            </Col>
             </Form.Row>
-            <Button variant="primary" type="submit">
-              Search
-            </Button>
+
           </form>
         </Container>
       </div>
@@ -114,7 +115,7 @@ class SearchResult extends Component {
                       <Card.Title className="titleCategory">{s.title}</Card.Title>
                       <Card.Text>Description: {s.description} </Card.Text>
                       <Card.Text>Service price: ${s.price}</Card.Text>
-                      <Card.Text>Retail: {s.retail.retail_name}</Card.Text>
+                      <Card.Text><strong> {s.retail.retail_name} </strong></Card.Text>
                       <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
                       <Card.Text><span role="img" aria-label="sheep">☎️</span> {s.retail.phone}</Card.Text>
                       <Button variant="outline-info" href={`#/retailshowservices/${s.retail.user_id}`}>
@@ -128,7 +129,6 @@ class SearchResult extends Component {
           }
         </Container>
       </div>
-
     );
   }
 }
