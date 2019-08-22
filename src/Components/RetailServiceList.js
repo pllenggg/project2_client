@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {ListGroup, Container, Form, Button, Accordion, Card} from 'react-bootstrap';
 
-// const SERVICES_API = "http://localhost:3000/services.json"
-// const CATEGORIES_API = "http://localhost:3000/categories.json"
-// const SERVICES_UPDATE_API = "http://localhost:3000/services/:id.json"
 const SERVICES_API = "https://bookbeauty.herokuapp.com/services.json"
 const CATEGORIES_API = "https://bookbeauty.herokuapp.com/categories.json"
 const SERVICES_UPDATE_API = "https://bookbeauty.herokuapp.com/services/:id.json"
@@ -17,7 +14,6 @@ class RetailServiceList extends Component {
       categories: []
     }
 
-    //fetching data from API 
     const fetchServices = () => {
       axios.get(SERVICES_API).then((results) => {
         let data = results.data.filter((s)=>{return s.retail_id === Login_id});
@@ -43,15 +39,6 @@ class RetailServiceList extends Component {
       })
     }
 
-  // onDelete(){
-  //   let serviceId = this.state.services.id;
-  //   axios.delete(SERVICES_API +"/"+serviceId).then((response) => {
-  //     this.props.history.push('/retailservicelist');
-  //   }).catch(err => console.log(err));
-  // }
-  
-
-  //below here is rendering the toggle form and show the list of services//
   render() {
     return(
       <div>
@@ -69,7 +56,6 @@ class RetailServiceList extends Component {
           </Card>
           </Accordion>
         </Container>
-        {/* TODO: use login user instead of 8 */}
         {this.state.services.map((s)=>{
           return(
             <div key={s.id}>
