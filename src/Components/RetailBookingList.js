@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../Css/Retails.css';
 import { Table } from "react-bootstrap";
-const BOOKING_SERVER_URL = "http://localhost:3000/bookings.json";
+const BOOKING_SERVER_URL = "https://bookbeauty.herokuapp.com/bookings.json";
 
 class RetailBookingList extends Component {
 

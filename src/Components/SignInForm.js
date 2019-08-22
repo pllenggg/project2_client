@@ -4,8 +4,8 @@ import User from './User'
 import axios from 'axios';
 import '../Css/User.css';
 
-const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
-// const SERVER_URL = 'http://localhost:3000/login.json';
+// const SERVER_URL = 'https://bookbeauty.herokuapp.com/login.json';
+const SERVER_URL = 'http://localhost:3000/users.json';
 class Signin extends Component {
     constructor() {
         super();
@@ -25,22 +25,32 @@ class Signin extends Component {
     }
     _handleSubmit(event) {
         event.preventDefault();
-        const data = { email: this.state.email, password: this.state.password};
-        axios.post(SERVER_URL, data).then((result) => {
+        axios.get(SERVER_URL).then((result)=>{
             if (result){
-                const loginUser = result.data;
+                const loginUser = result.data.find((x)=>{return x.email === this.state.email});
                 User.setEmail(loginUser.email);
-                User.setUserType(loginUser.user_type);
-                User.setUserId(loginUser.id);
-                this.props.history.push("/");
-                window.location.reload();
-            }
-        }, (reason)=>{
-            if (reason && reason.response && reason.response.data) {
-                const rejectReason = reason.response.data;
-                this.setState({errorMessage: rejectReason});
+                        User.setUserType(loginUser.user_type);
+                        User.setUserId(loginUser.id);
+                        this.props.history.push("/");
+                        window.location.reload();
             }
         });
+        // const data = { email: this.state.email, password: this.state.password};
+        // axios.post(SERVER_URL, data).then((result) => {
+        //     if (result){
+        //         const loginUser = result.data;
+        //         User.setEmail(loginUser.email);
+        //         User.setUserType(loginUser.user_type);
+        //         User.setUserId(loginUser.id);
+        //         this.props.history.push("/");
+        //         window.location.reload();
+        //     }
+        // }, (reason)=>{
+        //     if (reason && reason.response && reason.response.data) {
+        //         const rejectReason = reason.response.data;
+        //         this.setState({errorMessage: rejectReason});
+        //     }
+        // });
     }
     render() {
         return(
