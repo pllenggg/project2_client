@@ -19,9 +19,6 @@
 .icon {
   display: inline-block;
   margin: 10px;
-  margin-top: 10px;
-}
-
-.container {
-  background-color: ulr("https://image.freepik.com/free-vector/watercolor-stain-background-pastel-tones_79603-432.jpg");
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

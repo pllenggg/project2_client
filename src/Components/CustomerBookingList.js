@@ -36,42 +36,42 @@ class CustomerBookingList extends Component {
 class BookingCancelForm extends Component {
   render() {
     return (
-      <div>
-        <Container>
-        <h2>Your booking</h2>
-          <Table striped size='sm'>
-              <thead>
-                <tr>
-                  <th>Booking Date</th>
-                  <th>Booking Time</th>
-                  <th>Retail Name</th>
-                  <th>Service</th>
-                  <th>Service Image</th>
-                  <th>Duration</th>
-                  <th>Price</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
+      <div className="container">
+        <div className="wrapperCustomerBookingList">
+          <h1>All bookings</h1>
+          <Table striped size='sm' >
+            <thead>
+              <tr>
+                <th>Booking Date</th>
+                <th>Booking Time</th>
+                <th>Retail Name</th>
+                <th>Service</th>
+                <th>Service Image</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
               {
-                this.props.data.map((b)=>{
-                  return(
-                      <tr key={b.id}>
-                        <td>{b.date}</td>
-                        <td>{b.booking_time}</td>
-                        <td>{b.retail.retail_name}</td>
-                        <td>{b.service.title}</td>
-                        <td> <img src={b.service.service_image} width="100" height="100" alt="" /></td>
-                        <td>{b.service.duration}</td>
-                        <td>{b.service.price}</td>
-                        <td><CancelButton id={b.id} iscancel={b.iscancel}/></td>
-                      </tr>
+                this.props.data.map((b) => {
+                  return (
+                    <tr key={b.id}>
+                      <td>{b.date}</td>
+                      <td>{b.booking_time}</td>
+                      <td>{b.retail.retail_name}</td>
+                      <td>{b.service.title}</td>
+                      <td> <img src={b.service.service_image} width="100" height="100" alt="" /></td>
+                      <td>{b.service.duration}</td>
+                      <td>{b.service.price}</td>
+                      <td><CancelButton id={b.id} iscancel={b.iscancel} /></td>
+                    </tr>
                   );
                 })
               }
-              </tbody>
-            </Table>
-        </Container>
+            </tbody>
+          </Table>
+        </div>
       </div>
 
     );

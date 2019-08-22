@@ -35,3 +35,9 @@ h2 {
   color: #030303;
   overflow: hidden;
 }
+
+.wrapperCustomerBookingList {
+  background-color: #FFFFFF;
+  margin-top: 80px;
+  margin-bottom: 250px;
+}
