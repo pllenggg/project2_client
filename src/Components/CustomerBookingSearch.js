@@ -27,7 +27,6 @@ class CustomerBookingSearch extends Component {
     return (
       <div>
         <Container>
-        <h2>Explore Services</h2>
         <SearchForm onSubmit={this.fetchServices}/>
         <SearchResult services={this.state.services} />
         </Container>
@@ -66,6 +65,8 @@ class SearchForm extends Component {
     return (
       <div>
         <Container>
+        <section className="retail-content">
+        <h2>Explore Services</h2>
           <form onSubmit={this._handleSubmit} >
             <Form.Row>
               <Form.Group as={Col} controlId="formGridCategories">
@@ -89,11 +90,12 @@ class SearchForm extends Component {
                   required />
               </Form.Group>
               <Col>
-              <Button id="search" type="submit">Search</Button>
+              <Button id="search" variant="info" type="submit">Search</Button>
             </Col>
             </Form.Row>
 
           </form>
+          </section>
         </Container>
       </div>
     );
@@ -105,20 +107,21 @@ class SearchResult extends Component {
     return (
       <div>
         <Container>
+        <section className="service-content">
           {
             this.props.services.map((s) => {
               return (
-                <div className="serviceList" key={s.id}>
+                <div className="service-card" key={s.id}>
                   <Card style={{ width: '16rem' }}>
                     <Card.Img variant="top" width='300px' height='200px' src={s.service_image} />
                     <Card.Body>
                       <Card.Title className="titleCategory">{s.title}</Card.Title>
-                      <Card.Text>Description: {s.description} </Card.Text>
+                      <Card.Text>{s.description} </Card.Text>
                       <Card.Text>Service price: ${s.price}</Card.Text>
                       <Card.Text><strong> {s.retail.retail_name} </strong></Card.Text>
-                      <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
+                      {/* <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text> */}
                       <Card.Text><span role="img" aria-label="sheep">☎️</span> {s.retail.phone}</Card.Text>
-                      <Button variant="outline-info" href={`#/retailshowservices/${s.retail.user_id}`}>
+                      <Button id="info" variant="outline-info" href={`#/retailshowservices/${s.retail.user_id}`}>
                         More Info
                     </Button>
                     </Card.Body>
@@ -127,6 +130,7 @@ class SearchResult extends Component {
               );
             })
           }
+        </section>
         </Container>
       </div>
     );

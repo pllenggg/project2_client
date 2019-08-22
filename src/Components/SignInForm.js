@@ -46,38 +46,38 @@ class Signin extends Component {
     render() {
         return(
             <Container>
-                <Row className="justify-content-md-center">
-                    <h1>Sign in</h1>
-                </Row>
-                <Row className="justify-content-md-center">
-                <form onSubmit={this._handleSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email:</Form.Label>
-                    <Form.Control 
-                        type="email" 
-                        name="email" 
-                        placeholder="type your email" 
-                        onChange={this._handleChange} 
-                        value={this.state.email}
-                        required />
-                </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                <Form.Label>Password:</Form.Label>
-                    <Form.Control 
-                        type="password"
-                        name="password" 
-                        placeholder="type your password" 
-                        onChange={this._handleChange} 
-                        value={this.state.password}
-                        required />
-                </Form.Group>
-                <Row className="justify-content-md-center">
-                <Button variant="primary" type="submit">
-                    Sign in
-                </Button>
-                </Row>
-                </form>
-                </Row>
+                <div className="wrapper">
+                    <Row className="justify-content-md-center">
+                        <h1>Sign in</h1>
+                    </Row>
+                    <Row className="justify-content-md-center">
+                        <form onSubmit={this._handleSubmit}>
+                        <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email:</Form.Label>
+                            <Form.Control 
+                                type="email" 
+                                name="email" 
+                                placeholder="type your email" 
+                                onChange={this._handleChange} 
+                                value={this.state.email}
+                                required />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Password:</Form.Label>
+                            <Form.Control 
+                                type="password"
+                                name="password" 
+                                placeholder="type your password" 
+                                onChange={this._handleChange} 
+                                value={this.state.password}
+                                required />
+                        </Form.Group>
+                            <Row className="justify-content-md-center">
+                            <Button variant="info" type="submit">Sign in</Button>
+                            </Row>
+                        </form>
+                    </Row>
+                </div>
             </Container>
         );
     }

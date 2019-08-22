@@ -36,7 +36,7 @@ class BookingCancelForm extends Component {
     return (
       <div>
         <Container>
-        <h1>Your booking</h1>
+        <h2>Your booking</h2>
           <Table striped size='sm'>
               <thead>
                 <tr>

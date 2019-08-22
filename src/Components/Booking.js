@@ -45,6 +45,7 @@ class Booking extends Component {
         return (
             <div>
                 <Container>
+                <section className="booking-content">
                     <h3>Choosing your service time</h3>
                     <ListGroup>
                         <ListGroup.Item>
@@ -61,10 +62,9 @@ class Booking extends Component {
                                 <Col><span role='img' aria-label='sheep'>💲</span>{this.state.service.price}</Col>
                             </Row>
                         </ListGroup.Item>
-                        <ListGroup.Item>
-                            <BookingForm onSubmit={this.savebooking} />
-                        </ListGroup.Item>
                     </ListGroup>
+                </section>
+                <BookingForm onSubmit={this.savebooking} />
                 </Container>
 
             </div>
@@ -76,7 +76,7 @@ class BookingForm extends Component {
         super();
         this.state = {
             date: Date.now(),
-            booking_time: 9
+            booking_time: 0
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -101,6 +101,7 @@ class BookingForm extends Component {
         return (
             <div>
                 <Container>
+                {/* <section className="booking-content"> */}
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                         <Col>
@@ -119,7 +120,7 @@ class BookingForm extends Component {
                                     <Card.Title>Please select time</Card.Title>
                                     <Row>
                                         <Col><Button variant="warning" value="9"
-                                            onClick={this.handleClick}>9:00</Button></Col>
+                                            onClick={this.handleClick}>09:00</Button></Col>
                                         <Col><Button variant="warning" value="10"
                                             onClick={this.handleClick}>10:00</Button></Col>
                                         <Col><Button variant="warning" value="11"
@@ -162,8 +163,8 @@ class BookingForm extends Component {
                         </Button>
                         </Col>
                     </Form.Row>
-
                 </Form>
+                {/* </section> */}
             </Container>
             </div>
         );
