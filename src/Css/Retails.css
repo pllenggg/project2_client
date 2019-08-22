@@ -1,0 +1,35 @@
+/* RETAILS LITS */
+
+.cardRetails {
+  margin: 30px;
+  box-shadow: 0px 0px 10px 5px #858485;
+}
+
+.infoRetails {
+  margin: 10px;
+}
+
+.buttonEditRetail {
+  width: 75px;
+  height: 35px;
+  margin-left: 140px;
+  margin-right: 140px;
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(164, 173, 147);
+}
+
+.btn {
+  text-decoration: none;
+  color: #030303;
+  font-size: 20px;
+}
+
+.accordion > .card .card-header {
+  text-decoration: none;
+  background-color: #F5D7D7;
+}
+
+.btn-outline-secondary {
+  background-color: #F5D7D7;
+}

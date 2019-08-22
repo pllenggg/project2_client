@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Container } from "react-bootstrap";
+import '../Css/Customer.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/bookings.json';
 const SERVER_UPDATE_URL = 'https://bookbeauty.herokuapp.com/bookings/:id.json';
@@ -13,23 +14,23 @@ class CustomerBookingList extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     axios.get(SERVER_URL).then((results) => {
       let login_id = Number(localStorage.user_id);
-      let data = results.data.filter((b)=> {return b.user_id === login_id });
-      this.setState({bookings: data});
+      let data = results.data.filter((b) => { return b.user_id === login_id });
+      this.setState({ bookings: data });
     });
   }
 
   render() {
     return (
       <div>
-        <BookingCancelForm data={this.state.bookings}/>
+        <BookingCancelForm data={this.state.bookings} />
       </div>
     );
   }
 }
-  
+
 class BookingCancelForm extends Component {
   render() {
     return (
@@ -70,29 +71,29 @@ class BookingCancelForm extends Component {
             </Table>
         </Container>
       </div>
-        
+
     );
   }
 }
 
-class CancelButton extends Component{
-  constructor(props){
+class CancelButton extends Component {
+  constructor(props) {
     super(props);
     this.state = {
-      iscancel: props.iscancel?true:false
+      iscancel: props.iscancel ? true : false
     }
     this._handleOnClick = this._handleOnClick.bind(this);
   }
 
-  _handleOnClick(event){
+  _handleOnClick(event) {
     let bookingId = Number(event.target.id);
-    axios.get(SERVER_URL).then((response)=>{
-      let data = response.data.find((b)=>{ return b.id === bookingId});
-      if (!data.iscancel){
+    axios.get(SERVER_URL).then((response) => {
+      let data = response.data.find((b) => { return b.id === bookingId });
+      if (!data.iscancel) {
         data.iscancel = true;
         let url = SERVER_UPDATE_URL.replace(":id", bookingId)
-        axios.put(url, data).then((result)=>{
-          this.setState({iscancel: result.data.iscancel});
+        axios.put(url, data).then((result) => {
+          this.setState({ iscancel: result.data.iscancel });
           console.log("cancel success", this.state.iscancel);
         });
       }

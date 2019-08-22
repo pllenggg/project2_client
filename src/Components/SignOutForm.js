@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import User from './User';
+import '../Css/User.css';
 class SignOutForm extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     User.clearUser();
     this.props.history.push("/signin");
     window.location.reload();

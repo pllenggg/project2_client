@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Container, Row } from "react-bootstrap";
 import User from './User'
 import axios from 'axios';
+import '../Css/User.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
 class Signin extends Component {
@@ -15,9 +16,9 @@ class Signin extends Component {
         this._handleSubmit = this._handleSubmit.bind(this);
         this._handleChange = this._handleChange.bind(this);
     }
-    _handleChange (event) {
+    _handleChange(event) {
         this.setState({
-          [event.target.name]: event.target.value
+            [event.target.name]: event.target.value
         });
     }
     _handleSubmit(event) {
@@ -28,7 +29,7 @@ class Signin extends Component {
                 return user.email === this.state.email && user.password === this.state.password;
             });
             console.log('user log in:', loginUser);
-            
+
             if (loginUser) {
                 // found user in database
                 User.setEmail(loginUser.email);

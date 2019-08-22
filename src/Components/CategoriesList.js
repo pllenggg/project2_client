@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Container, Button, Accordion, Card, Table } from 'react-bootstrap';
 import axios from 'axios';
+import '../Css/Categories.css';
+
 
 const CATEGORIES_API = 'https://bookbeauty.herokuapp.com/categories.json';
 
@@ -47,17 +49,24 @@ class CategoriesList extends Component {
         {
           this.state.data.map((c) => {
             return (
-              <div className="categorieList" key={c.id}>
+              <div className="cardCategories" key={c.id}>
 
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" width='330px' height='125px' src={c.image} />
+                <Card className="categorieList" style={{ width: '18rem', display: "inline-block" }}>
+                  <Card.Img variant="top" width='400px' height='225px' src={c.image} />
                   <Card.Body>
                     <Card.Title className="titleCategory">{c.title}</Card.Title>
-                    <div className="wrapper">
-                      <Button className="buttonEdit" variant="outline-secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
+                    <Accordion>
+                      <Card>
+                        <Card.Header>
+                          <Accordion.Toggle as={Button} variant="secondary" variant="link" eventKey="0">
+                            <div className="wrapper">
+                              <Button className="buttonEdit" variant="secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
 
-                    </div>
-
+                            </div>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                      </Card>
+                    </Accordion>
 
                   </Card.Body>
                 </Card>
@@ -106,7 +115,7 @@ class AddNewCategory extends Component {
   render() {
 
     return (
-      <div>
+      <div >
         <Form onSubmit={this._handleSubmit} >
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -116,12 +125,12 @@ class AddNewCategory extends Component {
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
             <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={this.state.image} onChange={this._handleChange} readOnly="true"></Form.Control>
-            <Button onClick={this.uploadWidget.bind(this)}>Select Image</Button>
+            <Button variant="secondary" onClick={this.uploadWidget.bind(this)}>Select Image</Button>
             {/* <Card style={{ width: '18rem', marginTop: '20px' }}>
               <Card.Img variant="top" width='400px' height='225px' src={this.state.image} />
             </Card> */}
           </Form.Group>
-          <Button variant="outline-secondary" type="submit">Save</Button>
+          <Button variant="secondary" type="submit">Save</Button>
         </Form>
       </div >
     )
@@ -129,5 +138,13 @@ class AddNewCategory extends Component {
 }
 
 export default CategoriesList;
+
+
+
+
+
+
+
+
 
 
