@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
+import '../Css/Categories.css';
 
 const CATEGORIES_EDIT_API = 'https://bookbeauty.herokuapp.com/categories/:id.json';
 class CategoriesEdit extends Component {

@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import RetailProfile from './RetailProfile';
 import CustomerProfile from './CustomerProfile';
+import '../Css/User.css';
 
 class Profile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
 
-  render() {
-    return (
-        <div>
-        <ShowProfile/>
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <ShowProfile />
+            </div>
+        );
+    }
 }
 const ShowProfile = () => {
-    if(localStorage.user_id !== "0" && localStorage.user_type === "CUSTOMER"){
-        return(
-            <CustomerProfile/>
+    if (localStorage.user_id !== "0" && localStorage.user_type === "CUSTOMER") {
+        return (
+            <CustomerProfile />
         )
-        
-    }else if (localStorage.user_id !== "0" && localStorage.user_type === "RETAIL"){
-        return(
-            <RetailProfile/>
+
+    } else if (localStorage.user_id !== "0" && localStorage.user_type === "RETAIL") {
+        return (
+            <RetailProfile />
         )
-    }else{
+    } else {
         return (
             <div></div>
         )

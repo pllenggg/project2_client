@@ -1,0 +1,23 @@
+/* NAVIGATION */
+
+.navigation {
+  color: #030303;
+}
+
+.nav-link {
+  color: #030303;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navigation .navbar .navbar-expand-lg .navbar-light .bg-light .navColor .navbar-brand .navbar-collapse .collapse {
+  background-color: #F5D7D7;
+}
+
+.navbar-expand-lg {
+  background-color: #F5D7D7;
+}
+
+.bg-light {
+  background-color: #F5D7D7;
+}

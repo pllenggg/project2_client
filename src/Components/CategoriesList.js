@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Container, Button, Accordion, Card, Table } from 'react-bootstrap';
 import axios from 'axios';
+import '../Css/Categories.css';
+
 
 const CATEGORIES_API = 'https://bookbeauty.herokuapp.com/categories.json';
 

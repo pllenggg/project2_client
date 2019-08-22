@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, Form, Accordion, Card, Container } from 'react-bootstrap';
+import '../Css/Retails.css';
 
 const RETAILS_LIST_API = 'https://bookbeauty.herokuapp.com';
 const GET_POST_RETAILS_LIST_API = `${RETAILS_LIST_API}/retails.json`;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import './Css/Footer.css';
 
 class Footer extends Component {
   render() {

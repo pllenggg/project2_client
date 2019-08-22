@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CustomerForm from './CustomerForm';
+import '../Css/Customer.css';
 
 const CUSTOMER_API = `https://bookbeauty.herokuapp.com/customers/:id.json`
 
@@ -13,7 +14,7 @@ class CreateCustomer extends Component {
   render() {
     return (
       <div>
-        <CustomerForm/> 
+        <CustomerForm />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {ListGroup, Container, Form, Button, Accordion, Card} from 'react-bootstrap';
+import { ListGroup, Container, Form, Button, Accordion, Card } from 'react-bootstrap';
+import '../Css/Retails.css';
 
 // const SERVICES_API = "http://localhost:3000/services.json"
 // const CATEGORIES_API = "http://localhost:3000/categories.json"
@@ -20,14 +21,14 @@ class RetailServiceList extends Component {
     //fetching data from API 
     const fetchServices = () => {
       axios.get(SERVICES_API).then((results) => {
-        let data = results.data.filter((s)=>{return s.retail_id === Login_id});
-        this.setState({services: data});
-        
+        let data = results.data.filter((s) => { return s.retail_id === Login_id });
+        this.setState({ services: data });
+
       })
     }
-    const fetchCategories = ()=>{
+    const fetchCategories = () => {
       axios.get(CATEGORIES_API).then((results) => {
-        this.setState({categories: results.data});
+        this.setState({ categories: results.data });
       })
     }
     fetchCategories();
@@ -38,10 +39,10 @@ class RetailServiceList extends Component {
 
   saveServices(data) {
     axios.post(SERVICES_API, data).then((result) => {
-      this.setState({services: [...this.state.services, result.data]})
+      this.setState({ services: [...this.state.services, result.data] })
       window.location.reload();
-      })
-    }
+    })
+  }
 
   // onDelete(){
   //   let serviceId = this.state.services.id;
@@ -49,29 +50,29 @@ class RetailServiceList extends Component {
   //     this.props.history.push('/retailservicelist');
   //   }).catch(err => console.log(err));
   // }
-  
+
 
   //below here is rendering the toggle form and show the list of services//
   render() {
-    return(
+    return (
       <div>
         <Container>
           <Accordion>
-           <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              + Add new service
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                  + Add new service
               </Accordion.Toggle>
-            </Card.Header>
+              </Card.Header>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><AddServiceForm onSubmit={this.saveServices} categories={this.state.categories}/></Card.Body>
+                <Card.Body><AddServiceForm onSubmit={this.saveServices} categories={this.state.categories} /></Card.Body>
               </Accordion.Collapse>
-          </Card>
+            </Card>
           </Accordion>
         </Container>
         {/* TODO: use login user instead of 8 */}
-        {this.state.services.map((s)=>{
-          return(
+        {this.state.services.map((s) => {
+          return (
             <div key={s.id}>
               <Container>
                 <ListGroup>
@@ -84,12 +85,12 @@ class RetailServiceList extends Component {
                       <Card>
                         <Card.Header>
                           <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                          <UpdateButton id={s.id} >Edit</UpdateButton>
+                            <UpdateButton id={s.id} >Edit</UpdateButton>
                           </Accordion.Toggle>
                         </Card.Header>
-                          <Accordion.Collapse eventKey="0">
-                            <Card.Body><EditForm info={s} categories={this.state.categories}/></Card.Body>
-                          </Accordion.Collapse>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body><EditForm info={s} categories={this.state.categories} /></Card.Body>
+                        </Accordion.Collapse>
                       </Card>
                     </Accordion>
                   </ListGroup.Item>
@@ -97,7 +98,7 @@ class RetailServiceList extends Component {
               </Container>
             </div>
           );
-          
+
         })}
       </div>
     )
@@ -115,13 +116,13 @@ class AddServiceForm extends Component {
       duration: "",
       category_id: 0
     }
-    
+
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
     this.uploadWidgetAdd = this.uploadWidgetAdd.bind(this);
   }
 
-  _handleChange (event) {
+  _handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -129,19 +130,19 @@ class AddServiceForm extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    const selectedCategoryId = this.state.category_id === 0? this.props.categories[0].id: this.state.category_id;
-    const submitData = {title: this.state.title, description: this.state.description, price: this.state.price, category_id: selectedCategoryId, duration: this.state.duration, retail_id: Login_id, service_image: this.state.service_image}   
+    const selectedCategoryId = this.state.category_id === 0 ? this.props.categories[0].id : this.state.category_id;
+    const submitData = { title: this.state.title, description: this.state.description, price: this.state.price, category_id: selectedCategoryId, duration: this.state.duration, retail_id: Login_id, service_image: this.state.service_image }
     this.props.onSubmit(submitData);
   }
 
   uploadWidgetAdd() {
-    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
-        (error, result) => {
-          if (result){
-            const data = result[0];
-            this.setState({service_image: data.secure_url});
-          }
-    });
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
+      (error, result) => {
+        if (result) {
+          const data = result[0];
+          this.setState({ service_image: data.secure_url });
+        }
+      });
   }
 
   render() {
@@ -150,35 +151,35 @@ class AddServiceForm extends Component {
         <Form onSubmit={this._handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Title</strong></Form.Label>
-              <Form.Control type="text" name="title" value={this.state.title} onChange={this._handleChange} maxLength="100" required/>
+            <Form.Control type="text" name="title" value={this.state.title} onChange={this._handleChange} maxLength="100" required />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label><strong>Description</strong></Form.Label>
-              <Form.Control as="textarea" name="description" value={this.state.description} rows="4" maxLength="2000" onChange={this._handleChange} />
+            <Form.Control as="textarea" name="description" value={this.state.description} rows="4" maxLength="2000" onChange={this._handleChange} />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Price</strong></Form.Label>
-              <Form.Control type="number" name="price" value={this.state.price} onChange={this._handleChange}/>
+            <Form.Control type="number" name="price" value={this.state.price} onChange={this._handleChange} />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Duration</strong></Form.Label>
-              <Form.Control type="number" name="duration" value={this.state.duration} onChange={this._handleChange} required/>
+            <Form.Control type="number" name="duration" value={this.state.duration} onChange={this._handleChange} required />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Category</Form.Label>
-              <Form.Control as="select" name="category_id" value={this.state.category_id} onChange={this._handleChange}>
-                {CategoryDropdown(this.props, "", this)}
-              </Form.Control> 
+            <Form.Control as="select" name="category_id" value={this.state.category_id} onChange={this._handleChange}>
+              {CategoryDropdown(this.props, "", this)}
+            </Form.Control>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Image</strong></Form.Label>
-              <Form.Control type="text" name="service_image" value={this.state.service_image} readOnly="true"/>
-              <Button onClick={this.uploadWidgetAdd}>Select Image</Button>
+            <Form.Control type="text" name="service_image" value={this.state.service_image} readOnly="true" />
+            <Button onClick={this.uploadWidgetAdd}>Select Image</Button>
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -191,7 +192,7 @@ class AddServiceForm extends Component {
 }
 
 class UpdateButton extends Component {
-  render(){
+  render() {
     return (
       <Button variant="primary" id={this.props.id}>Edit</Button>
     )
@@ -199,19 +200,19 @@ class UpdateButton extends Component {
 }
 
 const CategoryDropdown = (props, selectedCategoryId, thisObject) => {
-  if (props.categories && props.categories.length > 0){
-    const defaultValue = selectedCategoryId?selectedCategoryId:props.categories[0].id;
-    return props.categories.map((c)=>{
-      return <option id={c.id} key={c.id} value={c.id} selected={c.id===defaultValue} >{c.title}</option>
+  if (props.categories && props.categories.length > 0) {
+    const defaultValue = selectedCategoryId ? selectedCategoryId : props.categories[0].id;
+    return props.categories.map((c) => {
+      return <option id={c.id} key={c.id} value={c.id} selected={c.id === defaultValue} >{c.title}</option>
     })
   }
 }
 
 class EditForm extends Component {
-  constructor(props){
+  constructor(props) {
     super();
-    this.state={
-     service: {
+    this.state = {
+      service: {
         title: props.info.title,
         description: props.info.description,
         price: props.info.price,
@@ -219,47 +220,47 @@ class EditForm extends Component {
         category_id: props.info.category_id,
         service_id: props.info.id,
         service_image: props.info.service_image
-     }
+      }
     }
     this._handleChange = this._handleChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   uploadWidgetEdit = () => {
-    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
-        (error, result) => {
-          if (result){
-            const data = result[0];
-            const newData = {
-              service_image: data.secure_url
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
+      (error, result) => {
+        if (result) {
+          const data = result[0];
+          const newData = {
+            service_image: data.secure_url
+          };
+          this.setState(({ service }) => {
+            return {
+              service: {
+                ...service,
+                ...newData,
+              }
             };
-            this.setState(({ service }) => {
-              return {
-                service: {
-                  ...service,
-                  ...newData,
-                }
-              };
-            });
-          }
-    });
+          });
+        }
+      });
   }
 
-  _handleSubmit (event) {
+  _handleSubmit(event) {
     event.preventDefault();
     const data = this.state.service;
     const url = SERVICES_UPDATE_API.replace(":id", this.props.info.id);
-    axios.put(url , data).then(() => {
+    axios.put(url, data).then(() => {
       window.location.reload();
     })
   }
 
-  _handleChange (event){
+  _handleChange(event) {
     const newData = {
-      [event.currentTarget.name]:event.currentTarget.value
+      [event.currentTarget.name]: event.currentTarget.value
     }
 
-    this.setState(( {service} ) => {
+    this.setState(({ service }) => {
       return {
         service: {
           ...service,
@@ -269,44 +270,44 @@ class EditForm extends Component {
     })
   }
 
-  render(){
-    const {services} = this.state;
-    if(services === null) {
+  render() {
+    const { services } = this.state;
+    if (services === null) {
       return null;
     }
-    return(
+    return (
       <div>
         <Form onSubmit={this._handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label><strong>Title</strong></Form.Label>
-                <Form.Control type="text" name="title" value={this.state.service.title} onChange = {this._handleChange} required/>
+            <Form.Label><strong>Title</strong></Form.Label>
+            <Form.Control type="text" name="title" value={this.state.service.title} onChange={this._handleChange} required />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label><strong>Description</strong></Form.Label>
-                <Form.Control type="textarea" name="description" value={this.state.service.description} onChange = {this._handleChange}/>
+            <Form.Label><strong>Description</strong></Form.Label>
+            <Form.Control type="textarea" name="description" value={this.state.service.description} onChange={this._handleChange} />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label><strong>Price</strong></Form.Label>
-                <Form.Control type="text" name="price" value={this.state.service.price} onChange = {this._handleChange}/>
+            <Form.Label><strong>Price</strong></Form.Label>
+            <Form.Control type="text" name="price" value={this.state.service.price} onChange={this._handleChange} />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label><strong>Duration</strong></Form.Label>
-                <Form.Control type="text" name="duration" value={this.state.service.duration} onChange = {this._handleChange} required/>
+            <Form.Label><strong>Duration</strong></Form.Label>
+            <Form.Control type="text" name="duration" value={this.state.service.duration} onChange={this._handleChange} required />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Category</Form.Label>
-              <Form.Control as="select" name="category_id" value={this.state.service.category_id} onChange={this._handleChange} >
-                {CategoryDropdown(this.props, this.state.service.category_id)}
-              </Form.Control> 
+            <Form.Control as="select" name="category_id" value={this.state.service.category_id} onChange={this._handleChange} >
+              {CategoryDropdown(this.props, this.state.service.category_id)}
+            </Form.Control>
           </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label><strong>Image</strong></Form.Label>
-              <Form.Control type="text" name="service_image" value={this.state.service.service_image} readOnly="true"/>
-              <Button onClick={this.uploadWidgetEdit}>Select Image</Button>
+            <Form.Control type="text" name="service_image" value={this.state.service.service_image} readOnly="true" />
+            <Button onClick={this.uploadWidgetEdit}>Select Image</Button>
           </Form.Group>
 
           <Button variant="primary" type="submit" id={this.state.service.service_id} onSubmit={this._handleSubmit}>
