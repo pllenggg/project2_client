@@ -45,7 +45,8 @@ class Booking extends Component {
         return (
             <div>
                 <Container>
-                    <h3>Choosing your service time</h3>
+                <section className="booking-content">
+                    <h2>Book your service time</h2>
                     <ListGroup>
                         <ListGroup.Item>
                             <Row>
@@ -61,12 +62,10 @@ class Booking extends Component {
                                 <Col><span role='img' aria-label='sheep'>💲</span>{this.state.service.price}</Col>
                             </Row>
                         </ListGroup.Item>
-                        <ListGroup.Item>
-                            <BookingForm onSubmit={this.savebooking} />
-                        </ListGroup.Item>
                     </ListGroup>
+                </section>
+                <BookingForm onSubmit={this.savebooking} />
                 </Container>
-
             </div>
         );
     }
@@ -76,7 +75,7 @@ class BookingForm extends Component {
         super();
         this.state = {
             date: Date.now(),
-            booking_time: 9
+            booking_time: 0
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -99,8 +98,9 @@ class BookingForm extends Component {
 
     render() {
         return (
-            <div>
+    
                 <Container>
+                <section className="booking-form">
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                         <Col>
@@ -114,58 +114,58 @@ class BookingForm extends Component {
                             />
                         </Col>
                         <Col>
-                            <Card style={{ width: '36rem' }}>
+                            <Card style={{ width: '34rem' }}>
                                 <Card.Body>
                                     <Card.Title>Please select time</Card.Title>
-                                    <Row>
-                                        <Col><Button variant="warning" value="9"
-                                            onClick={this.handleClick}>9:00</Button></Col>
-                                        <Col><Button variant="warning" value="10"
+                                    <Row className="time-slot">
+                                        <Col><Button variant="outline-info" value="9"
+                                            onClick={this.handleClick}>09:00</Button></Col>
+                                        <Col><Button variant="outline-info" value="10"
                                             onClick={this.handleClick}>10:00</Button></Col>
-                                        <Col><Button variant="warning" value="11"
+                                        <Col><Button variant="outline-info" value="11"
                                             onClick={this.handleClick}>11:00</Button></Col>
-                                        <Col><Button variant="warning" value="12"
+                                        <Col><Button variant="outline-info" value="12"
                                             onClick={this.handleClick}>12:00</Button></Col>
                                     </Row>
-                                    <Row>
-                                        <Col><Button variant="warning" value="13"
+                                    <Row className="time-slot">
+                                        <Col><Button variant="outline-info" value="13"
                                             onClick={this.handleClick}>13:00</Button></Col>
-                                        <Col><Button variant="warning" value="14"
+                                        <Col><Button variant="outline-info" value="14"
                                             onClick={this.handleClick}>14:00</Button></Col>
-                                        <Col><Button variant="warning" value="15"
+                                        <Col><Button variant="outline-info" value="15"
                                             onClick={this.handleClick}>15:00</Button></Col>
-                                        <Col><Button variant="warning" value="16"
+                                        <Col><Button variant="outline-info" value="16"
                                             onClick={this.handleClick}>16:00</Button></Col>
                                     </Row>
-                                    <Row>
-                                        <Col><Button variant="warning" value="17"
+                                    <Row className="time-slot">
+                                        <Col><Button variant="outline-info" value="17"
                                             onClick={this.handleClick}>17:00</Button></Col>
-                                        <Col><Button variant="warning" value="18"
+                                        <Col><Button variant="outline-info" value="18"
                                             onClick={this.handleClick}>18:00</Button></Col>
-                                        <Col><Button variant="warning" value="19"
+                                        <Col><Button variant="outline-info" value="19"
                                             onClick={this.handleClick}>19:00</Button></Col>
-                                        <Col><Button variant="warning" value="20"
+                                        <Col><Button variant="outline-info" value="20"
                                             onClick={this.handleClick}>20:00</Button></Col>
                                     </Row>
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Form.Row>
+                    <section className="confirm-booking">
                     <Form.Row>
                         <Col>
                             <p>Your booked date: {new Date(this.state.date).toLocaleDateString("en-GB", { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })}</p>
                             <p>Your booked time is: {this.state.booking_time}:00</p>
                         </Col>
                         <Col>
-                            <Button variant="primary" type="submit">
-                                Confirm booking
-                        </Button>
+                            <Button variant="info" type="submit">Confirm booking</Button>
                         </Col>
                     </Form.Row>
-
+                    </section>
                 </Form>
+                </section>
             </Container>
-            </div>
+        
         );
     }
 }
