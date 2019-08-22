@@ -28,9 +28,9 @@ class CustomerProfile extends Component {
     render() {
         return (
             <div>
-                <p>Fullname: {this.state.full_name}</p> 
-                <p>Phone: {this.state.phone}</p> 
-                <Button href={`#/editcustomerprofile`}>Edit</Button>
+                <p>Fullname: {this.state.full_name}</p>
+                <p>Phone: {this.state.phone}</p>
+                <Button variant="info" href={`#/editcustomerprofile`}>Edit</Button>
             </div>
         );
     }
