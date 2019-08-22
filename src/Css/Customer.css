@@ -1,4 +1,15 @@
 /* Customer */
+
+
+h2 {
+  margin: 30px;
+  padding: 30px;
+}
+
+#search {
+  margin: 30px;
+}
+
 .serviceList {
   display: inline-block;
   margin: 20px;

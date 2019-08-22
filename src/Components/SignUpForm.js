@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Row } from "react-bootstrap";
 import Badge from 'react-bootstrap/Badge'
 import axios from 'axios';
 import User from './User'
 import '../Css/User.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
+// const SERVER_URL = 'http://localhost:3000/users.json';
 
 class SignUp extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class SignUp extends Component {
         User.setEmail(data.email);
         User.setUserType(data.user_type);
         User.setUserId(data.id);
-        this.props.history.push("/customer");
+        this.props.history.push("/profile");
       }
     }, (reason) => {
       if (reason && reason.response && reason.response.data) {
@@ -52,7 +53,10 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        <Row className="justify-content-md-center">
         <h1>Sign up</h1>
+        </Row>
+        <Row className="justify-content-md-center">
         <form onSubmit={this._handleSubmit}>
           {
             this.state.errorMessage ? <Badge variant="danger">{this.state.errorMessage}</Badge> : ''
@@ -88,10 +92,13 @@ class SignUp extends Component {
               onChange={this._handleChange}
               required />
           </Form.Group>
+          <Row className="justify-content-md-center">
           <Button variant="primary" type="submit">
             Sign up
           </Button>
+          </Row>
         </form>
+        </Row>
       </div>
     );
   }

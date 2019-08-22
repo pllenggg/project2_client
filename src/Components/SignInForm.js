@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Container, Row } from "react-bootstrap";
 import User from './User'
 import axios from 'axios';
 import '../Css/User.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
+// const SERVER_URL = 'http://localhost:3000/users.json';
 class Signin extends Component {
     constructor() {
         super();
@@ -28,8 +29,6 @@ class Signin extends Component {
             const loginUser = userslist.find((user) => {
                 return user.email === this.state.email;
             });
-            console.log('user log in:', loginUser);
-
             if (loginUser) {
                 // found user in database
                 User.setEmail(loginUser.email);
@@ -44,35 +43,41 @@ class Signin extends Component {
         });
     }
     render() {
-        return (
-            <div>
-                <h1>Sign in</h1>
+        return(
+            <Container>
+                <Row className="justify-content-md-center">
+                    <h1>Sign in</h1>
+                </Row>
+                <Row className="justify-content-md-center">
                 <form onSubmit={this._handleSubmit}>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email:</Form.Label>
-                        <Form.Control
-                            type="email"
-                            name="email"
-                            placeholder="type your email"
-                            onChange={this._handleChange}
-                            value={this.state.email}
-                            required />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control
-                            type="password"
-                            name="password"
-                            placeholder="type your password"
-                            onChange={this._handleChange}
-                            value={this.state.password}
-                            required />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Sign in
+                <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email:</Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        name="email" 
+                        placeholder="type your email" 
+                        onChange={this._handleChange} 
+                        value={this.state.email}
+                        required />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                <Form.Label>Password:</Form.Label>
+                    <Form.Control 
+                        type="password"
+                        name="password" 
+                        placeholder="type your password" 
+                        onChange={this._handleChange} 
+                        value={this.state.password}
+                        required />
+                </Form.Group>
+                <Row className="justify-content-md-center">
+                <Button variant="primary" type="submit">
+                    Sign in
                 </Button>
+                </Row>
                 </form>
-            </div>
+                </Row>
+            </Container>
         );
     }
 }
