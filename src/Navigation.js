@@ -30,9 +30,8 @@ const Profile = () => {
     );
   } else {
     return (
-      <Nav.Link href="#profile">Profile</Nav.Link>
+      <Nav.Link href="#customer">Profile</Nav.Link>
     )
-
   }
 }
 
