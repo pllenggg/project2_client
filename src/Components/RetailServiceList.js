@@ -47,7 +47,7 @@ class RetailServiceList extends Component {
           <Accordion>
             <Card>
               <Card.Header className="dropform">
-                <Accordion.Toggle  as={Button} variant="link" eventKey="0">
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
                   + Add new service
               </Accordion.Toggle>
               </Card.Header>
@@ -58,8 +58,8 @@ class RetailServiceList extends Component {
           </Accordion>
         </Container>
 
-        {this.state.services.map((s)=>{
-          return(
+        {this.state.services.map((s) => {
+          return (
             <div key={s.id}>
               <Container>
                 <ListGroup>
@@ -169,7 +169,7 @@ class AddServiceForm extends Component {
             <Button onClick={this.uploadWidgetAdd}>Select Image</Button>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="info" type="submit">
             Save
           </Button>
         </Form>
