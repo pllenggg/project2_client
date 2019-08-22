@@ -32,7 +32,7 @@ class SignUp extends Component {
         User.setEmail(data.email);
         User.setUserType(data.user_type);
         User.setUserId(data.id);
-        this.props.history.push("/newcustomer");
+        this.props.history.push("/customer");
       }
     }, (reason) => {
       if (reason && reason.response && reason.response.data) {
