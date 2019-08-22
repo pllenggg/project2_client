@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, ListGroup, Container, Row, ListGroupItem } from 'react-bootstrap';
+import { Button, ListGroup, Container, Row, Col} from 'react-bootstrap';
 import '../Css/Retails.css';
 
 
@@ -28,8 +28,9 @@ class RetailProfile extends Component {
         return (
             <div>
                 <Container>
-                    <Row className="justify-content-xl-center">
-                        
+                    <Row>
+                        <Col></Col>
+                        <Col xs={6}>
                         <ListGroup>
                             <ListGroup.Item><h3>{this.state.retail.retail_name}</h3></ListGroup.Item>
 
@@ -44,12 +45,14 @@ class RetailProfile extends Component {
                             <ListGroup.Item><strong>FACEBOOK:</strong> {this.state.retail.suburb}</ListGroup.Item>
 
                             <ListGroup.Item><strong>INSTAGRAM:</strong> {this.state.retail.indtagram}</ListGroup.Item>
-                            
+
                             <ListGroup.Item><strong>WEBSITE:</strong> {this.state.retail.website}
                             </ListGroup.Item>
                             <Button variant="outline-info" href={`#/editretail`}>Edit</Button>
                             
                         </ListGroup>
+                        </Col>
+                        <Col></Col>
                     </Row>
                 </Container>
             </div>
