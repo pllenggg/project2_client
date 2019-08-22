@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { Button, Form, Container, Row } from "react-bootstrap";
+import { Button, Form, Container, Row, Badge } from "react-bootstrap";
 import User from './User'
 import axios from 'axios';
 import '../Css/User.css';
 
-const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
-// const SERVER_URL = 'http://localhost:3000/users.json';
+// const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
+const SERVER_URL = 'http://localhost:3000/login.json';
 class Signin extends Component {
     constructor() {
         super();
         this.state = {
             email: "",
             password: "",
-            user_type: ""
+            user_type: "",
+            errorMessage: ""
         };
         this._handleSubmit = this._handleSubmit.bind(this);
         this._handleChange = this._handleChange.bind(this);
@@ -24,27 +25,32 @@ class Signin extends Component {
     }
     _handleSubmit(event) {
         event.preventDefault();
-        axios.get(SERVER_URL).then((results) => {
-            const userslist = results.data
-            const loginUser = userslist.find((user) => {
-                return user.email === this.state.email;
-            });
-            if (loginUser) {
-                // found user in database
+        const data = { email: this.state.email, password: this.state.password};
+        axios.post(SERVER_URL, data).then((result) => {
+            if (result){
+                const loginUser = result.data;
                 User.setEmail(loginUser.email);
                 User.setUserType(loginUser.user_type);
                 User.setUserId(loginUser.id);
                 this.props.history.push("/");
                 window.location.reload();
-            } else {
-                // not found user in database, render sign up page
-                this.props.history.push("/signup");
+            }
+        }, (reason)=>{
+            if (reason && reason.response && reason.response.data) {
+                const rejectReason = reason.response.data;
+                this.setState({errorMessage: rejectReason});
             }
         });
     }
     render() {
         return(
             <Container>
+                
+                <Row className="justify-content-md-center">
+                {
+                    this.state.errorMessage ? <Badge variant="danger">{this.state.errorMessage}</Badge> : ''
+                }
+                </Row>
                 <Row className="justify-content-md-center">
                     <h1>Sign in</h1>
                 </Row>
