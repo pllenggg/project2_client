@@ -4,6 +4,7 @@ import '../Css/Customer.css';
 import axios from 'axios';
 
 const CUSTOMER_API = 'https://bookbeauty.herokuapp.com/customers.json'
+// const CUSTOMER_API = 'http://localhost:3000/customers.json'
 
 class CreateCustomer extends Component {
   constructor(props) {
@@ -33,15 +34,8 @@ class CreateCustomer extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    const addId = {user_id:localStorage.user_id};
-    this.setState(({ data }) => {
-      return {
-        data: {
-          ...data,
-          ...addId,
-        }
-      };
-    });
+    const data = this.state.data;
+    data.user_id = Number(localStorage.user_id);
     axios.post(CUSTOMER_API, this.state.data).then(() => {
       this.props.history.push("/");
     });

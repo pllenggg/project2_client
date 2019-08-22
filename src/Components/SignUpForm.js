@@ -6,6 +6,7 @@ import User from './User'
 import '../Css/User.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
+// const SERVER_URL = 'http://localhost:3000/users.json';
 
 class SignUp extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class SignUp extends Component {
         User.setEmail(data.email);
         User.setUserType(data.user_type);
         User.setUserId(data.id);
-        this.props.history.push("/customer");
+        this.props.history.push("/profile");
       }
     }, (reason) => {
       if (reason && reason.response && reason.response.data) {

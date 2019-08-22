@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Image, Card, Button, ListGroup, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, ListGroup, Form } from 'react-bootstrap';
 import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
