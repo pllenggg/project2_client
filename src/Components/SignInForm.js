@@ -5,6 +5,7 @@ import axios from 'axios';
 import '../Css/User.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
+// const SERVER_URL = 'http://localhost:3000/users.json';
 class Signin extends Component {
     constructor() {
         super();
@@ -28,8 +29,6 @@ class Signin extends Component {
             const loginUser = userslist.find((user) => {
                 return user.email === this.state.email;
             });
-            console.log('user log in:', loginUser);
-
             if (loginUser) {
                 // found user in database
                 User.setEmail(loginUser.email);
