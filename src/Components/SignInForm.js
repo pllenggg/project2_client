@@ -4,8 +4,8 @@ import User from './User'
 import axios from 'axios';
 import '../Css/User.css';
 
-// const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
-const SERVER_URL = 'http://localhost:3000/login.json';
+const SERVER_URL = 'https://bookbeauty.herokuapp.com/users.json';
+// const SERVER_URL = 'http://localhost:3000/login.json';
 class Signin extends Component {
     constructor() {
         super();

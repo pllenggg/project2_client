@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Row } from "react-bootstrap";
+import { Button, Form, Row, Container } from "react-bootstrap";
 import Badge from 'react-bootstrap/Badge'
 import axios from 'axios';
 import User from './User'
@@ -52,54 +52,53 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
-        <Row className="justify-content-md-center">
-        <h1>Sign up</h1>
-        </Row>
-        <Row className="justify-content-md-center">
-        <form onSubmit={this._handleSubmit}>
-          {
-            this.state.errorMessage ? <Badge variant="danger">{this.state.errorMessage}</Badge> : ''
-          }
-
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email:</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              placeholder="type your email"
-              value={this.state.email}
-              onChange={this._handleChange}
-              required />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password:</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              placeholder="type your password"
-              value={this.state.password}
-              onChange={this._handleChange}
-              required />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password confirmation:</Form.Label>
-            <Form.Control
-              type="password"
-              name="password_confirmation"
-              placeholder="confirm your password"
-              value={this.state.password_confirmation}
-              onChange={this._handleChange}
-              required />
-          </Form.Group>
+      <Container>
+        <div className="wrapper">
           <Row className="justify-content-md-center">
-          <Button variant="primary" type="submit">
-            Sign up
-          </Button>
+          <h1>Sign up</h1>
           </Row>
-        </form>
-        </Row>
-      </div>
+          <Row className="justify-content-md-center">
+          <form onSubmit={this._handleSubmit}>
+            {
+              this.state.errorMessage ? <Badge variant="danger">{this.state.errorMessage}</Badge> : ''
+            }
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="type your email"
+                value={this.state.email}
+                onChange={this._handleChange}
+                required />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="type your password"
+                value={this.state.password}
+                onChange={this._handleChange}
+                required />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password confirmation:</Form.Label>
+              <Form.Control
+                type="password"
+                name="password_confirmation"
+                placeholder="confirm your password"
+                value={this.state.password_confirmation}
+                onChange={this._handleChange}
+                required />
+            </Form.Group>
+            <Row className="justify-content-md-center">
+            <Button variant="info" type="submit">Sign up</Button>
+            </Row>
+          </form>
+          </Row>
+        </div>
+      </Container>
     );
   }
 }

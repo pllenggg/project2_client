@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomerForm from './CustomerForm';
 import axios from 'axios';
+import {Container} from 'react-bootstrap';
 import '../Css/Customer.css';
 
 const CUSTOMER_API = `https://bookbeauty.herokuapp.com/customers/:id.json`
@@ -53,11 +54,13 @@ class CustomerProfileEdit extends Component {
   render() {
     return (
       <div>
+        <Container>
         <CustomerForm
         customer = {this.state.data}
         onTyping = {this._handleChange}
         onSubmit = {this._handleSubmit}
         />
+        </Container>
       </div>
     );
   }
