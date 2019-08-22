@@ -16,7 +16,7 @@ class RetailBookingList extends Component {
   componentDidMount() {
     axios.get(BOOKING_SERVER_URL).then((result) => {
       const login_id = Number(localStorage.user_id);
-      let data = result.data.filter((b) => { return b.retail_id === login_id });
+      let data = result.data.filter((b) => { return (b.retail_id === login_id) || (localStorage.user_type === "ADMIN") });
       this.setState({ booking_data: data });
     });
   }
@@ -31,6 +31,7 @@ class RetailBookingList extends Component {
               <thead>
                 <tr>
                   <th>Customer</th>
+                  <th>Retail</th>
                   <th>Booking Date</th>
                   <th>Booking Time</th>
                   <th>Service</th>
@@ -46,6 +47,7 @@ class RetailBookingList extends Component {
                     return (
                       <tr key={b.id}>
                         <td>{b.customer.full_name}</td>
+                        <td>{b.retail.retail_name}</td>
                         <td>{b.date}</td>
                         <td>{b.booking_time}</td>
                         <td>{b.service.title}</td>

@@ -37,7 +37,8 @@
 .wrapperTableRetails {
   background-color: #FFFFFF;
   margin-top: 80px;
-  margin-bottom: 500px;
+  margin-bottom: 450px;
+  padding: 50px;
 }
 
 .list-group {
