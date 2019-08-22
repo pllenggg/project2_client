@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Button, Form, Accordion, Card, Container } from 'react-bootstrap';
+import { Button, Form, Accordion, Card, Container } from 'react-bootstrap';
+import '../Css/Retails.css';
 
 const RETAILS_LIST_API = 'https://bookbeauty.herokuapp.com';
 const GET_POST_RETAILS_LIST_API = `${RETAILS_LIST_API}/retails.json`;
@@ -18,7 +19,7 @@ class RetailsList extends Component {
     this.editRetail = this.editRetail.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     axios.get(GET_POST_RETAILS_LIST_API).then((result) => {
       this.setState({ retails: result.data });
     });
@@ -63,29 +64,28 @@ class RetailsList extends Component {
         </div>
         <div className="container">
           {
-            this.state.retails.map((r) =>{
-              return(
-                <Card style={{ width: '30rem', display:"inline-block" }}>
+            this.state.retails.map((r) => {
+              return (
+                <Card className="cardRetails" style={{ width: '30rem', display: "inline-block" }} key={r.id}>
                   <Card.Img variant="top" width='400px' height='225px' src={r.retail_image} />
                   <Card.Body>
                     <Card.Title className="titleCategory">{r.retail_name}</Card.Title>
-                    <Card.Text>{`Address: ${r.address1} ${r.address2}, ${r.suburb} ${r.postcode}`}</Card.Text>
+                    <Card.Text className="infoRetails">{`Address: ${r.address1} ${r.address2}, ${r.suburb} ${r.postcode}`}</Card.Text>
                     <Accordion>
                       <Card>
                         <Card.Header>
                           <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                          <div className="wrapper">
-                          <Button
-                            variant="outline-secondary" type="button" onClick={() => this.editRetail(r)}>Edit</Button>
-                          </div>
+                            <div className="wrapper">
+                              <Button className="buttonEditRetail" variant="secondary" type="button" onClick={() => this.editRetail(r)}>Edit</Button>
+                            </div>
                           </Accordion.Toggle>
                         </Card.Header>
-                          <Accordion.Collapse eventKey="0">
-                            <Card.Body><RetailsForm currentItem={this.state.currentItem} onSubmit={this.saveRetail}/></Card.Body>
-                          </Accordion.Collapse>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body><RetailsForm currentItem={this.state.currentItem} onSubmit={this.saveRetail} /></Card.Body>
+                        </Accordion.Collapse>
                       </Card>
                     </Accordion>
-                    
+
                   </Card.Body>
                 </Card>
               );
@@ -138,23 +138,23 @@ class RetailsForm extends Component {
   }
 
   uploadWidget() {
-    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng'},
-        (error, result) => {
-          if( result ){
-            const data = result[0];
-            const newFormData = {
-              retail_image: data.secure_url
+    window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
+      (error, result) => {
+        if (result) {
+          const data = result[0];
+          const newFormData = {
+            retail_image: data.secure_url
+          };
+          this.setState(({ form }) => {
+            return {
+              form: {
+                ...form,
+                ...newFormData,
+              }
             };
-            this.setState(({ form }) => {
-              return {
-                form: {
-                  ...form,
-                  ...newFormData,
-                }
-              };
-            });
-          }
-    });
+          });
+        }
+      });
   }
 
   _handleSubmit(event) {
@@ -191,6 +191,7 @@ class RetailsForm extends Component {
     const { form } = this.state;
 
     return (
+
       <Form onSubmit={this._handleSubmit}>
         <Form.Group controlId="formGridAddress1">
           <Form.Label>Name</Form.Label>
@@ -218,13 +219,14 @@ class RetailsForm extends Component {
         </Form.Group>
 
         <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Label><strong>Image</strong></Form.Label>
-              <Form.Control type="text" name="retail_image" value={form.retail_image} readOnly="true"/>
-              <Button onClick={this.uploadWidget}>Select Image</Button>
-          </Form.Group>
+          <Form.Label><strong>Image</strong></Form.Label>
+          <Form.Control type="text" name="retail_image" value={form.retail_image} readOnly="true" />
+          <Button onClick={this.uploadWidget}>Select Image</Button>
+        </Form.Group>
 
-        <Button variant="outline-secondary" type="submit">Save</Button>
+        <Button variant="secondary" type="submit">Save</Button>
       </Form >
+
     );
   }
 }

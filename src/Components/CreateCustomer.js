@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CustomerForm from './CustomerForm';
+import '../Css/Customer.css';
 import axios from 'axios';
-
 
 const CUSTOMER_API = 'https://bookbeauty.herokuapp.com/customers.json'
 
@@ -55,7 +55,6 @@ class CreateCustomer extends Component {
         customer = {this.state.data}
         onTyping = {this._handleChange}
         onSubmit = {this._handleSubmit}
-
         /> 
       </div>
     );

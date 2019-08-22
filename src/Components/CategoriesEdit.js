@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 import axios from 'axios';
+import '../Css/Categories.css';
 
 const CATEGORIES_EDIT_API = 'https://bookbeauty.herokuapp.com/categories/:id.json';
 class CategoriesEdit extends Component {
@@ -85,12 +86,12 @@ class CategoriesEdit extends Component {
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
             <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={category.image} onChange={this._handleChange} readOnly="true" />
-            <Button onClick={this.uploadWidget.bind(this)}>Select Image</Button>
+            <Button variant="secondary" onClick={this.uploadWidget.bind(this)}>Select Image</Button>
             <Card style={{ width: '18rem', marginTop: '20px' }}>
               <Card.Img variant="top" width='400px' height='225px' src={category.image} />
             </Card>
           </Form.Group>
-          <Button variant="outline-secondary" type="submit">Save</Button>
+          <Button variant="secondary" type="submit">Save</Button>
         </Form >
       </div>
     );

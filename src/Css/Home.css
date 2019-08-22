@@ -1,0 +1,27 @@
+/* HOME */
+.pHome {
+  text-shadow: 10px #858485;
+}
+
+.home-content {
+  background-color: #BAD2CF;
+  padding: 30px;
+  color: #030303;
+  text-align: center;
+  overflow: hidden;
+}
+
+.carousel-caption {
+  font-size: 35px;
+  text-shadow: 20px;
+}
+
+.icon {
+  display: inline-block;
+  margin: 10px;
+  margin-top: 10px;
+}
+
+.container {
+  background-color: ulr("https://image.freepik.com/free-vector/watercolor-stain-background-pastel-tones_79603-432.jpg");
+}

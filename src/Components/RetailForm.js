@@ -1,10 +1,11 @@
-import React,{Component} from 'react';
-import {Form, Button} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import '../Css/Retails.css';
 
 class RetailForm extends Component {
-    render(){
-        return(
-        <Form onSubmit={this.props.onSubmit}>
+  render() {
+    return (
+      <Form onSubmit={this.props.onSubmit}>
         <Form.Group controlId="formGridAddress1">
           <Form.Label>Name</Form.Label>
           <Form.Control placeholder="Retail Name" name="retail_name" value={this.props.service.retail_name} onChange={this.props.onEditing} required maxLength="100" />
@@ -32,29 +33,29 @@ class RetailForm extends Component {
 
         <Form.Group controlId="formGridAddress2">
           <Form.Label>Facebook</Form.Label>
-          <Form.Control placeholder="facebook" name="facebook" value={this.props.service.facebook} onChange={this.props.onEditing} required maxLength="100"/>
+          <Form.Control placeholder="facebook" name="facebook" value={this.props.service.facebook} onChange={this.props.onEditing} required maxLength="100" />
         </Form.Group>
 
         <Form.Group controlId="formGridAddress2">
           <Form.Label>Instagram</Form.Label>
-          <Form.Control placeholder="instagram" name="instagram" value={this.props.service.instagram} onChange={this.props.onEditing} required maxLength="100"/>
+          <Form.Control placeholder="instagram" name="instagram" value={this.props.service.instagram} onChange={this.props.onEditing} required maxLength="100" />
         </Form.Group>
 
         <Form.Group controlId="formGridAddress2">
           <Form.Label>Phone</Form.Label>
-          <Form.Control placeholder="Phone" name="phone" value={this.props.service.phone} onChange={this.props.onEditing} onChange={this.props.onEditing} required maxLength="15"/>
+          <Form.Control placeholder="Phone" name="phone" value={this.props.service.phone} onChange={this.props.onEditing} onChange={this.props.onEditing} required maxLength="15" />
         </Form.Group>
 
         <Form.Group controlId="formGridAddress2">
           <Form.Label>Website</Form.Label>
-          <Form.Control placeholder="website" name="website" value={this.props.service.website} onChange={this.props.onEditing} required maxLength="100"/>
+          <Form.Control placeholder="website" name="website" value={this.props.service.website} onChange={this.props.onEditing} required maxLength="100" />
         </Form.Group>
 
         <Button variant="primary" type="submit">Submit</Button>
       </Form >
 
-        )
-    }
+    )
+  }
 }
 
 export default RetailForm;

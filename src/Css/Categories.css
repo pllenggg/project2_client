@@ -1,0 +1,49 @@
+/* CATEGORIES LIST*/
+
+.cardCategories {
+  display: inline-block;
+  margin: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  box-shadow: 0px 0px 10px 5px #858485;
+}
+
+.titleCategory {
+  text-align: center;
+}
+
+.wrapper {
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+/* background-color: rgb(245, 233, 235); */
+/* box-shadow: 0px 0px 5px 2px #858485; */
+/* padding: 40px; */
+/* } */
+
+/* .addNewCategories {
+  display: block;
+  margin: 45px;
+} */
+.buttonEdit {
+  width: 75px;
+  height: 35px;
+  margin-left: 120px;
+  margin-right: 120px;
+  padding: 10px;
+  text-align: center;
+}
+
+.addNewCategoryButton {
+  text-decoration: none;
+  color: #030303;
+}
+
+.buttonSelectImage {
+  margin: 20px;
+}
+
+.btn {
+  margin: 10px;
+}

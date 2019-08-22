@@ -1,13 +1,15 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import RetailForm from './RetailForm';
 import axios from 'axios';
+import '../Css/Retails.css';
+
 
 
 const RETAIL_API = `https://bookbeauty.herokuapp.com/retails/:id.json`
 
 class RetailEdit extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.state = {
             user_id: localStorage.user_id,
@@ -20,31 +22,31 @@ class RetailEdit extends Component {
 
     _handleChange(event) {
         const newData = {
-          [event.currentTarget.name]: event.currentTarget.value
+            [event.currentTarget.name]: event.currentTarget.value
         };
         this.setState(({ data }) => {
-          return {
-            data: {
-              ...data,
-              ...newData,
-            }
-          };
+            return {
+                data: {
+                    ...data,
+                    ...newData,
+                }
+            };
         });
-      }
+    }
 
-    _handleSubmit(event){
+    _handleSubmit(event) {
         event.preventDefault();
         const info = this.state.data;
         const URL = RETAIL_API.replace(":id", localStorage.user_id);
-        axios.put(URL, info).then(()=>{
+        axios.put(URL, info).then(() => {
             this.props.history.go(-1);
         })
     }
-    componentDidMount(){
+    componentDidMount() {
         const url = RETAIL_API.replace(":id", localStorage.user_id);
-        axios.get(url).then((result) =>{
+        axios.get(url).then((result) => {
             console.log(result.data);
-            this.setState({data: result.data})
+            this.setState({ data: result.data })
         })
     }
 
@@ -52,16 +54,16 @@ class RetailEdit extends Component {
 
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <RetailForm
-                service = {this.state.data}
-                onEditing = {this._handleChange}
-                onSubmit = {this._handleSubmit}
+                    service={this.state.data}
+                    onEditing={this._handleChange}
+                    onSubmit={this._handleSubmit}
                 />
-                
-                
+
+
             </div>
         )
     }
