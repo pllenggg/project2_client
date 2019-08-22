@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Row } from "react-bootstrap";
 import Badge from 'react-bootstrap/Badge'
 import axios from 'axios';
 import User from './User'
@@ -53,7 +53,10 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        <Row className="justify-content-md-center">
         <h1>Sign up</h1>
+        </Row>
+        <Row className="justify-content-md-center">
         <form onSubmit={this._handleSubmit}>
           {
             this.state.errorMessage ? <Badge variant="danger">{this.state.errorMessage}</Badge> : ''
@@ -89,10 +92,13 @@ class SignUp extends Component {
               onChange={this._handleChange}
               required />
           </Form.Group>
+          <Row className="justify-content-md-center">
           <Button variant="primary" type="submit">
             Sign up
           </Button>
+          </Row>
         </form>
+        </Row>
       </div>
     );
   }

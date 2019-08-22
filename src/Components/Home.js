@@ -18,16 +18,16 @@ class Home extends Component {
           < div className="container">
             <section className="home-content">
               <h2>Bookbeauty is your beauty website</h2>
-              <p className="icon"><img src="https://image.flaticon.com/icons/svg/34/34148.svg" alt="" width='40px' height='45px' ></img> Search</p>
-              <p className="icon"><img src="https://cdn4.iconfinder.com/data/icons/hotel-and-reservation-services-outline/64/booking_online-512.png" alt="" width='60px' height='50px' ></img>Booking</p>
-              <p className="icon"><img src="https://png.pngtree.com/svg/20160704/7d1563919c.png" alt="" width='60px' height='50px' ></img>Feel Pretty</p>
+              <p className="icon"><img src="https://image.flaticon.com/icons/svg/34/34148.svg" alt="" width='30px' height='35px' ></img> Search</p>
+              <p className="icon"><img src="https://cdn4.iconfinder.com/data/icons/hotel-and-reservation-services-outline/64/booking_online-512.png" alt="" width='50px' height='40px' ></img>Booking</p>
+              <p className="icon"><img src="https://png.pngtree.com/svg/20160704/7d1563919c.png" alt="" width='50px' height='40px' ></img>Feel Pretty</p>
+              <p>Bookbeauty provides you with a quick and easy way to book your next beauty.
+                It is simple. Search online. Book instantly. Enjoy your treatment!</p>
               <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-            desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                With Bookbeauty you can search, book with immediate confirmation.
+                We securely process thousands of bookings each week for happy customers all around
+                the Sydney, and our friendly support team is always ready to help out should you
+              need them.</p>
             </section>
           </div>
         </main>

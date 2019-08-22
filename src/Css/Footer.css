@@ -4,50 +4,25 @@ footer {
   background-color: #F5D7D7;
   height: 100px;
   color: #030303;
-  font-size: 25px;
   position: absolute;
   width: 100%;
 }
 
-.logoFooter {
-  margin: 30px;
-}
-
-.ContactFooter {
-  font-size: 20px;
-  line-height: 40px;
-}
-
-.mb-3 {
-  color: #030303;
-}
-
 .copyRight {
   color: #030303;
-  margin: 40px;
-}
-
-.contactUs {
+  font-size: 15px;
+  text-align: center;
   display: inline-block;
-  font-size: 18px;
-  text-align: center;
-}
-
-.emailFooter {
-  font-size: 17px;
-  text-align: center;
-}
-
-.col-6 {
-  display: inline-block;
-  text-align: center;
-}
-
-.list-unstyled {
-  margin-bottom: 40px;
 }
 
 .iconFooter {
-  margin-top: 30px;
+  text-align: center;
   display: block;
+  font-size: 15px;
+}
+
+.wrapperFooter {
+  display: table-caption;
+  text-align: center;
+  margin-left: 30px;
 }

@@ -58,9 +58,9 @@ class CategoriesList extends Component {
                     <Accordion>
                       <Card>
                         <Card.Header>
-                          <Accordion.Toggle as={Button} variant="secondary" variant="link" eventKey="0">
+                          <Accordion.Toggle as={Button} variant="outline-info" variant="link" eventKey="0">
                             <div className="wrapper">
-                              <Button className="buttonEdit" variant="secondary" href={`#/categoryEdit/${c.id}`}>Edit</Button>
+                              <Button className="buttonEdit" variant="outline-info" href={`#/categoryEdit/${c.id}`}>Edit</Button>
 
                             </div>
                           </Accordion.Toggle>
@@ -105,7 +105,7 @@ class AddNewCategory extends Component {
   uploadWidget = () => {
     window.cloudinary.openUploadWidget({ cloud_name: 'dm9keau0d', upload_preset: 'o1da5zng' },
       (error, result) => {
-        if (result){
+        if (result) {
           const data = result[0];
           this.setState({ image: data.secure_url });
         }
@@ -125,12 +125,12 @@ class AddNewCategory extends Component {
           <Form.Group controlId="image">
             <Form.Label>Image</Form.Label>
             <Form.Control placeholder="Add Image URL ..." type="text" name="image" value={this.state.image} onChange={this._handleChange} readOnly="true"></Form.Control>
-            <Button variant="secondary" onClick={this.uploadWidget.bind(this)}>Select Image</Button>
+            <Button variant="info" onClick={this.uploadWidget.bind(this)}>Select Image</Button>
             {/* <Card style={{ width: '18rem', marginTop: '20px' }}>
               <Card.Img variant="top" width='400px' height='225px' src={this.state.image} />
             </Card> */}
           </Form.Group>
-          <Button variant="secondary" type="submit">Save</Button>
+          <Button variant="info" type="submit">Save</Button>
         </Form>
       </div >
     )
