@@ -28,9 +28,15 @@ class CustomerProfile extends Component {
     render() {
         return (
             <div>
+<<<<<<< HEAD
                 <p>Fullname: {this.state.full_name}</p>
                 <p>Phone: {this.state.phone}</p>
                 <Button href={`#/editcustomerprofile/${localStorage.user_id}`}>Edit</Button>
+=======
+                <p>Fullname: {this.state.full_name}</p> 
+                <p>Phone: {this.state.phone}</p> 
+                <Button href={`#/editcustomerprofile`}>Edit</Button>
+>>>>>>> 44c2d8f753e8b8091b499485b1d3ac1926af99c5
             </div>
         );
     }

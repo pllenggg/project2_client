@@ -12,6 +12,7 @@ class RetailEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user_id: localStorage.user_id,
             data: {}
         }
 
