@@ -36,20 +36,8 @@ class CreateCustomer extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-<<<<<<< HEAD
-    const addId = { user_id: localStorage.user_id };
-    this.setState(({ data }) => {
-      return {
-        data: {
-          ...data,
-          ...addId,
-        }
-      };
-    });
-=======
     const data = this.state.data;
     data.user_id = Number(localStorage.user_id);
->>>>>>> 404f2cbd727ee93f25677ce9dab8965e6baf7d9d
     axios.post(CUSTOMER_API, this.state.data).then(() => {
       this.props.history.push("/");
     });

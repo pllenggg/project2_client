@@ -59,7 +59,7 @@ class CategoriesList extends Component {
                       <Card>
                         <Card.Header>
                           <Accordion.Toggle as={Button} variant="outline-info" variant="link" eventKey="0">
-                            <div className="wrapper">
+                            <div className="wrapperCategoriel">
                               <Button className="buttonEdit" variant="outline-info" href={`#/categoryEdit/${c.id}`}>Edit</Button>
 
                             </div>

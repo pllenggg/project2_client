@@ -46,8 +46,8 @@ class RetailServiceList extends Component {
         <Container>
           <Accordion>
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+              <Card.Header className="dropform">
+                <Accordion.Toggle  as={Button} variant="link" eventKey="0">
                   + Add new service
               </Accordion.Toggle>
               </Card.Header>

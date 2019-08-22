@@ -3,6 +3,7 @@ import CustomerForm from './CustomerForm';
 import { Container, Row } from 'react-bootstrap';
 
 import axios from 'axios';
+import { Container } from 'react-bootstrap';
 import '../Css/Customer.css';
 
 const CUSTOMER_API = `https://bookbeauty.herokuapp.com/customers/:id.json`
