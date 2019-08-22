@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CustomerForm from './CustomerForm';
 import axios from 'axios';
-import { throwStatement } from '@babel/types';
 
 const CUSTOMER_API = `https://bookbeauty.herokuapp.com/customers/:id.json`
 
@@ -31,7 +30,6 @@ class CustomerProfileEdit extends Component {
       });
     }
 
-
   _handleSubmit(event){
     event.preventDefault();
     const info = this.state.data;
@@ -40,7 +38,6 @@ class CustomerProfileEdit extends Component {
         this.props.history.go(-1);
     })
 }
-
 
   componentDidMount(){
     const url = CUSTOMER_API.replace(':id', localStorage.user_id);
@@ -55,7 +52,7 @@ class CustomerProfileEdit extends Component {
       <div>
         <CustomerForm
         customer = {this.state.data}
-        onEditing = {this._handleChange}
+        onTyping = {this._handleChange}
         onSubmit = {this._handleSubmit}
         />
       </div>
