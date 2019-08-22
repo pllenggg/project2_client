@@ -26,7 +26,7 @@ class Signin extends Component {
         axios.get(SERVER_URL).then((results) => {
             const userslist = results.data
             const loginUser = userslist.find((user) => {
-                return user.email === this.state.email && user.password === this.state.password;
+                return user.email === this.state.email;
             });
             console.log('user log in:', loginUser);
 
