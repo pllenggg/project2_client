@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../Css/Retails.css';
 import { Table, Container } from "react-bootstrap";
-const BOOKING_SERVER_URL = "http://localhost:3000/bookings.json";
+const BOOKING_SERVER_URL = "https://bookbeauty.herokuapp.com/bookings.json";
 
 class RetailBookingList extends Component {
 
@@ -17,6 +17,7 @@ class RetailBookingList extends Component {
     axios.get(BOOKING_SERVER_URL).then((result) => {
       const login_id = Number(localStorage.user_id);
       let data = result.data.filter((b) => { return (b.retail_id === login_id) || (localStorage.user_type === "ADMIN") });
+      console.log(data);
       this.setState({ booking_data: data });
     });
   }
