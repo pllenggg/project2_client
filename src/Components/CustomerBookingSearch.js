@@ -17,7 +17,11 @@ class CustomerBookingSearch extends Component {
   fetchServices = (categoryParam, suburbParam) => {
     axios.get(SERVICES_URL).then((results) => {
       let data = results.data.filter((s) => {
-        return (s.category_id === categoryParam && s.retail.suburb === suburbParam)
+        return (s.category_id === categoryParam 
+          && ((s.retail.suburb.toLowerCase() === suburbParam.toLowerCase())
+          || ( suburbParam==="" || s.retail.suburb.toLowerCase().startsWith(suburbParam.toLowerCase()) )
+          )
+        )
       });
       this.setState({ services: data });
     })
@@ -50,6 +54,8 @@ class SearchForm extends Component {
     axios.get(CATEGORIES_URL).then((results) => {
       this.setState({ categories: results.data });
       this.setState({ category_id: results.data[0].id });
+      console.log(results.data[0].id);
+      
     });
   }
   _handleChange(event) {
@@ -59,7 +65,9 @@ class SearchForm extends Component {
   }
   _handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit(this.state.category_id, this.state.suburb);
+    this.props.onSubmit(Number(this.state.category_id), this.state.suburb);
+    console.log(this.state.category_id, this.state.suburb);
+    
   }
   render() {
     return (
@@ -87,7 +95,7 @@ class SearchForm extends Component {
                   placeholder="suburb"
                   onChange={this._handleChange}
                   value={this.state.suburb}
-                  required />
+                   />
               </Form.Group>
               <Col>
               <Button id="search" variant="info" type="submit">Search</Button>
@@ -119,7 +127,7 @@ class SearchResult extends Component {
                       <Card.Text>{s.description} </Card.Text>
                       <Card.Text>Service price: ${s.price}</Card.Text>
                       <Card.Text><strong> {s.retail.retail_name} </strong></Card.Text>
-                      {/* <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text> */}
+                      <Card.Text><span role="img" aria-label="sheep">📍</span>{s.retail.address1}, {s.retail.address2}, {s.retail.suburb}</Card.Text>
                       <Card.Text><span role="img" aria-label="sheep">☎️</span> {s.retail.phone}</Card.Text>
                       <Button id="info" variant="outline-info" href={`#/retailshowservices/${s.retail.user_id}`}>
                         More Info

@@ -1,7 +1,23 @@
+h2 {
+    margin: 30px;
+  }
+
 .booking-content {
     background-color: #BAD2CF;
-    padding: 30px;
+    padding: 40px;
     color: #030303;
-    text-align: left;
+    text-align: center;
     overflow: hidden;
+}
+
+.booking-form{
+    margin: 10px;
+    background-color: #fdeded;
+    padding: 80px;
+    color: #030303;
+    overflow: hidden;
+}
+
+.time-slot {
+    padding: 0px;
 }
