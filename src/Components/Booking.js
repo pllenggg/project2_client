@@ -98,7 +98,7 @@ class BookingForm extends Component {
 
     render() {
         return (
-            <div>
+    
                 <Container>
                 <section className="booking-form">
                 <Form onSubmit={this.handleSubmit}>
@@ -114,7 +114,7 @@ class BookingForm extends Component {
                             />
                         </Col>
                         <Col>
-                            <Card style={{ width: '36rem' }}>
+                            <Card style={{ width: '34rem' }}>
                                 <Card.Body>
                                     <Card.Title>Please select time</Card.Title>
                                     <Row className="time-slot">
@@ -151,6 +151,7 @@ class BookingForm extends Component {
                             </Card>
                         </Col>
                     </Form.Row>
+                    <section className="confirm-booking">
                     <Form.Row>
                         <Col>
                             <p>Your booked date: {new Date(this.state.date).toLocaleDateString("en-GB", { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })}</p>
@@ -160,10 +161,11 @@ class BookingForm extends Component {
                             <Button variant="info" type="submit">Confirm booking</Button>
                         </Col>
                     </Form.Row>
+                    </section>
                 </Form>
                 </section>
             </Container>
-            </div>
+        
         );
     }
 }

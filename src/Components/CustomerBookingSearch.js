@@ -54,7 +54,6 @@ class SearchForm extends Component {
     axios.get(CATEGORIES_URL).then((results) => {
       this.setState({ categories: results.data });
       this.setState({ category_id: results.data[0].id });
-      console.log(results.data[0].id);
       
     });
   }
@@ -66,7 +65,6 @@ class SearchForm extends Component {
   _handleSubmit(event) {
     event.preventDefault();
     this.props.onSubmit(Number(this.state.category_id), this.state.suburb);
-    console.log(this.state.category_id, this.state.suburb);
     
   }
   render() {

@@ -13,11 +13,17 @@ h2 {
 .booking-form{
     margin: 10px;
     background-color: #fdeded;
-    padding: 80px;
+    padding: 100px;
     color: #030303;
     overflow: hidden;
 }
 
 .time-slot {
     padding: 0px;
+}
+
+.confirm-booking {
+    background-color: #BAD2CF;
+    margin-top: 30px;
+    padding: 30px;
 }
