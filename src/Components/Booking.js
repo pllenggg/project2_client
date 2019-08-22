@@ -99,6 +99,7 @@ class BookingForm extends Component {
     render() {
         return(
             <div>
+                <Container>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Row>
                     <Col>
@@ -162,7 +163,7 @@ class BookingForm extends Component {
                     </Form.Row>
                 
                 </Form>
-            
+            </Container>
             </div>
         );
     }

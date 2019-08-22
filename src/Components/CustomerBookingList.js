@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/bookings.json';
 const SERVER_UPDATE_URL = 'https://bookbeauty.herokuapp.com/bookings/:id.json';
@@ -34,8 +34,9 @@ class BookingCancelForm extends Component {
   render() {
     return (
       <div>
+        <Container>
         <h1>Your booking</h1>
-          <Table striped size='sm' >
+          <Table striped size='sm'>
               <thead>
                 <tr>
                   <th>Booking Date</th>
@@ -67,6 +68,7 @@ class BookingCancelForm extends Component {
               }
               </tbody>
             </Table>
+        </Container>
       </div>
         
     );

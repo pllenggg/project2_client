@@ -26,7 +26,7 @@ class CustomerBookingSearch extends Component {
     return (
         <div>
         <Container>
-        <h1>Finding your services</h1>
+        <h2>Explore Services</h2>
         <SearchForm onSubmit={this.fetchServices}/>
         <SearchResult services={this.state.services} />
         </Container>
@@ -70,7 +70,8 @@ class SearchForm extends Component {
           <Form.Group as={Col} controlId="formGridCategories">
             <Form.Label>Categories</Form.Label>
             <Form.Control as="select" 
-              name="category_id" 
+              name="category_id"
+              placeholder="categories"  
               value={this.state.category_id} 
               onChange={this._handleChange} >
               {this.state.categories.map( (c) => 
@@ -87,10 +88,10 @@ class SearchForm extends Component {
                   value={this.state.suburb}
                   required />
           </Form.Group>
-        </Form.Row>
-            <Button variant="primary" type="submit">
-              Search
-            </Button>
+            <Col>
+              <Button variant="primary"  type="submit">Search</Button>
+            </Col>
+        </Form.Row>   
         </form>
         </Container>
       </div>
@@ -127,7 +128,6 @@ class SearchResult extends Component {
         }
         </Container>
       </div>
-      
     );
   }
 }

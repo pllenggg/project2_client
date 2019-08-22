@@ -70,9 +70,11 @@ class Signin extends Component {
                         value={this.state.password}
                         required />
                 </Form.Group>
+                <Row className="justify-content-md-center">
                 <Button variant="primary" type="submit">
                     Sign in
                 </Button>
+                </Row>
                 </form>
                 </Row>
             </Container>
