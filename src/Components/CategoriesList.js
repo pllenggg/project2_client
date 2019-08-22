@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Container, Button, Accordion, Card, Table } from 'react-bootstrap';
+import { Form, Container, Button, Accordion, Card } from 'react-bootstrap';
 import axios from 'axios';
 import '../Css/Categories.css';
 
