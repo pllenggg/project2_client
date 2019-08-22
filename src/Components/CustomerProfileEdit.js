@@ -53,11 +53,13 @@ class CustomerProfileEdit extends Component {
   render() {
     return (
       <div>
+        <Container>
         <CustomerForm
         customer = {this.state.data}
         onTyping = {this._handleChange}
         onSubmit = {this._handleSubmit}
         />
+        </Container>
       </div>
     );
   }
