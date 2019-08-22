@@ -1,39 +1,43 @@
 /* Customer */
-.serviceList {
+
+h2 {
+  margin: 30px;
+}
+
+#search {
+  margin: 30px;
+}
+
+#info {
+  display: block;
+  margin: auto;
+}
+
+.service-card {
   display: inline-block;
-  margin: 20px;
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
   box-shadow: 0px 0px 5px 2px #858485;
+  background-color: whitesmoke;
+}
+
+.retail-content {
+  background-color: #BAD2CF;
+  padding: 30px;
+  color: #030303;
+  overflow: hidden;
+}
+
+.service-content {
+  margin: 10px;
+  background-color: #fdeded;
+  padding: 80px;
+  color: #030303;
+  overflow: hidden;
 }
 
 .wrapperCustomerBookingList {
   background-color: #FFFFFF;
   margin-top: 80px;
   margin-bottom: 250px;
-}
-
-.wrapperProfileEdit {
-  background-color: #FFFFFF;
-  padding: 30px;
-  margin-top: 80px;
-  margin-bottom: 375px;
-  text-align: center;
-}
-
-.wrapperProfile {
-  background-color: #FFFFFF;
-  padding: 50px;
-  margin-top: 100px;
-  margin-bottom: 380px;
-  text-align: center;
-  font-size: 30px;
-  box-shadow: 0px 0px 10px 5px #858485;
-}
-
-.wrapperCreateCustomer {
-  background-color: #FFFFFF;
-  padding: 30px;
-  margin-top: 80px;
-  margin-bottom: 375px;
-  text-align: center;
 }

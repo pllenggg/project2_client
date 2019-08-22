@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 
 
 const CUSTOMER_API = 'https://bookbeauty.herokuapp.com/customers.json'
+// const CUSTOMER_API = 'http://localhost:3000/customers.json'
 
 class CreateCustomer extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class CreateCustomer extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
+<<<<<<< HEAD
     const addId = { user_id: localStorage.user_id };
     this.setState(({ data }) => {
       return {
@@ -44,6 +46,10 @@ class CreateCustomer extends Component {
         }
       };
     });
+=======
+    const data = this.state.data;
+    data.user_id = Number(localStorage.user_id);
+>>>>>>> 404f2cbd727ee93f25677ce9dab8965e6baf7d9d
     axios.post(CUSTOMER_API, this.state.data).then(() => {
       this.props.history.push("/");
     });

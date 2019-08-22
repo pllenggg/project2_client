@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
 import '../Css/Customer.css';
 
 const SERVER_URL = 'https://bookbeauty.herokuapp.com/bookings.json';
@@ -17,7 +17,9 @@ class CustomerBookingList extends Component {
   componentDidMount() {
     axios.get(SERVER_URL).then((results) => {
       let login_id = Number(localStorage.user_id);
-      let data = results.data.filter((b) => { return b.user_id === login_id });
+      let data = results.data.filter((b) => { return b.user_id === login_id }).sort((a,b)=>{
+        return new Date(b.date) - new Date(a.date);
+      })
       this.setState({ bookings: data });
     });
   }

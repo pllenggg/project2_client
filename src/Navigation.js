@@ -24,13 +24,13 @@ class Navigation extends Component {
 }
 
 const Profile = () => {
-  if (localStorage.user_id === "0") {
+  if (localStorage.user_id === "0"|| localStorage.user_type === "ADMIN") {
     return (
       <div></div>
     );
   } else {
     return (
-      <Nav.Link href="#customer">Profile</Nav.Link>
+      <Nav.Link href="#profile">Profile</Nav.Link>
     )
   }
 }
