@@ -27,7 +27,11 @@ class Profile extends Component {
     
       render() {
         return (
-          <div></div>
+            <div className="container">
+                <div className="wrapperProfile">
+                    <ShowProfile />
+                </div>
+            </div>
         );
       }
 }
