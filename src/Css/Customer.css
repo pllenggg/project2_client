@@ -26,12 +26,14 @@ h2 {
   padding: 30px;
   color: #030303;
   overflow: hidden;
+  min-height: 25vh;
 }
 
 .service-content {
   background-color: #fdeded;
   padding: 80px;
   color: #030303;
+  min-height: 65vh;
   overflow: hidden;
 }
 
@@ -67,3 +69,7 @@ h2 {
   margin-bottom: 310px;
   box-shadow: 0px 0px 10px 5px #858485;
 }
+
+/* .root {
+  min-height: 100vh;
+} */
