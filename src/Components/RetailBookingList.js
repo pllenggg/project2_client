@@ -50,10 +50,10 @@ class RetailBookingList extends Component {
                         <td>{b.customer.full_name}</td>
                         <td>{b.retail.retail_name}</td>
                         <td>{b.date}</td>
-                        <td>{b.booking_time}</td>
+                        <td>{b.booking_time}:00</td>
                         <td>{b.service.title}</td>
-                        <td>{b.service.duration}</td>
-                        <td>{b.service.price}</td>
+                        <td>{b.service.duration} min.</td>
+                        <td>${b.service.price}</td>
                         <td>{b.customer.phone}</td>
                       </tr>
                     );
