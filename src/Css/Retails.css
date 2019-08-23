@@ -36,7 +36,7 @@
 .wrapperTableRetails {
   background-color: #FFFFFF;
   margin-top: 80px;
-  margin-bottom: 450px;
+  margin-bottom: 310px;
   padding: 50px;
 }
 
@@ -46,4 +46,8 @@
 
 a.btn {
   margin-bottom: 120px;
+}
+
+.wrapperProfileRe {
+  margin-bottom: 200px;
 }
