@@ -65,5 +65,5 @@ Future improvement
 
 Acknowledgement
 ------
-Thanks to Joel for all supports.
-Thanks to all the team mates, we did all the great jobs through the tough project weeks.
+Thanks to Joel for all supports. <br>
+Thanks to all the team mates, we did all the great jobs through the tough project week.
