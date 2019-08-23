@@ -1,11 +1,11 @@
-Project2: BOOKBEAU
+Project2: Beuak
 ===============
 Live Demo Link: https://beauk.herokuapp.com/
 -------------
 
 ABOUT
 ------------
-Bookbeau is a platform .where businesses in the health, beauty and wellness industry can list their venue and customers can book online.
+Beuak is a platform where businesses in the health, beauty and wellness industry can list their venue and customers can book online.
 
 
 FEATURES
@@ -27,7 +27,10 @@ END-USERS
 Screenshots
 --------
 Homepage <br>
-![](https://res.cloudinary.com/dluw1enan/image/upload/v1566471094/image%20for%20project2/homepage_ryznyd.jpg)
+![](https://res.cloudinary.com/dluw1enan/image/upload/v1566519848/image%20for%20project2/beauk_homepage_p7sirc.jpg)
+
+Signin <br>
+![](https://res.cloudinary.com/dluw1enan/image/upload/v1566519849/image%20for%20project2/signin_beuk_uph8rq.jpg)
 
 Customer search and show services page <br>
 ![](https://res.cloudinary.com/dluw1enan/image/upload/v1566471382/image%20for%20project2/search_services_f2vuyk.jpg)
@@ -52,11 +55,12 @@ Technologies Used
 
 Known bugs
 --------
-
+- Admin supposed to set the email for retails but currently admin is unable to do so. 
+- Retails cannot access to the customer search page which make it hard for retails to check the appearance of the services.
 
 Future improvement
 ----------
-- Improve the functionalities.
+- Improve the functionalities and fix bugs.
 - Styling the website to be a professional site.
 
 Acknowledgement
